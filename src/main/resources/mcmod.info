@@ -1,6 +1,6 @@
 [
   {
-    "modid": "communitymod",
+    "modid": "community_mod",
     "name": "Community Mod",
     "description": "Lots of code, added by the community.",
     "version": "${version}",
