@@ -5,6 +5,7 @@
 *.iws
 *.launch
 out/
+classes/
 
 #ForgeGradle
 build/

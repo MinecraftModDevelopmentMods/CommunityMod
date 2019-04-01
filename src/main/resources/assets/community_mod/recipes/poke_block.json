@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "community_mod:poke_ingot"
+    }
+  },
+  "result": {
+    "item": "community_mod:poke_block"
+  }
+}

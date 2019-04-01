@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    " # ",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "X": {
+      "item": "community_mod:poke_ingot"
+    }
+  },
+  "result": {
+    "item": "community_mod:poke_pickaxe"
+  }
+}
