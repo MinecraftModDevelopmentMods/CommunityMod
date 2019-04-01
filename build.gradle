@@ -155,7 +155,7 @@ task signJar(type: SignJar, dependsOn: reobfJar) {
 jar {
     manifest {
         attributes([
-                'FMLCorePlugin': "com.mcmoddev.communitymod.erdbeerbaerlp.iconmod.LoadingPlugin"
+                'FMLCorePlugin': "com.mcmoddev.communitymod.CommunityLoadingPlugin"
         ])
     }
 }

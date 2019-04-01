@@ -1,20 +1,14 @@
-package com.mcmoddev.communitymod.erdbeerbaerlp.iconmod;
+package com.mcmoddev.communitymod;
 
 import java.util.Map;
 
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 
-@IFMLLoadingPlugin.Name(LoadingPlugin.NAME)
-@IFMLLoadingPlugin.TransformerExclusions({"de.erdbeerbaerlp.iconmod"})
+@IFMLLoadingPlugin.Name("Community Mod")
+@IFMLLoadingPlugin.TransformerExclusions({"com.mcmoddev.communitymod.erdbeerbaerlp.iconmod"})
 @IFMLLoadingPlugin.SortingIndex(1001)
-//@Mod(modid = LoadingPlugin.MODID, name = LoadingPlugin.NAME, version = LoadingPlugin.VERSION, acceptableRemoteVersions = "*", serverSideOnly = true)
-public class LoadingPlugin implements IFMLLoadingPlugin {
+public class CommunityCoremodLoadingPlugin implements IFMLLoadingPlugin {
 
-	public static final String MODID = "iconmod";
-	public static final String NAME = "Icon Argument Re-Implementation";
-	public static final String VERSION = "1.0.0";
-
-	
 	@Override
 	public String[] getASMTransformerClass() {
 		// TODO Auto-generated method stub
@@ -23,7 +17,7 @@ public class LoadingPlugin implements IFMLLoadingPlugin {
 	@Override
 	public String getModContainerClass() {
 		// TODO Auto-generated method stub
-		return "com.mcmoddev.communitymod.erdbeerbaerlp.iconmod.mod";
+		return "com.mcmoddev.communitymod.CommunityMod";
 	}
 
 	@Override
