@@ -21,7 +21,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
 //TODO everything
-@SubMod(name = "Clay Clay Go Away", attribution = "al132")
+@SubMod(name = "Clay Clay Go Away", attribution = "al132", description = "When it rains, it rains clay too.")
 public class ClayRainMod implements ISubMod {
 
     static int maxRange = 12;
