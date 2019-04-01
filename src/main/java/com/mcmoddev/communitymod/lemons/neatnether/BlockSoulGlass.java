@@ -7,7 +7,9 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -50,8 +52,12 @@ public class BlockSoulGlass extends BlockBreakable
 
 		if (powered)
 		{
-			worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
-			worldIn.setBlockState(pos, state.withProperty(POWERED, true));
+			if(!state.getValue(POWERED))
+			{
+				worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
+				worldIn.setBlockState(pos, state.withProperty(POWERED, true));
+				worldIn.playSound(null, pos, SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.BLOCKS, 1F, 0.25F + worldIn.rand.nextFloat());
+			}
 		}
 		else
 		{
@@ -59,6 +65,7 @@ public class BlockSoulGlass extends BlockBreakable
 			{
 				worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
 				worldIn.setBlockState(pos, state.withProperty(POWERED, false));
+				worldIn.playSound(null, pos, SoundEvents.BLOCK_NOTE_BASEDRUM, SoundCategory.BLOCKS, 1F, 0.25F + worldIn.rand.nextFloat());
 			}
 		}
 	}
