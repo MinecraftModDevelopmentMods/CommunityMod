@@ -9,6 +9,8 @@ import net.minecraft.client.settings.GameSettings;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 
+import java.util.Random;
+
 public class SexyFontRenderer extends FontRenderer {
 	public SexyFontRenderer(GameSettings settings, ResourceLocation res, TextureManager tx, boolean unicode) {
 		super(settings, res, tx, unicode);
@@ -19,11 +21,7 @@ public class SexyFontRenderer extends FontRenderer {
 	
 	@Override
 	public int drawString(String text, float x, float y, int color, boolean dropShadow) {
-		//Make it only happen to random pieces of text
-		int hash = text.hashCode();
-		int offset = (int) (Minecraft.getSystemTime() / 230f) % 8;
-		
-		if((hash + offset) % 8 != 0) {
+		if(!SexyFont.sexyTime) {
 			return super.drawString(text, x, y, color, dropShadow);
 		}
 		
