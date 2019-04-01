@@ -15,14 +15,10 @@ import java.util.regex.Pattern;
 )
 @Mod.EventBusSubscriber
 public class WhatAreThose implements ISubMod {
-    private static Pattern neatPattern = Pattern.compile("hi", Pattern.CASE_INSENSITIVE);
-    
-    public static Random rand = new Random();
+    private static Pattern neatPattern = Pattern.compile("nice boots", Pattern.CASE_INSENSITIVE);
     
     @SubscribeEvent()
     public static void onClientChat(ClientChatEvent e) {
-   		if(rand.nextInt(1000) < 1) {
-           e.setMessage(neatPattern.matcher(e.getMessage()).replaceAll("What are THOOOOOSE!?"));
-      }
+        e.setMessage(neatPattern.matcher(e.getMessage()).replaceAll("What are THOOOOOSE!?"));
     }
 }
