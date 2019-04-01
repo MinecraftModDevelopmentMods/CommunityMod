@@ -8,10 +8,10 @@
   ],
   "key": {
     "#": {
-      "item": "minecraft:poke_nugget"
+      "item": "community_mod:poke_nugget"
     }
   },
   "result": {
-    "item": "minecraft:poke_ingot"
+    "item": "community_mod:poke_ingot"
   }
 }

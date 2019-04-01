@@ -6,11 +6,11 @@
   ],
   "key": {
     "#": {
-      "item": "minecraft:poke_block"
+      "item": "community_mod:poke_block"
     }
   },
   "result": {
-    "item": "minecraft:poke_ingot",
+    "item": "community_mod:poke_ingot",
     "count": 9
   }
 }

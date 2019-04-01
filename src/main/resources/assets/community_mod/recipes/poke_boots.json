@@ -6,10 +6,10 @@
   ],
   "key": {
     "X": {
-      "item": "minecraft:poke_ingot"
+      "item": "community_mod:poke_ingot"
     }
   },
   "result": {
-    "item": "minecraft:poke_boots"
+    "item": "community_mod:poke_boots"
   }
 }

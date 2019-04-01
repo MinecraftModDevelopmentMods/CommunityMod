@@ -10,10 +10,10 @@
       "item": "minecraft:stick"
     },
     "X": {
-      "item": "minecraft:poke_ingot"
+      "item": "community_mod:poke_ingot"
     }
   },
   "result": {
-    "item": "minecraft:poke_axe"
+    "item": "community_mod:poke_axe"
   }
 }
