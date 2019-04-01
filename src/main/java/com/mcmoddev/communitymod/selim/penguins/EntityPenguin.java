@@ -1,4 +1,4 @@
-package com.mcmoddev.communtiymod.selim.penguins;
+package com.mcmoddev.communitymod.selim.penguins;
 
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;

@@ -1,4 +1,4 @@
-package com.mcmoddev.communtiymod.selim.penguins;
+package com.mcmoddev.communitymod.selim.penguins;
 
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
