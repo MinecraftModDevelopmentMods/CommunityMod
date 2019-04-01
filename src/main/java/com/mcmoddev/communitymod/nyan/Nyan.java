@@ -120,7 +120,7 @@ public class Nyan implements ISubMod {
 				//Not long distance
 				false,
 				nyanPos.getX() + direction.getXDirection() * 12.0,
-				nyanPos.getY(),
+				nyanPos.getY() - 2.5,
 				nyanPos.getZ() + direction.getZDirection() * 12.0,
 				//Number of particles
 				10,
