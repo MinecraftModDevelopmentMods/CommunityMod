@@ -1,5 +1,6 @@
 package com.mcmoddev.communitymod.fatsheep.model;
 
+import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.fatsheep.EntityOvergrownSheep;
 import net.minecraft.client.model.ModelSheep2;
 import net.minecraft.client.renderer.entity.RenderLiving;
@@ -9,7 +10,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderOvergrownSheep extends RenderLiving<EntityOvergrownSheep>
 {
-	private static final ResourceLocation SHEARED_SHEEP_TEXTURES = new ResourceLocation("textures/entity/sheep/sheep.png");
+	private static final ResourceLocation SHEARED_SHEEP_TEXTURES = new ResourceLocation(CommunityGlobals.MOD_ID, "textures/entity/sheep/sheep.png");
 
 	public RenderOvergrownSheep(RenderManager rm)
 	{

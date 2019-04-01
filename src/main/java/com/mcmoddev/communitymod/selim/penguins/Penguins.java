@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
 
+import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
 
@@ -44,7 +45,7 @@ public class Penguins implements ISubMod {
 				.register(EntityEntryBuilder.create().entity(EntityPenguin.class).egg(0x000000, 0xFFFFFF)
 						.tracker(32, 4, true).name("community_mod.penguin")
 						.spawn(EnumCreatureType.CREATURE, 7, 7, 9, penguinBiomes)
-						.id(new ResourceLocation("community_mod", "penguin"), 0).build());
+						.id(new ResourceLocation("community_mod", "penguin"), CommunityGlobals.entity_id++).build());
 	}
 
 	@SideOnly(Side.CLIENT)
