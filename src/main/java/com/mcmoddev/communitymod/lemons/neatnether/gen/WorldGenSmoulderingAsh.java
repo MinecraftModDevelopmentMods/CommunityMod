@@ -1,6 +1,6 @@
-package com.mcmoddev.communitymod.neatnether.gen;
+package com.mcmoddev.communitymod.lemons.neatnether.gen;
 
-import com.mcmoddev.communitymod.neatnether.NeatNetherBlocks;
+import com.mcmoddev.communitymod.lemons.neatnether.NeatNetherBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;

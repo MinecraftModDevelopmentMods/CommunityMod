@@ -1,8 +1,7 @@
-package com.mcmoddev.communitymod.neatnether;
+package com.mcmoddev.communitymod.lemons.neatnether;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBreakable;
-import net.minecraft.block.BlockCactus;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;

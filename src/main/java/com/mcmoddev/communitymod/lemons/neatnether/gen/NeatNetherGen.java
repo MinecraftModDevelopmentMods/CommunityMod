@@ -1,4 +1,4 @@
-package com.mcmoddev.communitymod.neatnether.gen;
+package com.mcmoddev.communitymod.lemons.neatnether.gen;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;

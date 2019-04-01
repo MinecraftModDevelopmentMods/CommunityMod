@@ -1,4 +1,4 @@
-package com.mcmoddev.communitymod.neatnether;
+package com.mcmoddev.communitymod.lemons.neatnether;
 
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
@@ -6,7 +6,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @SubMod(name = "Neat Nether", description = "Adds some neat stuff to the Nether", attribution = "Lemons")
 public class NeatNether implements ISubMod

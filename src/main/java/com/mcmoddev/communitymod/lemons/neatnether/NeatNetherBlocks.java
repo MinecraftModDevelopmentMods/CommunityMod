@@ -1,8 +1,7 @@
-package com.mcmoddev.communitymod.neatnether;
+package com.mcmoddev.communitymod.lemons.neatnether;
 
-import com.mcmoddev.communitymod.neatnether.block.BlockSmoulderingAsh;
+import com.mcmoddev.communitymod.lemons.neatnether.block.BlockSmoulderingAsh;
 import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;

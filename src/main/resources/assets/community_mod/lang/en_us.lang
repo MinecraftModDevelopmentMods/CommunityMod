@@ -4,5 +4,5 @@ entity.community_mod.penguin.name=Penguin
 tooltip.community_mod.electric=%s: Electric Boogaloo
 tooltip.community_mod.electric.two= 2/ two/ to/ too/ ii
 
-tile.community_mod.soul_glass=Soul Glass
-tile.community_mod.smouldering_ash=Smouldering Ash
+tile.community_mod.soul_glass.name=Soul Glass
+tile.community_mod.smouldering_ash.name=Smouldering Ash
