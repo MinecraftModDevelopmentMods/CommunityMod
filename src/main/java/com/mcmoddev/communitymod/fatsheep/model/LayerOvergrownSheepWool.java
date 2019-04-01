@@ -1,7 +1,6 @@
 package com.mcmoddev.communitymod.fatsheep.model;
 
 import com.mcmoddev.communitymod.fatsheep.EntityOvergrownSheep;
-import net.minecraft.client.model.ModelSheep1;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.entity.passive.EntitySheep;
