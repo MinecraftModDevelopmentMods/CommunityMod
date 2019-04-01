@@ -1,8 +1,8 @@
 package com.mcmoddev.communitymod;
 
 import com.mcmoddev.communitymod.quat.dabbbbb.Dabbbbb;
+
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;

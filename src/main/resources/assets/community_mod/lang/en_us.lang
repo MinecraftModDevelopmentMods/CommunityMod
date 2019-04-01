@@ -2,6 +2,7 @@
 itemGroup.community_mod=Community Mod
 
 entity.community_mod.penguin.name=Penguin
+entity.community_mod.dabsquirrel.name=Dab Squirrel
 
 tooltip.community_mod.electric=%s: Electric Boogaloo
 tooltip.community_mod.electric.two= 2/ two/ to/ too/ ii
