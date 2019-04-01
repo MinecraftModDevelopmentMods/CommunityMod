@@ -8,14 +8,11 @@ import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
 
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biome.TempCategory;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -51,14 +48,7 @@ public class Penguins implements ISubMod {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void onPreInit(FMLPreInitializationEvent event) {
-		RenderingRegistry.registerEntityRenderingHandler(EntityPenguin.class,
-				new IRenderFactory<EntityPenguin>() {
-
-					@Override
-					public Render<? super EntityPenguin> createRenderFor(RenderManager manager) {
-						return new PenguinRenderer(manager);
-					}
-				});
+		RenderingRegistry.registerEntityRenderingHandler(EntityPenguin.class, PenguinRenderer::new);
 	}
 
 }
