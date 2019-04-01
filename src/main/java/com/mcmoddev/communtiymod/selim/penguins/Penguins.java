@@ -42,7 +42,7 @@ public class Penguins implements ISubMod {
 				penguinBiomes.add(e.getValue());
 		event.getRegistry()
 				.register(EntityEntryBuilder.create().entity(EntityPenguin.class).egg(0x000000, 0xFFFFFF)
-						.tracker(32, 4, true).name("community_mod:penguin")
+						.tracker(32, 4, true).name("community_mod.penguin")
 						.spawn(EnumCreatureType.CREATURE, 7, 7, 9, penguinBiomes)
 						.id(new ResourceLocation("community_mod", "penguin"), 0).build());
 	}
