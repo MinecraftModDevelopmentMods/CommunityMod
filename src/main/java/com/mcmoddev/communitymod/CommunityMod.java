@@ -4,6 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.registries.IForgeRegistry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,11 +27,14 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
-@Mod(modid = "community_mod", name = "Community Mod", version = "@VERSION@", certificateFingerprint = "@FINGERPRINT@")
+@Mod(modid = CommunityGlobals.MOD_ID, name = "Community Mod", version = "@VERSION@", certificateFingerprint = "@FINGERPRINT@")
 public class CommunityMod {
     
     public static final Logger LOGGER = LogManager.getLogger("Community Mod");
     private final List<ISubMod> subMods = new ArrayList<>();
+    
+    @Mod.Instance(CommunityGlobals.MOD_ID)
+    public CommunityMod INSTANCE;
     
     @EventHandler
     public void onConstruction (FMLConstructionEvent event) {
@@ -61,6 +72,8 @@ public class CommunityMod {
     
     @EventHandler
     public void onPreInit (FMLPreInitializationEvent event) {
+    
+        MinecraftForge.EVENT_BUS.register(INSTANCE);
         
         for (final ISubMod subMod : this.subMods) {
             
@@ -110,6 +123,38 @@ public class CommunityMod {
         for (final ISubMod subMod : this.subMods) {
             
             subMod.onServerStopped(event);
+        }
+    }
+    
+    @SubscribeEvent
+    public void blocks (RegistryEvent.Register<Block> event) {
+        
+        IForgeRegistry<Block> reg = event.getRegistry();
+    
+        for (final ISubMod subMod : this.subMods) {
+        
+            subMod.registerBlocks(reg);
+        }
+    }
+    
+    @SubscribeEvent
+    public void items (RegistryEvent.Register<Item> event) {
+        
+        IForgeRegistry<Item> reg = event.getRegistry();
+    
+        for (final ISubMod subMod : this.subMods) {
+        
+            subMod.registerItems(reg);
+        }
+    }
+    
+    @SideOnly(Side.CLIENT)
+    @SubscribeEvent
+    public void models (ModelRegistryEvent event) {
+        
+        for (final ISubMod subMod : this.subMods) {
+            
+            subMod.registerModels(event);
         }
     }
 }
