@@ -1,4 +1,4 @@
-package com.mcmoddev.communitymod.fatsheep;
+package com.mcmoddev.communitymod.lemons.fatsheep;
 
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.network.datasync.DataParameter;

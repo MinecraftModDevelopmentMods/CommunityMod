@@ -1,4 +1,4 @@
-package com.mcmoddev.communitymod.fatsheep;
+package com.mcmoddev.communitymod.lemons.fatsheep;
 
 import java.util.Random;
 
