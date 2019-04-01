@@ -8,10 +8,11 @@ import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
 
 @SubMod(name = "Electric Boogaloo", attribution = "Lomeli", clientSideOnly = true,
         description = "Adds \": Electric Boogaloo\" to items with 2s at the end of their tooltips")
-@Mod.EventBusSubscriber(modid = CommunityGlobals.MOD_ID)
+@Mod.EventBusSubscriber(modid = CommunityGlobals.MOD_ID, value = {Side.CLIENT})
 public class ElectricBoogaloo implements ISubMod {
 
     private static String[] twosList;
