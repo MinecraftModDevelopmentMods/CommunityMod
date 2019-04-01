@@ -14,6 +14,7 @@ import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemPickaxe;
+import net.minecraft.item.ItemSnowball;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
@@ -64,6 +65,7 @@ public final class PokeMod implements ISubMod {
 	public static final ItemArmor POKE_LEGGINGS = _null();
 	public static final ItemArmor POKE_BOOTS = _null();
 	public static final Item POKE_HORSE_ARMOR = _null();
+	public static final ItemSnowball POKEBALL = _null();
 
 	@SubscribeEvent
 	public static void regBlocks(final RegistryEvent.Register<Block> event) {
@@ -88,6 +90,7 @@ public final class PokeMod implements ISubMod {
 				setup(new ItemArmor(ArmorMaterialHelper.POKE, 5, LEGS), "poke_leggings"),
 				setup(new ItemArmor(ArmorMaterialHelper.POKE, 5, FEET), "poke_boots"),
 				setup(new Item() {@Override public HorseArmorType getHorseArmorType(final ItemStack stack) { return HorseArmorTypeHelper.POKE; }}, "poke_horse_armor"),
+				setup(new ItemSnowball(), "pokeball"),
 
 				setup(new ItemBlock(POKE_ORE), POKE_ORE.getRegistryName()),
 				setup(new ItemBlock(POKE_BLOCK), POKE_BLOCK.getRegistryName())
@@ -180,6 +183,7 @@ public final class PokeMod implements ISubMod {
 		simpleItemModel(POKE_LEGGINGS);
 		simpleItemModel(POKE_BOOTS);
 		simpleItemModel(POKE_HORSE_ARMOR);
+		simpleItemModel(POKEBALL);
 
 		simpleItemModel(Item.getItemFromBlock(POKE_ORE));
 		simpleItemModel(Item.getItemFromBlock(POKE_BLOCK));

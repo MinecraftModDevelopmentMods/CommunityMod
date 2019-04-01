@@ -25,6 +25,7 @@ item.community_mod.poke_chestplate.name=Poke Chestplate
 item.community_mod.poke_leggings.name=Poke Leggings
 item.community_mod.poke_boots.name=Poke Boots
 item.community_mod.poke_horse_armor.name=Poke Horse Armor
+item.community_mod.pokeball.name=Pokeball
 
 tile.community_mod.soul_glass.name=Soul Glass
 tile.community_mod.smouldering_ash.name=Smouldering Ash
