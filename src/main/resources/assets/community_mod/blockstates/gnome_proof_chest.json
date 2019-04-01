@@ -1,0 +1,20 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "all": "minecraft:blocks/dirt"
+    },
+    "model": "cube_all"
+  },
+  "variants": {
+    "facing=north": [{}],
+    "facing=south": [{"y": 180}],
+    "facing=east": [{"y": 270}],
+    "facing=west": [{"y": 90}],
+    "inventory":
+    {
+      "model": "cube_all",
+      "transform": "forge:default-block"
+    }
+  }
+}
