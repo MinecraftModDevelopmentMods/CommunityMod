@@ -1,14 +1,19 @@
 package com.mcmoddev.communitymod.gpp;
 
 
+import java.util.Random;
+import java.util.UUID;
+
+import javax.annotation.Nullable;
+
 import com.mcmoddev.communitymod.CommunityMod;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
+
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -27,10 +32,6 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
-
-import javax.annotation.Nullable;
-import java.util.Random;
-import java.util.UUID;
 
 @SubMod(name = "Genuine People Personalities", attribution = "Sirius Cybernetics Corporation")
 @Mod.EventBusSubscriber(modid = "community_mod", value = Side.CLIENT)
