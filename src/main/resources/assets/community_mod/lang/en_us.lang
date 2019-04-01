@@ -2,6 +2,7 @@
 itemGroup.community_mod=Community Mod
 
 entity.community_mod.penguin.name=Penguin
+enchantment.bijump.name=Bouncy Heels
 entity.community_mod.dabsquirrel.name=Dab Squirrel
 
 tooltip.community_mod.electric=%s: Electric Boogaloo
