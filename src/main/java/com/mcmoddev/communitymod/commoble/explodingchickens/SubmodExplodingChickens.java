@@ -1,4 +1,4 @@
-package com.mcmoddev.communitymod.explodingchickens;
+package com.mcmoddev.communitymod.commoble.explodingchickens;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -38,7 +38,7 @@ public class SubmodExplodingChickens implements ISubMod
 	public static void onRegisterEntity(RegistryEvent.Register<EntityEntry> event)
 	{
 		event.getRegistry().register(EntityEntryBuilder.create()
-				.name("community_mod.explodingchicken")
+				.name(CommunityGlobals.MOD_ID + "." + "exploding_chicken")
 				.entity(EntityExplodingChicken.class)
 				.id(new ResourceLocation(CommunityGlobals.MOD_ID, "exploding_chicken"), CommunityGlobals.entity_id++)
 				.tracker(80, 3, true)
