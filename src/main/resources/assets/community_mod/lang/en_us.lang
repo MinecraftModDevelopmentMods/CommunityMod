@@ -4,6 +4,8 @@ itemGroup.community_mod=Community Mod
 entity.community_mod.penguin.name=Penguin
 enchantment.bijump.name=Bouncy Heels
 entity.community_mod.dabsquirrel.name=Dab Squirrel
+entity.community_mod.trans_icon_herobrine_but_with_better_pants.name=Trans Icon Herobrine (but with better pants)
+entity.community_mod.notch_but_with_worserer_pants.name=notch (but with loser pants)
 
 tooltip.community_mod.electric=%s: Electric Boogaloo
 tooltip.community_mod.electric.two= 2/ two/ to/ too/ ii
