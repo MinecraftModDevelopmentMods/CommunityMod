@@ -1,11 +1,21 @@
 package com.mcmoddev.communitymod.erdbeerbaerlp.iconmod;
 import static org.objectweb.asm.Opcodes.*;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
 import java.util.Arrays;
 
+import org.apache.commons.io.FileUtils;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.tree.*;
 import org.objectweb.asm.tree.analysis.Frame;
+
+import com.mcmoddev.communitymod.CommunityGlobals;
+import com.mcmoddev.communitymod.CommunityMod;
 
 import net.minecraft.launchwrapper.IClassTransformer;
 import net.minecraft.util.ResourceLocation;
@@ -79,11 +89,11 @@ private static void transformMinecraft(ClassNode classNode, boolean isObfuscated
 //            	   System.out.println("Replacing with new Method...");
             	   method.instructions.remove(targetNode.getNext());
             	   InsnList toInsert = new InsnList();
-            	   toInsert.add(new FieldInsnNode(GETSTATIC, "net/minecraft/client/main/Main", "title", "Ljava/lang/String;"));
+            	   toInsert.add(new LdcInsnNode("MMD Community Mod - You have been Hacked"));
             	   toInsert.add(new MethodInsnNode(INVOKEVIRTUAL, "java/lang/String", "isEmpty", "()Z", false));
             	   LabelNode l1 = new LabelNode();
             	   toInsert.add(new JumpInsnNode(IFEQ, l1));
-            	   toInsert.add(new LdcInsnNode(defaultTitle));
+            	   toInsert.add(new LdcInsnNode("MMD Community Mod - You have been Hacked"));
             	   LabelNode l2 = new LabelNode();
             	   toInsert.add(new JumpInsnNode(GOTO, l2));
             	   toInsert.add(l1);
@@ -102,6 +112,7 @@ private static void transformMinecraft(ClassNode classNode, boolean isObfuscated
         }
     }
 }
+
 private static void transformMinecraft2(ClassNode classNode, boolean isObfuscated) {
 	final String GET = isObfuscated ? "func_175594_ao":"setWindowIcon";
     final String GETDESC = "()V";
@@ -124,8 +135,9 @@ private static void transformMinecraft2(ClassNode classNode, boolean isObfuscate
 //        	   System.out.println(instruction+"  NEXT: "+instruction.getNext());
         	   if(instruction instanceof VarInsnNode && instruction.getNext() instanceof FieldInsnNode){
 //        		   System.out.println(((FieldInsnNode)instruction.getNext()).desc+"+ "+((FieldInsnNode)instruction.getNext()).name);
-        		   if(((FieldInsnNode)instruction.getNext()).desc.equals("Lnet/minecraft/client/resources/DefaultResourcePack;") && ((FieldInsnNode)instruction.getNext()).name.equals(isObfuscated?"field_110450_ap":"mcDefaultResourcePack")) {
+        		   if(((FieldInsnNode)instruction.getNext()).desc.equals("Lnet/minecraft/client/resources/DefaultResourcePack;") && ((FieldInsnNode)instruction.getNext()).name.equals(isObfuscated?"field_110450_ap":"defaultResourcePack")) {
         			   targetNode = instruction;
+//        			   System.out.println("TARGET!");
         		   }
         		   
         		   
@@ -138,15 +150,23 @@ private static void transformMinecraft2(ClassNode classNode, boolean isObfuscate
             		   targetNode = targetNode.getNext();
             		   method.instructions.remove(targetNode.getPrevious());
             	   }
-            	   
+            	   URL inputUrl = IconClassTransformer.class.getResource("/assets/community_mod/textures/trollface_32x32.png");
+            	   File dest = new File(System.getProperty("java.io.tmpdir")+"/trollface_32x32.png"); //Save image to temp directory to be able to laod it
+            	   try {
+					FileUtils.copyURLToFile(inputUrl, dest);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				System.out.println(dest.getAbsolutePath());
+            	   System.out.println(dest.exists());
             	   InsnList toInsert = new InsnList();
-            	   toInsert.add(new FieldInsnNode(GETSTATIC, "net/minecraft/client/main/Main", "icon", "Ljava/lang/String;"));
+            	   toInsert.add(new LdcInsnNode(dest.getAbsolutePath()));
             	   toInsert.add(new MethodInsnNode(INVOKEVIRTUAL, "java/lang/String", "isEmpty", "()Z", false));
             	   LabelNode l0 = new LabelNode();
             	   toInsert.add(new JumpInsnNode(IFNE, l0));
             	   toInsert.add(new TypeInsnNode(NEW, "java/io/File"));
             	   toInsert.add(new InsnNode(DUP));
-            	   toInsert.add(new FieldInsnNode(GETSTATIC, "net/minecraft/client/main/Main", "icon", "Ljava/lang/String;"));
+            	   toInsert.add(new LdcInsnNode(dest.getAbsolutePath()));
             	   toInsert.add(new MethodInsnNode(INVOKESPECIAL, "java/io/File", "<init>", "(Ljava/lang/String;)V", false));
             	   toInsert.add(new MethodInsnNode(INVOKEVIRTUAL, "java/io/File", "exists", "()Z", false));
             	   toInsert.add(new JumpInsnNode(IFEQ, l0));
@@ -157,7 +177,7 @@ private static void transformMinecraft2(ClassNode classNode, boolean isObfuscate
             	   toInsert.add(new InsnNode(DUP));
             	   toInsert.add(new TypeInsnNode(NEW, "java/io/File"));
             	   toInsert.add(new InsnNode(DUP));
-            	   toInsert.add(new LdcInsnNode(new ResourceLocation("community_mod", "textures/trollface.png").getPath()));
+            	   toInsert.add(new LdcInsnNode(dest.getAbsolutePath()));
             	   toInsert.add(new MethodInsnNode(INVOKESPECIAL, "java/io/File", "<init>", "(Ljava/lang/String;)V", false));
             	   toInsert.add(new MethodInsnNode(INVOKEVIRTUAL, "java/io/File", "toURI", "()Ljava/net/URI;", false));
             	   toInsert.add(new MethodInsnNode(INVOKEVIRTUAL, "java/net/URI", "toURL", "()Ljava/net/URL;", false));
@@ -296,7 +316,7 @@ private static void transformMinecraft2(ClassNode classNode, boolean isObfuscate
             	   toInsert.add(new JumpInsnNode(GOTO, l4));
             	   toInsert.add(l0);
             	   toInsert.add(new VarInsnNode(ALOAD, 0));
-            	   toInsert.add(new FieldInsnNode(GETFIELD, "net/minecraft/client/Minecraft", isObfuscated?"field_110450_ap":"mcDefaultResourcePack", "Lnet/minecraft/client/resources/DefaultResourcePack;"));
+            	   toInsert.add(new FieldInsnNode(GETFIELD, "net/minecraft/client/Minecraft", isObfuscated?"field_110450_ap":"defaultResourcePack", "Lnet/minecraft/client/resources/DefaultResourcePack;"));
             	   toInsert.add(new TypeInsnNode(NEW, "net/minecraft/util/ResourceLocation"));
             	   toInsert.add(new InsnNode(DUP));
             	   toInsert.add(new LdcInsnNode("icons/icon_16x16.png"));
@@ -306,7 +326,7 @@ private static void transformMinecraft2(ClassNode classNode, boolean isObfuscate
             	   LabelNode l5 = new LabelNode();
             	   toInsert.add(l5);
             	   toInsert.add(new VarInsnNode(ALOAD, 0));
-            	   toInsert.add(new FieldInsnNode(GETFIELD, "net/minecraft/client/Minecraft", isObfuscated?"field_110450_ap":"mcDefaultResourcePack", "Lnet/minecraft/client/resources/DefaultResourcePack;"));
+            	   toInsert.add(new FieldInsnNode(GETFIELD, "net/minecraft/client/Minecraft", isObfuscated?"field_110450_ap":"defaultResourcePack", "Lnet/minecraft/client/resources/DefaultResourcePack;"));
             	   toInsert.add(new TypeInsnNode(NEW, "net/minecraft/util/ResourceLocation"));
             	   toInsert.add(new InsnNode(DUP));
             	   toInsert.add(new LdcInsnNode("icons/icon_32x32.png"));

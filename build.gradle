@@ -152,5 +152,11 @@ task signJar(type: SignJar, dependsOn: reobfJar) {
     inputFile = jar.archivePath
     outputFile = jar.archivePath
 }
-
+jar {
+    manifest {
+        attributes([
+                'FMLCorePlugin': "com.mcmoddev.communitymod.erdbeerbaerlp.iconmod.LoadingPlugin"
+        ])
+    }
+}
 build.dependsOn signJar

@@ -18,12 +18,12 @@ public class LoadingPlugin implements IFMLLoadingPlugin {
 	@Override
 	public String[] getASMTransformerClass() {
 		// TODO Auto-generated method stub
-		return new String[]{"de.erdbeerbaerlp.iconmod.ctf"};
+		return new String[]{"com.mcmoddev.communitymod.erdbeerbaerlp.iconmod.IconClassTransformer"};
 	}
 	@Override
 	public String getModContainerClass() {
 		// TODO Auto-generated method stub
-		return "de.erdbeerbaerlp.iconmod.mod";
+		return "com.mcmoddev.communitymod.erdbeerbaerlp.iconmod.mod";
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package com.mcmoddev.communitymod.erdbeerbaerlp;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
 
 import net.minecraft.client.Minecraft;
@@ -15,7 +16,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 @SubMod(name = "Random Crashes", description = "Gives zou a 0.1% chance to crash per minute", attribution = "ErdbeerbaerLP")
 @Mod.EventBusSubscriber(modid = "community_mod")
-public class RandomCrashes {
+public class RandomCrashes implements ISubMod{
 	int i = 0;
 	int attempts = 0;
 	final Random r = new Random();
