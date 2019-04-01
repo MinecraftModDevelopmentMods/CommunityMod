@@ -13,4 +13,4 @@ PRs may be denied for other reasons as well and ultimately the project maintaine
 
 ## Sub Mods
 
-To help reduce the number of merge conflicts, we have added a SubMod system. This system allows you to add your content as a module within the rest of the mod. To make a SubMod, add the @SubMod annotation to your class, and make sure it implements ISubMod. This system is very similar to forge's @Mod system. You can find an example SubMod [here](). While you are **NOT** required to use this system, it is highly recommended. 
+To help reduce the number of merge conflicts, we have added a SubMod system. This system allows you to add your content as a module within the rest of the mod. To make a SubMod, add the @SubMod annotation to your class, and make sure it implements ISubMod. This system is very similar to forge's @Mod system. You can find an example SubMod [here](https://github.com/MinecraftModDevelopmentMods/CommunityMod/blob/master/src/main). While you are **NOT** required to use this system, it is highly recommended. 
