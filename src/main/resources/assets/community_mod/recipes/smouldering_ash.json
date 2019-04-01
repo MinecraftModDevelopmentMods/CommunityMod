@@ -1,0 +1,15 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:fire_charge"
+    }
+  },
+  "result": {
+    "item": "community_mod:smouldering_ash"
+  }
+}
