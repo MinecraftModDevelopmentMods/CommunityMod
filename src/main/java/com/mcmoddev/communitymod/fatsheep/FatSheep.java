@@ -1,7 +1,11 @@
 package com.mcmoddev.communitymod.fatsheep;
 
+import java.util.Random;
+
+import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.item.ItemFood;
@@ -16,8 +20,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
 
-import java.util.Random;
-
 @SubMod(name = "Fat Sheep", description = "Fixes sheep not getting fat", attribution = "Lemons")
 @Mod.EventBusSubscriber(modid = "community_mod")
 public class FatSheep implements ISubMod
@@ -25,7 +27,7 @@ public class FatSheep implements ISubMod
 	@SubscribeEvent
 	public static void onRegisterEntity(RegistryEvent.Register<EntityEntry> event)
 	{
-		event.getRegistry().register(EntityEntryBuilder.create().name("Overgrown Sheep").entity(EntityOvergrownSheep.class).id(new ResourceLocation("community_mod", "overgrown_sheep"), ID++).tracker(80, 3, true).build());
+		event.getRegistry().register(EntityEntryBuilder.create().name("Overgrown Sheep").entity(EntityOvergrownSheep.class).id(new ResourceLocation(CommunityGlobals.MOD_ID, "overgrown_sheep"), CommunityGlobals.entity_id++).tracker(80, 3, true).build());
 	}
 
 	@SubscribeEvent
@@ -92,7 +94,5 @@ public class FatSheep implements ISubMod
 			}
 		}
 	}
-
-	private static int ID = 0;
 
 }
