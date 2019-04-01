@@ -11,41 +11,41 @@ import net.minecraftforge.registries.IForgeRegistry;
 import java.util.Objects;
 
 public class RegUtil {
-    public static <T extends Block> T registerBlock(IForgeRegistry<Block> reg, T block, String name) {
-        block.setRegistryName(new ResourceLocation(CommunityGlobals.MOD_ID, name));
-        block.setTranslationKey(CommunityGlobals.MOD_ID + '.' + name);
-        block.setCreativeTab(CommunityGlobals.TAB);
+	public static <T extends Block> T registerBlock(IForgeRegistry<Block> reg, T block, String name) {
+		block.setRegistryName(new ResourceLocation(CommunityGlobals.MOD_ID, name));
+		block.setTranslationKey(CommunityGlobals.MOD_ID + '.' + name);
+		block.setCreativeTab(CommunityGlobals.TAB);
 
-        reg.register(block);
+		reg.register(block);
 
-        return block;
-    }
+		return block;
+	}
 
-    public static <T extends ItemBlock> T registerItemBlock(IForgeRegistry<Item> reg, T item) {
-        item.setRegistryName(Objects.requireNonNull(item.getBlock().getRegistryName()));
-        item.setCreativeTab(CommunityGlobals.TAB);
+	public static <T extends ItemBlock> T registerItemBlock(IForgeRegistry<Item> reg, T item) {
+		item.setRegistryName(Objects.requireNonNull(item.getBlock().getRegistryName()));
+		item.setCreativeTab(CommunityGlobals.TAB);
 
-        reg.register(item);
+		reg.register(item);
 
-        return item;
-    }
+		return item;
+	}
 
-    public static <T extends Item> T registerItem(IForgeRegistry<Item> reg, T item, String name) {
-        item.setRegistryName(new ResourceLocation(CommunityGlobals.MOD_ID, name));
-        item.setTranslationKey(CommunityGlobals.MOD_ID + '.' + name);
-        item.setCreativeTab(CommunityGlobals.TAB);
+	public static <T extends Item> T registerItem(IForgeRegistry<Item> reg, T item, String name) {
+		item.setRegistryName(new ResourceLocation(CommunityGlobals.MOD_ID, name));
+		item.setTranslationKey(CommunityGlobals.MOD_ID + '.' + name);
+		item.setCreativeTab(CommunityGlobals.TAB);
 
-        reg.register(item);
+		reg.register(item);
 
-        return item;
-    }
+		return item;
+	}
 
-    public static SoundEvent registerSound(IForgeRegistry<SoundEvent> reg, ResourceLocation name) {
-        SoundEvent event = new SoundEvent(name);
-        event.setRegistryName(name);
+	public static SoundEvent registerSound(IForgeRegistry<SoundEvent> reg, ResourceLocation name) {
+		SoundEvent event = new SoundEvent(name);
+		event.setRegistryName(name);
 
-        reg.register(event);
+		reg.register(event);
 
-        return event;
-    }
+		return event;
+	}
 }
