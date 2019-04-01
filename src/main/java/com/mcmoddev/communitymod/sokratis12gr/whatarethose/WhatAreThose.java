@@ -1,4 +1,5 @@
-package com.mcmoddev.communitymod.jamieswhiteshirt.modbyvazkii;
+package com.mcmoddev.communitymod.sokratis12gr.whatarethose;
+
 
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
@@ -13,6 +14,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+
+import java.util.Random;
 
 @SubMod(
     name = "What are Those",
@@ -32,7 +35,7 @@ public class WhatAreThose implements ISubMod {
             IBlockState state = player.world.getBlockState(pos.add(0, -1, 0));
             if (player.onGround) {
                 for (ItemStack stack : player.inventory.armorInventory) {
-                    if (stack.getItem() instanceof ItemArmor && stack.getEquipmentSlot() == EntityEquipmentSlot.FEET && state == Blocks.DIAMOND_BLOCK) {
+                    if (stack.getItem() instanceof ItemArmor && ((ItemArmor) stack.getItem()).getEquipmentSlot() == EntityEquipmentSlot.FEET && state == Blocks.DIAMOND_BLOCK) {
                         player.sendMessage(new TextComponentString("What are THOOOOOSE!?"));
                     }
                 }
