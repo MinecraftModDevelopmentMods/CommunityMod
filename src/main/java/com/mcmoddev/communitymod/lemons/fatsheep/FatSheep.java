@@ -1,4 +1,4 @@
-package com.mcmoddev.communitymod.fatsheep;
+package com.mcmoddev.communitymod.lemons.fatsheep;
 
 import java.util.Random;
 
@@ -21,7 +21,7 @@ import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
 
 @SubMod(name = "Fat Sheep", description = "Fixes sheep not getting fat", attribution = "Lemons")
-@Mod.EventBusSubscriber(modid = "community_mod")
+@Mod.EventBusSubscriber(modid = CommunityGlobals.MOD_ID)
 public class FatSheep implements ISubMod
 {
 	@SubscribeEvent

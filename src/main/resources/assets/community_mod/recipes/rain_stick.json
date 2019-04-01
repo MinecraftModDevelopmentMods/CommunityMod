@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SGS",
+    "RGR",
+    "SGS"
+  ],
+  "key": {
+    "R": {
+      "item": "minecraft:reeds"
+    },
+    "G": {
+      "item": "minecraft:gravel"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "community_mod:rain_stick",
+    "data": 0
+  }
+}
