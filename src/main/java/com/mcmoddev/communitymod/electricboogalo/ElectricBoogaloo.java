@@ -5,6 +5,7 @@ import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
 import joptsimple.internal.Strings;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.item.ItemArrow;
 import net.minecraft.item.ItemPotion;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -32,7 +33,7 @@ public class ElectricBoogaloo implements ISubMod {
     public static void itemToolTipEvent(ItemTooltipEvent event) {
         if (twosList == null || twosList.length < 1 || event.getToolTip().isEmpty())
             return;
-        boolean isPotion = event.getItemStack().getItem() instanceof ItemPotion;
+        boolean isPotion = event.getItemStack().getItem() instanceof ItemPotion || event.getItemStack().getItem() instanceof ItemArrow;
 
         for (int i = 0; i < event.getToolTip().size(); i++) {
             String toolTip = event.getToolTip().get(i);
@@ -59,10 +60,8 @@ public class ElectricBoogaloo implements ISubMod {
                     if (relocateReset)
                         boogaloo += "§r";
                 }
-                if (!Strings.isNullOrEmpty(boogaloo)) {
+                if (!Strings.isNullOrEmpty(boogaloo))
                     event.getToolTip().set(i, boogaloo);
-                    return;
-                }
             }
         }
     }
