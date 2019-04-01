@@ -26,12 +26,30 @@ item.community_mod.poke_leggings.name=Poke Leggings
 item.community_mod.poke_boots.name=Poke Boots
 item.community_mod.poke_horse_armor.name=Poke Horse Armor
 
+#Squirrel
+item.community_mod.squirrel_ingot.name=Squirrel Ingot
+item.community_mod.squirrel_nugget.name=Squirrel Nugget
+item.community_mod.squirrel_pickaxe.name=Squirrel Pickaxe
+item.community_mod.squirrel_axe.name=Squirrel Axe
+item.community_mod.squirrel_shovel.name=Squirrel Shovel
+item.community_mod.squirrel_sword.name=Squirrel Sword
+item.community_mod.squirrel_hoe.name=Squirrel Hoe
+item.community_mod.squirrel_helmet.name=Squirrel Helmet
+item.community_mod.squirrel_chestplate.name=Squirrel Chestplate
+item.community_mod.squirrel_leggings.name=Squirrel Leggings
+item.community_mod.squirrel_boots.name=Squirrel Boots
+item.community_mod.squirrel_horse_armor.name=Squirrel Horse Armor
+
 tile.community_mod.soul_glass.name=Soul Glass
 tile.community_mod.smouldering_ash.name=Smouldering Ash
 
 #PokeMod
 tile.community_mod.poke_ore.name=Poke Ore
 tile.community_mod.poke_block.name=Poke Block
+
+#Squirrel
+tile.community_mod.squirrel_ore.name=Squirrel Ore
+tile.community_mod.squirrel_block.name=Squirrel Block
 
 item.community_mod.tight_pants.name=Tight Pants
 tooltip.community_mod.tight_pants.activated=I'm a dance floor tiger lady pumping everything she has.
