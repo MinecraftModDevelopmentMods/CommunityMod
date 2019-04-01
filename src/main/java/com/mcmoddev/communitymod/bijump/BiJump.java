@@ -5,8 +5,12 @@ import com.mcmoddev.communitymod.SubMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -23,6 +27,7 @@ import java.util.TimerTask;
 @Mod.EventBusSubscriber
 public class BiJump implements ISubMod {
     private static Set<EntityPlayerSP> jumpybois = new HashSet<>();
+    public static final Enchantment BOINGBOING = new EnchantmentBoingBoing();
     public static KeyBinding jump;
 
     @Override
@@ -32,21 +37,24 @@ public class BiJump implements ISubMod {
     }
 
     @SubscribeEvent
+    public static void registerEnchants(RegistryEvent.Register<Enchantment> event) {
+        event.getRegistry().register(BOINGBOING);
+    }
+
+    @SubscribeEvent
     public static void onJump(InputEvent.KeyInputEvent event) {
         if(jump.isPressed()) {
             EntityPlayerSP player = Minecraft.getMinecraft().player;
             BlockPos pos = new BlockPos(player.posX, player.posY, player.posZ);
+            int level = EnchantmentHelper.getMaxEnchantmentLevel(BOINGBOING, player);
 
-            if(player.world.getBlockState(pos).getBlock().equals(Blocks.AIR) && player.world.getBlockState(pos.down()).getBlock().equals(Blocks.AIR) && !jumpybois.contains(player)) {
+            if(player.world.getBlockState(pos).getBlock().equals(Blocks.AIR) &&
+                   player.world.getBlockState(pos.add(0, -2, 0)).getBlock().equals(Blocks.AIR) &&
+                   !jumpybois.contains(player) &&  level > 0) {
                 player.sprintingTicksLeft += 40;
-                player.addVelocity(0, 1.2, 0); // TODO: 1.2 * ench_level
+                player.addVelocity(0, 1.2 * Math.sqrt(level), 0);
                 jumpybois.add(player);
-                new Timer().schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        jumpybois.remove(player);
-                    }
-                }, 2000);
+                new Timer().schedule(new TimerTask(){ @Override public void run(){ jumpybois.remove(player);}}, 7000);
             }
         }
     }
