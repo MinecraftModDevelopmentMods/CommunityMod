@@ -1,5 +1,3 @@
-// Distributed under MIT, originally from https://github.com/Selim042/SM-Penguins
-
 package com.mcmoddev.communtiymod.selim.penguins;
 
 import java.util.LinkedList;
