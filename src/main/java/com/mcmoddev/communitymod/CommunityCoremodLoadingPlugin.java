@@ -14,11 +14,6 @@ public class CommunityCoremodLoadingPlugin implements IFMLLoadingPlugin {
 		// TODO Auto-generated method stub
 		return new String[]{"com.mcmoddev.communitymod.erdbeerbaerlp.iconmod.IconClassTransformer"}; //Add your class transformers here
 	}
-	@Override
-	public String getModContainerClass() {
-		// TODO Auto-generated method stub
-		return "com.mcmoddev.communitymod.CommunityMod";
-	}
 
 	@Override
 	public String getSetupClass() {
