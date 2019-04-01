@@ -1,6 +1,6 @@
-package com.mcmoddev.communitymod.explodingchickens.client;
+package com.mcmoddev.communitymod.commoble.explodingchickens.client;
 
-import com.mcmoddev.communitymod.explodingchickens.EntityExplodingChicken;
+import com.mcmoddev.communitymod.commoble.explodingchickens.EntityExplodingChicken;
 
 import net.minecraft.client.model.ModelChicken;
 import net.minecraft.client.renderer.GlStateManager;

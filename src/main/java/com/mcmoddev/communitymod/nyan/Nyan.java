@@ -4,7 +4,7 @@ import java.util.Random;
 import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
-import com.mcmoddev.communitymod.explodingchickens.EntityExplodingChicken;
+import com.mcmoddev.communitymod.commoble.explodingchickens.EntityExplodingChicken;
 import com.mcmoddev.communitymod.lemons.fatsheep.EntityOvergrownSheep;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.boss.EntityWither;

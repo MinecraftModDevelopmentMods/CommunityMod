@@ -61,3 +61,7 @@ tooltip.community_mod.tight_pants.activated=I'm a dance floor tiger lady pumping
 tooltip.community_mod.tight_pants.inactive=I was already wearing tight pants, I just did not activate them.
 
 item.community_mod.spacehelm.name=Space Helm
+
+#Commoble
+entity.community_mod.exploding_chicken.name=Exploding Chicken
+entity.community_mod.wood_gnome.name=Wood Gnome
