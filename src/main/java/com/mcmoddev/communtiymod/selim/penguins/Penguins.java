@@ -1,0 +1,65 @@
+// Distributed under MIT, originally from https://github.com/Selim042/SM-Penguins
+
+package com.mcmoddev.communtiymod.selim.penguins;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map.Entry;
+
+import com.mcmoddev.communitymod.ISubMod;
+import com.mcmoddev.communitymod.SubMod;
+
+import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.Biome.TempCategory;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.client.registry.IRenderFactory;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.EntityEntry;
+import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+/**
+ * Adds penguins (light version) from the offical
+ * <a href="https://minecraft.curseforge.com/projects/penguins">Selim's
+ * Penguins</a> mod
+ */
+@EventBusSubscriber(modid = "community_mod")
+@SubMod(name = "selim_penguins", attribution = "Selim")
+public class Penguins implements ISubMod {
+
+	@SubscribeEvent
+	public static void registerEntities(RegistryEvent.Register<EntityEntry> event) {
+		List<Biome> penguinBiomes = new LinkedList<Biome>();
+		for (Entry<ResourceLocation, Biome> e : ForgeRegistries.BIOMES.getEntries())
+			if (e.getValue().getTempCategory() == TempCategory.COLD)
+				penguinBiomes.add(e.getValue());
+		event.getRegistry()
+				.register(EntityEntryBuilder.create().entity(EntityPenguin.class).egg(0x000000, 0xFFFFFF)
+						.tracker(32, 4, true).name("community_mod.penguin")
+						.spawn(EnumCreatureType.CREATURE, 7, 7, 9, penguinBiomes)
+						.id(new ResourceLocation("community_mod", "penguin"), 0).build());
+	}
+
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void onPreInit(FMLPreInitializationEvent event) {
+		RenderingRegistry.registerEntityRenderingHandler(EntityPenguin.class,
+				new IRenderFactory<EntityPenguin>() {
+
+					@Override
+					public Render<? super EntityPenguin> createRenderFor(RenderManager manager) {
+						return new PenguinRenderer(manager);
+					}
+				});
+	}
+
+}
