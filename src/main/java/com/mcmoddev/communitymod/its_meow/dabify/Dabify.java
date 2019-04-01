@@ -1,13 +1,10 @@
 package com.mcmoddev.communitymod.its_meow.dabify;
 
-import java.util.Random;
-
 import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
 import com.mcmoddev.communitymod.its_meow.dabsquirrels.DabSquirrels;
 import com.mcmoddev.communitymod.its_meow.dabsquirrels.ParticleBasic;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,6 +15,8 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
+
+import java.util.Random;
 
 @Mod.EventBusSubscriber(modid = CommunityGlobals.MOD_ID, value = Side.CLIENT)
 @SubMod(name = "Dabify", description = "Get dabbed on every tick", attribution = "its_meow", clientSideOnly = true)
