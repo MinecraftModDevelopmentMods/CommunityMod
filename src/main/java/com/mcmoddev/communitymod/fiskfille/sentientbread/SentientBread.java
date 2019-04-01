@@ -43,7 +43,9 @@ public class SentientBread implements ISubMod
             "PLEASE!",
             "I'll do whatever you want!",
             "Don't kill me, please!",
-            "Please don't kill me!"
+            "Please don't kill me!",
+            "I'm just a poor dough, I need no sympathy",
+            "End my suffering"
     };
 
     @SideOnly(Side.CLIENT)
