@@ -79,7 +79,7 @@ public class Foliage implements ISubMod {
 			if(world == null || pos == null) return color;
 			else {
 				int blueLevel = color & 0x0000FF;
-				blueLevel += NOISE.getValue(pos.getX() / wFreq, pos.getZ() / wFreq) * wMult + wAdd;
+				blueLevel += (int) (NOISE.getValue(pos.getX() / wFreq, pos.getZ() / wFreq) * wMult + wAdd);
 				blueLevel = MathHelper.clamp(blueLevel, 0, 255);
 				
 				return (color & 0xFFFF00) | blueLevel;
