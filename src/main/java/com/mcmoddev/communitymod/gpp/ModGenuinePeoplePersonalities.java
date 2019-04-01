@@ -10,6 +10,7 @@ import com.mcmoddev.communitymod.CommunityMod;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
 
+import com.mcmoddev.communitymod.poke.PokeMod;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoor;
@@ -309,6 +310,12 @@ public class ModGenuinePeoplePersonalities implements ISubMod {
                             player.sendMessage(new TextComponentString(obnoxious + "The emerald ore says, \"Huh? Hah!\""));
                             break;
                     }
+                    return true;
+                } else if (block == PokeMod.POKE_BLOCK) {
+                    player.sendMessage(new TextComponentString(obnoxious + "\"Dab\" says the poke block."));
+                    return true;
+                } else if (block == PokeMod.POKE_ORE) {
+                    player.sendMessage(new TextComponentString(obnoxious + "\"Dab\" says the poke ore."));
                     return true;
                 }
                 return false;
