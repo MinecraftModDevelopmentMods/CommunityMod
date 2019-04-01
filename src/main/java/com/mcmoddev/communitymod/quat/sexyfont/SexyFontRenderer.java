@@ -13,7 +13,8 @@ public class SexyFontRenderer extends FontRenderer {
 	public SexyFontRenderer(GameSettings settings, ResourceLocation res, TextureManager tx, boolean unicode) {
 		super(settings, res, tx, unicode);
 		
-		((IReloadableResourceManager) Minecraft.getMinecraft().getResourceManager()).registerReloadListener(this);
+		//Load the font texture n shit.
+		onResourceManagerReload(null);
 	}
 	
 	@Override
