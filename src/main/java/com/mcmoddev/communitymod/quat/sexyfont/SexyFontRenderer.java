@@ -18,8 +18,16 @@ public class SexyFontRenderer extends FontRenderer {
 	
 	@Override
 	public int drawString(String text, float x, float y, int color, boolean dropShadow) {
-		if(!SexyFont.sexyTime) {
+		if(!(SexyFont.sexyTime || SexyFont.alwaysSexyTime)) {
 			return super.drawString(text, x, y, color, dropShadow);
+		}
+		
+		if(SexyFont.intermittentSexyTime) {
+			int hash = text.hashCode() % 8;
+			int offset = (int) (Minecraft.getSystemTime() / 230f) % 8;
+			if((hash + offset) % 8 != 0) {
+				return super.drawString(text, x, y, color, dropShadow);
+			}
 		}
 		
 		//Ok this is epic

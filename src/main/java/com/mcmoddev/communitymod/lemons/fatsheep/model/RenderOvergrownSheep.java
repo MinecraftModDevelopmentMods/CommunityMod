@@ -10,7 +10,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderOvergrownSheep extends RenderLiving<EntityOvergrownSheep>
 {
-	private static final ResourceLocation SHEARED_SHEEP_TEXTURES = new ResourceLocation(CommunityGlobals.MOD_ID, "textures/entity/sheep/sheep.png");
+	private static final ResourceLocation SHEARED_SHEEP_TEXTURES = new ResourceLocation("minecraft", "textures/entity/sheep/sheep.png");
 
 	public RenderOvergrownSheep(RenderManager rm)
 	{
