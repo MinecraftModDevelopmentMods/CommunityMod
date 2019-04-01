@@ -2,11 +2,17 @@
 itemGroup.community_mod=Community Mod
 
 entity.community_mod.penguin.name=Penguin
+entity.community_mod.dabsquirrel.name=Dab Squirrel
 
 tooltip.community_mod.electric=%s: Electric Boogaloo
 tooltip.community_mod.electric.two= 2/ two/ to/ too/ ii
 
 item.community_mod.dab.name=Dab
+item.community_mod.rain_stick.name=Rain Stick
 
 tile.community_mod.soul_glass.name=Soul Glass
 tile.community_mod.smouldering_ash.name=Smouldering Ash
+
+item.community_mod.tight_pants.name=Tight Pants
+tooltip.community_mod.tight_pants.activated=I'm a dance floor tiger lady pumping everything she has.
+tooltip.community_mod.tight_pants.inactive=I was already wearing tight pants, I just did not activate them.

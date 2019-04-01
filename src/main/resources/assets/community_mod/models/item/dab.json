@@ -1,6 +1,6 @@
 {
 	"parent": "item/generated",
 	"textures": {
-		"layer0": "community_mod:item/dab"
+		"layer0": "community_mod:items/dab"
 	}
 }
