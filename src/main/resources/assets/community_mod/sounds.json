@@ -1,0 +1,14 @@
+{
+  "mob.gnome.say": {
+    "category": "neutral",
+    "sounds": ["community_mod:mob/gnome_say"]
+  },
+  "mob.gnome.death": {
+    "category": "neutral",
+    "sounds": ["community_mod:mob/gnome_death"]
+  },
+  "you_could_make_a_religion_out_of_this": {
+    "category": "master",
+    "sounds": ["community_mod:you_could_make_a_religion_out_of_this"]
+  }
+}
