@@ -13,7 +13,7 @@ public class BlockE extends Block {
         this.setCreativeTab(CommunityGlobals.TAB);
         this.setSoundType(new SoundType(2.0F, 1.0F, ModSounds.E_SOUND, ModSounds.E_SOUND, ModSounds.E_SOUND, ModSounds.E_SOUND, ModSounds.E_SOUND));
         this.setRegistryName("e_block");
-        this.setTranslationKey(CommunityGlobals.MOD_ID + "." + getRegistryName());
+        this.setTranslationKey(getRegistryName().toString());
     }
 
 }
