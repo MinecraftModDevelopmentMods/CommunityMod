@@ -32,4 +32,10 @@ public class CommunityCoremodLoadingPlugin implements IFMLLoadingPlugin {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public String getModContainerClass() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
