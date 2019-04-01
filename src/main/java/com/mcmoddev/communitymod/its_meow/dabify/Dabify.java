@@ -35,7 +35,7 @@ public class Dabify implements ISubMod {
 	public static void clientTick(ClientTickEvent event) {
 		EntityPlayer e = Minecraft.getMinecraft().player;
 		if(e != null && e.world != null && !Minecraft.getMinecraft().isGamePaused()) {
-			Particle particle = new ParticleBasic(e.world, e.posX + (Math.random() - 0.5F), e.posY + 3, e.posZ + (Math.random() - 0.5F), 0.0F, 1000.0F, 0.0F, DabSquirrels.dab, 0x1.0p0f);
+			Particle particle = new ParticleBasic(e.world, e.posX + (Math.random() - 0.5F), e.posY + 3, e.posZ + (Math.random() - 0.5F), 0.0F, 1000.0F, 0.0F, DabSquirrels.dab, 1F);
 			Minecraft.getMinecraft().effectRenderer.addEffect(particle);
 		}
 	}
