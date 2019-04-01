@@ -12,7 +12,7 @@ public class CommunityCoremodLoadingPlugin implements IFMLLoadingPlugin {
 	@Override
 	public String[] getASMTransformerClass() {
 		// TODO Auto-generated method stub
-		return new String[]{"com.mcmoddev.communitymod.erdbeerbaerlp.iconmod.IconClassTransformer"};
+		return new String[]{"com.mcmoddev.communitymod.erdbeerbaerlp.iconmod.IconClassTransformer"}; //Add your class transformers here
 	}
 	@Override
 	public String getModContainerClass() {
