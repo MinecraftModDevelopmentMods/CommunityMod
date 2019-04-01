@@ -25,7 +25,7 @@ public class Chickenificator implements ISubMod {
 	@Override
 	public void onInit(FMLInitializationEvent event) {
 		FMLLog.log.info("Chickenification is beginning...");
-		RenderingRegistry.registerEntityRenderingHandler(EntitySheep.class, new RenderStupidChicken());
+		//RenderingRegistry.registerEntityRenderingHandler(EntitySheep.class, new RenderStupidChicken());
 		RenderingRegistry.registerEntityRenderingHandler(EntityCow.class, new RenderStupidChicken());
 		RenderingRegistry.registerEntityRenderingHandler(EntityPig.class, new RenderStupidChicken());
 		RenderingRegistry.registerEntityRenderingHandler(EntitySquid.class, new RenderStupidChicken());
