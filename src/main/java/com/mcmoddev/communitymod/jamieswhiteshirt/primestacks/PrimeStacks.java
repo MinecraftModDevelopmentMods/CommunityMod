@@ -13,7 +13,7 @@ import java.util.TreeSet;
 
 @SubMod(
     name = "Prime Stacks",
-    description = "Rounds the default max stack size the previous prime number",
+    description = "Rounds the default max stack size to the previous prime number",
     attribution = "JamiesWhiteShirt"
 )
 @Mod.EventBusSubscriber
