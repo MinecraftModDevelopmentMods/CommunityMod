@@ -1,6 +1,4 @@
-// Distributed under MIT, originally from https://github.com/Selim042/SM-Penguins
-
-package com.mcmoddev.communtiymod.selim.penguins;
+package com.mcmoddev.communitymod.selim.penguins;
 
 import java.util.LinkedList;
 import java.util.List;

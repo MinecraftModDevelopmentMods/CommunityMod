@@ -1,6 +1,4 @@
-// Distributed under MIT, originally from https://github.com/Selim042/SM-Penguins
-
-package com.mcmoddev.communtiymod.selim.penguins;
+package com.mcmoddev.communitymod.selim.penguins;
 
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -19,6 +17,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemFishFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.Style;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.event.ClickEvent;
 import net.minecraft.world.World;
 
 public class EntityPenguin extends EntityAnimal {
@@ -59,6 +61,19 @@ public class EntityPenguin extends EntityAnimal {
 		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
 		this.tasks.addTask(6, new EntityAIMate(this, 0.5D));
 		this.tasks.addTask(7, new EntityAILookIdle(this));
+	}
+
+	@Override
+	public boolean processInteract(EntityPlayer player, EnumHand hand) {
+		boolean ret = super.processInteract(player, hand);
+		if (player.world.isRemote && hand == EnumHand.MAIN_HAND) {
+			player.sendMessage(new TextComponentString(
+					"If you like these penguins, you'll like the full version more!"));
+			player.sendMessage(new TextComponentString("Click [here] to download it on CurseForge.")
+					.setStyle(new Style().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL,
+							"https://minecraft.curseforge.com/projects/penguins"))));
+		}
+		return ret;
 	}
 
 	@Override
