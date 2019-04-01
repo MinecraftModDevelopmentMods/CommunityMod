@@ -1,4 +1,4 @@
-package com.mcmoddev.communitymod.explodingchickens;
+package com.mcmoddev.communitymod.commoble.explodingchickens;
 
 import java.util.Set;
 
