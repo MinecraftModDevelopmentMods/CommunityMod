@@ -1,0 +1,6 @@
+{
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "community_mod:item/squirrel_leggings"
+	}
+}
