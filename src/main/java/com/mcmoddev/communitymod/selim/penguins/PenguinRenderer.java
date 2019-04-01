@@ -1,4 +1,6 @@
-package com.mcmoddev.communtiymod.selim.penguins;
+package com.mcmoddev.communitymod.selim.penguins;
+
+import com.mcmoddev.communitymod.CommunityGlobals;
 
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -11,7 +13,7 @@ public class PenguinRenderer extends RenderLiving<EntityPenguin> {
 	}
 
 	private static final ResourceLocation texture = new ResourceLocation(
-			"community_mod:textures/entities/penguin.png");
+			CommunityGlobals.MOD_ID + ":textures/entities/penguin.png");
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityPenguin entity) {

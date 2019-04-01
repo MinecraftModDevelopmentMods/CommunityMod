@@ -1,0 +1,12 @@
+[
+  {
+    "modid": "communitymod",
+    "name": "Community Mod",
+    "description": "Lots of code, added by the community.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "authorList": [
+      "Minecraft Community"
+    ]
+  }
+]

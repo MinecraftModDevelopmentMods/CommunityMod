@@ -1,20 +1,18 @@
-package com.mcmoddev.communtiymod.selim.penguins;
+package com.mcmoddev.communitymod.selim.penguins;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
 
+import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
 
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biome.TempCategory;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -44,20 +42,13 @@ public class Penguins implements ISubMod {
 				.register(EntityEntryBuilder.create().entity(EntityPenguin.class).egg(0x000000, 0xFFFFFF)
 						.tracker(32, 4, true).name("community_mod.penguin")
 						.spawn(EnumCreatureType.CREATURE, 7, 7, 9, penguinBiomes)
-						.id(new ResourceLocation("community_mod", "penguin"), 0).build());
+						.id(new ResourceLocation("community_mod", "penguin"), CommunityGlobals.entity_id++).build());
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void onPreInit(FMLPreInitializationEvent event) {
-		RenderingRegistry.registerEntityRenderingHandler(EntityPenguin.class,
-				new IRenderFactory<EntityPenguin>() {
-
-					@Override
-					public Render<? super EntityPenguin> createRenderFor(RenderManager manager) {
-						return new PenguinRenderer(manager);
-					}
-				});
+		RenderingRegistry.registerEntityRenderingHandler(EntityPenguin.class, PenguinRenderer::new);
 	}
 
 }
