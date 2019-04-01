@@ -10,6 +10,7 @@ import net.minecraft.client.resources.IReloadableResourceManager;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -18,12 +19,22 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 @SubMod(
 	name = "sexyfont",
-	description = "Makes the Minecraft font very sexy",
+	description = "Makes the Minecraft font very sexy!",
 	attribution = "quaternary",
 	clientSideOnly = true
 )
 public class SexyFont implements ISubMod {
 	public static boolean sexyTime = false;
+	
+	public static boolean alwaysSexyTime = false;
+	public static boolean intermittentSexyTime = false;
+	
+	@Override
+	public void setupConfiguration(Configuration config, String categoryId) {
+		alwaysSexyTime = config.getBoolean("alwaysSexyFont", categoryId, false, "Should sexyfont always be enabled even if you don't wear the glasses?");
+		
+		intermittentSexyTime = config.getBoolean("intermittentSexyFont", categoryId, false, "Should the sexy font be pretty flickery?");
+	}
 	
 	public static final class Names {
 		public static final String SEXY_GLASSES_NAME = "sexy_glasses";
