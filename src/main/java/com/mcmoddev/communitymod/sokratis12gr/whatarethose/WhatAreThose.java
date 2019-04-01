@@ -2,11 +2,17 @@ package com.mcmoddev.communitymod.jamieswhiteshirt.modbyvazkii;
 
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
-import net.minecraftforge.client.event.ClientChatEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import java.util.regex.Pattern;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 @SubMod(
     name = "What are Those",
@@ -15,10 +21,22 @@ import java.util.regex.Pattern;
 )
 @Mod.EventBusSubscriber
 public class WhatAreThose implements ISubMod {
-    private static Pattern neatPattern = Pattern.compile("nice boots", Pattern.CASE_INSENSITIVE);
-    
+
+    public static Random rand = new Random();
+
     @SubscribeEvent()
-    public static void onClientChat(ClientChatEvent e) {
-        e.setMessage(neatPattern.matcher(e.getMessage()).replaceAll("What are THOOOOOSE!?"));
+    public static void onEquipEvent(TickEvent.PlayerTickEvent event) {
+        if (rand.nextInt(1000) < 1) {
+            EntityPlayer player = event.player;
+            BlockPos pos = new BlockPos(player.posX, player.posY, player.posZ);
+            IBlockState state = player.world.getBlockState(pos.add(0, -1, 0));
+            if (player.onGround) {
+                for (ItemStack stack : player.inventory.armorInventory) {
+                    if (stack.getItem() instanceof ItemArmor && stack.getEquipmentSlot() == EntityEquipmentSlot.FEET && state == Blocks.DIAMOND_BLOCK) {
+                        player.sendMessage(new TextComponentString("What are THOOOOOSE!?"));
+                    }
+                }
+            }
+        }
     }
 }
