@@ -1,15 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "##",
-    "##"
+    "###",
+    "###",
+    "###"
   ],
   "key": {
     "#": {
-      "item": "minecraft:fire_charge"
+      "item": "community_mod:poke_ingot"
     }
   },
   "result": {
-    "item": "community_mod:smouldering_ash"
+    "item": "community_mod:poke_block"
   }
 }

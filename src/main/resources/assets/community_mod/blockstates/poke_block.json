@@ -2,7 +2,7 @@
   "forge_marker": 1,
   "defaults": {
     "textures": {
-      "all": "community_mod:blocks/smouldering_ash"
+      "all": "community_mod:block/poke_block"
     },
     "model": "cube_all",
     "uvlock": true

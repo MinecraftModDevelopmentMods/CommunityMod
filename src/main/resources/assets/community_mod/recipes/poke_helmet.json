@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "X X"
+  ],
+  "key": {
+    "X": {
+      "item": "community_mod:poke_ingot"
+    }
+  },
+  "result": {
+    "item": "community_mod:poke_helmet"
+  }
+}
