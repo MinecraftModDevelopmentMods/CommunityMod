@@ -1,11 +1,12 @@
 package com.mcmoddev.communitymod.lemons.neatnether.gen;
 
+import com.mcmoddev.communitymod.CommunityGlobals;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber(modid = "community_mod")
+@Mod.EventBusSubscriber(modid = CommunityGlobals.MOD_ID)
 public class NeatNetherGen
 {
 	@SubscribeEvent

@@ -1,5 +1,6 @@
 package com.mcmoddev.communitymod.lemons.neatnether;
 
+import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.lemons.neatnether.block.BlockSmoulderingAsh;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -16,8 +17,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 
-@Mod.EventBusSubscriber(modid = "community_mod")
-@GameRegistry.ObjectHolder("community_mod")
+@Mod.EventBusSubscriber(modid = CommunityGlobals.MOD_ID)
+@GameRegistry.ObjectHolder(CommunityGlobals.MOD_ID)
 public class NeatNetherBlocks
 {
 	public static final Block SMOULDERING_ASH = Blocks.AIR;
@@ -66,9 +67,9 @@ public class NeatNetherBlocks
 
 	public static Block registerBlock(Block block, String name, IForgeRegistry<Block> r)
 	{
-		block.setTranslationKey("community_mod." + name);
-		block.setRegistryName(new ResourceLocation("community_mod", name));
-		block.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+		block.setTranslationKey(CommunityGlobals.MOD_ID + "." + name);
+		block.setRegistryName(new ResourceLocation(CommunityGlobals.MOD_ID, name));
+		block.setCreativeTab(CommunityGlobals.TAB);
 
 		r.register(block);
 
