@@ -36,3 +36,5 @@ tile.community_mod.poke_block.name=Poke Block
 item.community_mod.tight_pants.name=Tight Pants
 tooltip.community_mod.tight_pants.activated=I'm a dance floor tiger lady pumping everything she has.
 tooltip.community_mod.tight_pants.inactive=I was already wearing tight pants, I just did not activate them.
+
+item.community_mod.spacehelm.name=Space Helm

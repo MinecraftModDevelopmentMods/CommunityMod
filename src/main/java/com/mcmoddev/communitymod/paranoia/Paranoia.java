@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 @EventBusSubscriber
 public class Paranoia {
 	
-	static Random rand = new Random();
+	public static Random rand = new Random();
 	static String[] messages = new String[] { "Error", "Something is behind you", "Beginning Invasion", "Inventory Cleared", "I hunger" };
 
 	@SubscribeEvent
