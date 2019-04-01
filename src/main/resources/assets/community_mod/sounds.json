@@ -1,0 +1,18 @@
+{
+	"mob.gnome.say":
+	{
+		"category": "neutral",
+		"sounds":
+		[
+			"community_mod:mob/gnome_say"
+		]
+	},
+	"mob.gnome.death":
+	{
+		"category": "neutral",
+		"sounds":
+		[
+			"community_mod:mob/gnome_death"
+		]
+	}
+}
