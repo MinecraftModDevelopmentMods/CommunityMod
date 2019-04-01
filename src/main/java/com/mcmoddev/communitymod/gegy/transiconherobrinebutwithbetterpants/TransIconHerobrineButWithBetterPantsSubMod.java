@@ -17,7 +17,7 @@ import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
 @SubMod(
         name = "transiconherobrinebutwithbetterpants",
         description = "Trans Icon Herobrine (but with better pants)",
-        attribution = "gegy1000"
+        attribution = "anon1449, gegy1000"
 )
 @Mod.EventBusSubscriber(modid = CommunityGlobals.MOD_ID)
 public class TransIconHerobrineButWithBetterPantsSubMod implements ISubMod {
