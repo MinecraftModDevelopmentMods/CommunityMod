@@ -1,6 +1,8 @@
 package com.mcmoddev.communitymod;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -8,6 +10,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -31,15 +34,22 @@ import net.minecraftforge.fml.relauncher.Side;
 public class CommunityMod {
     
     public static final Logger LOGGER = LogManager.getLogger("Community Mod");
-    private final List<ISubMod> subMods = new ArrayList<>();
+    private final List<SubModContainer> subMods = new ArrayList<>();
     
     @Mod.Instance(CommunityGlobals.MOD_ID)
-    public CommunityMod INSTANCE;
+    public static CommunityMod INSTANCE;
+    
+    public List<SubModContainer> getSubMods() {
+    	
+    	return Collections.unmodifiableList(subMods);
+    }
     
     @EventHandler
     public void onConstruction (FMLConstructionEvent event) {
         
-        final long startTime = System.currentTimeMillis();
+    	CommunityConfig config = new CommunityConfig(new File("config/" + CommunityGlobals.MOD_ID + ".cfg"));
+        
+    	final long startTime = System.currentTimeMillis();
         final Set<ASMData> datas = event.getASMHarvestedData().getAll(SubMod.class.getCanonicalName());
         
         for (final ASMData data : datas) {
@@ -51,8 +61,15 @@ public class CommunityMod {
                 if (!data.getAnnotationInfo().containsKey("clientSideOnly") || (boolean) data.getAnnotationInfo().get("clientSideOnly") && event.getSide() == Side.CLIENT) {
                     
                     final ISubMod subMod = (ISubMod) Class.forName(data.getClassName()).newInstance();
-                    this.subMods.add(subMod);
-                    LOGGER.info("Loaded submod {} from class {}.", modName, data.getClassName());
+                    final String description = (String) data.getAnnotationInfo().getOrDefault("description", "No description is provided for this submod.");
+                    final String attribution = (String) data.getAnnotationInfo().getOrDefault("attribution", "No attribution is provided for this submod.");
+                    final SubModContainer container = new SubModContainer(modName, description, attribution, subMod);
+                    
+                	if (config.isSubModEnabled(container)) {
+                		
+                        this.subMods.add(container);
+                        LOGGER.info("Loaded submod {} from class {}.", modName, data.getClassName());
+                	}
                 }
             }
             
@@ -64,10 +81,12 @@ public class CommunityMod {
         }
         
         LOGGER.info("Loaded {} submods in {}ms.", this.subMods.size(), System.currentTimeMillis() - startTime);
-        for (final ISubMod subMod : this.subMods) {
+        for (final SubModContainer container : this.subMods) {
             
-            subMod.onConstruction(event);
+            container.getSubMod().onConstruction(event);
         }
+        
+        config.syncConfigData();
     }
     
     @EventHandler
@@ -75,54 +94,54 @@ public class CommunityMod {
     
         MinecraftForge.EVENT_BUS.register(INSTANCE);
         
-        for (final ISubMod subMod : this.subMods) {
+        for (final SubModContainer container : this.subMods) {
             
-            subMod.onPreInit(event);
+            container.getSubMod().onPreInit(event);
         }
     }
     
     @EventHandler
     public void onInit (FMLInitializationEvent event) {
         
-        for (final ISubMod subMod : this.subMods) {
+        for (final SubModContainer container : this.subMods) {
             
-            subMod.onInit(event);
+            container.getSubMod().onInit(event);
         }
     }
     
     @EventHandler
     public void onPostInit (FMLPostInitializationEvent event) {
         
-        for (final ISubMod subMod : this.subMods) {
+        for (final SubModContainer container : this.subMods) {
             
-            subMod.onPostInit(event);
+            container.getSubMod().onPostInit(event);
         }
     }
     
     @EventHandler
     public void onLoadComplete (FMLLoadCompleteEvent event) {
         
-        for (final ISubMod subMod : this.subMods) {
+        for (final SubModContainer container : this.subMods) {
             
-            subMod.onLoadComplete(event);
+            container.getSubMod().onLoadComplete(event);
         }
     }
     
     @EventHandler
     public void onServerStarting (FMLServerStartingEvent event) {
         
-        for (final ISubMod subMod : this.subMods) {
+        for (final SubModContainer container : this.subMods) {
             
-            subMod.onServerStarting(event);
+            container.getSubMod().onServerStarting(event);
         }
     }
     
     @EventHandler
     public void onServerStopped (FMLServerStoppedEvent event) {
         
-        for (final ISubMod subMod : this.subMods) {
+        for (final SubModContainer container : this.subMods) {
             
-            subMod.onServerStopped(event);
+            container.getSubMod().onServerStopped(event);
         }
     }
     
@@ -131,9 +150,9 @@ public class CommunityMod {
         
         IForgeRegistry<Block> reg = event.getRegistry();
     
-        for (final ISubMod subMod : this.subMods) {
+        for (final SubModContainer container : this.subMods) {
         
-            subMod.registerBlocks(reg);
+            container.getSubMod().registerBlocks(reg);
         }
     }
     
@@ -142,9 +161,9 @@ public class CommunityMod {
         
         IForgeRegistry<Item> reg = event.getRegistry();
     
-        for (final ISubMod subMod : this.subMods) {
+        for (final SubModContainer container : this.subMods) {
         
-            subMod.registerItems(reg);
+            container.getSubMod().registerItems(reg);
         }
     }
     
@@ -152,9 +171,9 @@ public class CommunityMod {
     @SubscribeEvent
     public void models (ModelRegistryEvent event) {
         
-        for (final ISubMod subMod : this.subMods) {
+        for (final SubModContainer container : this.subMods) {
             
-            subMod.registerModels(event);
+            container.getSubMod().registerModels(event);
         }
     }
 }
