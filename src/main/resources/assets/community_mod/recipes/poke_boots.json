@@ -1,0 +1,15 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    "X X",
+    "X X"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:poke_ingot"
+    }
+  },
+  "result": {
+    "item": "minecraft:poke_boots"
+  }
+}

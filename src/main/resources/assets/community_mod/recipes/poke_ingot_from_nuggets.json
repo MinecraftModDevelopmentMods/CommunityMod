@@ -1,0 +1,17 @@
+{
+  "type": "crafting_shaped",
+  "group": "poke_ingot",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:poke_nugget"
+    }
+  },
+  "result": {
+    "item": "minecraft:poke_ingot"
+  }
+}
