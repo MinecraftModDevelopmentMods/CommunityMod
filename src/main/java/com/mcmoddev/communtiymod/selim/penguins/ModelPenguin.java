@@ -1,3 +1,5 @@
+// Distributed under MIT, originally from https://github.com/Selim042/SM-Penguins
+
 package com.mcmoddev.communtiymod.selim.penguins;
 
 import net.minecraft.client.model.ModelBase;
