@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "XX ",
+    "   "
+  ],
+  "key": {
+    "X": {
+      "item": "community_mod:poke_ingot"
+    }
+  },
+  "result": {
+    "item": "community_mod:poke_horse_armor"
+  }
+}
