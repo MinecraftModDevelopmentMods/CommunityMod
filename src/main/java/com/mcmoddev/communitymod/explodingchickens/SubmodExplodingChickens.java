@@ -38,7 +38,7 @@ public class SubmodExplodingChickens implements ISubMod
 	public static void onRegisterEntity(RegistryEvent.Register<EntityEntry> event)
 	{
 		event.getRegistry().register(EntityEntryBuilder.create()
-				.name("explodingchicken")
+				.name("community_mod.explodingchicken")
 				.entity(EntityExplodingChicken.class)
 				.id(new ResourceLocation(CommunityGlobals.MOD_ID, "exploding_chicken"), CommunityGlobals.entity_id++)
 				.tracker(80, 3, true)
