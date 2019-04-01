@@ -1,4 +1,4 @@
-package com.mcmoddev.communitymod.explodingchickens;
+package com.mcmoddev.communitymod.explodingchickens.client;
 
 import com.mcmoddev.communitymod.explodingchickens.EntityExplodingChicken;
 

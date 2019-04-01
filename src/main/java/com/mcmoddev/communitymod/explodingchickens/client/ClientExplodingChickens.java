@@ -1,7 +1,8 @@
-package com.mcmoddev.communitymod.explodingchickens;
+package com.mcmoddev.communitymod.explodingchickens.client;
 
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
+import com.mcmoddev.communitymod.explodingchickens.EntityExplodingChicken;
 
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
