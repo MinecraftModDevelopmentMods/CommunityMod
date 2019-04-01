@@ -4,12 +4,9 @@ import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.client.resources.IReloadableResourceManager;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
-
-import java.util.Random;
 
 public class SexyFontRenderer extends FontRenderer {
 	public SexyFontRenderer(GameSettings settings, ResourceLocation res, TextureManager tx, boolean unicode) {

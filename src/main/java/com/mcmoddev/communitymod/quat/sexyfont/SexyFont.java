@@ -3,7 +3,6 @@ package com.mcmoddev.communitymod.quat.sexyfont;
 import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
-
 import com.mcmoddev.communitymod.shared.ClientUtil;
 import com.mcmoddev.communitymod.shared.RegUtil;
 import net.minecraft.client.Minecraft;
