@@ -1,5 +1,6 @@
 package com.mcmoddev.communitymod.lemons.fatsheep;
 
+import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
 import com.mcmoddev.communitymod.lemons.fatsheep.model.RenderOvergrownSheep;
@@ -8,7 +9,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @SubMod(name = "Fat Sheep Client", description = "Fixes sheep not getting fat", attribution = "Lemons", clientSideOnly = true)
-@Mod.EventBusSubscriber(modid = "community_mod")
+@Mod.EventBusSubscriber(modid = CommunityGlobals.MOD_ID)
 public class FatSheepClient implements ISubMod
 {
 	/*
