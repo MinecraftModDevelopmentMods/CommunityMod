@@ -5,6 +5,7 @@ import com.mcmoddev.communitymod.SubMod;
 import com.mcmoddev.communitymod.shared.ClientUtil;
 
 import net.minecraft.item.Item;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -23,6 +24,7 @@ public class Space implements ISubMod {
 
 	public static DimensionType SPACE = DimensionType.register("space", "_space", 78634876, SpaceWorldProvider.class, true);
 	static SpaceHelm spaceHelm;
+	static int damageTick = 20;
 	
 	public static void registerDimensions() {
 		DimensionManager.registerDimension(SPACE.getId(), SPACE);
@@ -41,6 +43,13 @@ public class Space implements ISubMod {
 		}else if(e.player.dimension == 78634876 && e.player.posY < 0) {
 			e.player.changeDimension(0, new DimTransfer((WorldServer) e.player.world, e.player.posX, 255, e.player.posZ));
 			e.player.setFire(30);
+		}
+		if(damageTick == 0) {
+			damageTick = 20;
+			if(e.player.inventory.armorItemInSlot(3).getItem() != spaceHelm && e.player.dimension == 78634876)
+			e.player.attackEntityFrom(DamageSource.GENERIC, 2f);
+		}else {
+			--damageTick;
 		}
 	}
 	
