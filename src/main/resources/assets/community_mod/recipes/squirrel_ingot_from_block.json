@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "squirrel_ingot",
+  "pattern": [
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "community_mod:squirrel_block"
+    }
+  },
+  "result": {
+    "item": "community_mod:squirrel_ingot",
+    "count": 9
+  }
+}
