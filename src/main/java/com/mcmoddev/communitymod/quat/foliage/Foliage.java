@@ -13,6 +13,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.gen.NoiseGeneratorPerlin;
 import net.minecraftforge.client.event.ColorHandlerEvent;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -36,6 +37,27 @@ import java.util.Random;
 public class Foliage implements ISubMod {
 	private static final NoiseGeneratorPerlin NOISE = new NoiseGeneratorPerlin(new Random(6969), 4);
 	
+	//TODO this is Spaghetti Sauce coding
+	
+	public static float fFreq = 50f;
+	public static float fMult = 7f;
+	public static float fAdd = 10f;
+	
+	public static float wFreq = 50f;
+	public static float wMult = 14f;
+	public static float wAdd = 15f;
+	
+	@Override
+	public void setupConfiguration(Configuration config, String categoryId) {
+		fFreq = config.getFloat("foliageFreq", categoryId, 50f, 1f, 1000f, "Foliage noise pattern frequency (higher values = larger pattern)");
+		fMult = config.getFloat("foliageMult", categoryId, 7f, -50f, 50f, "Foliage noise pattern multiplier (higher values = stronger effect)");
+		fAdd = config.getFloat("foliageAdd", categoryId, 10f, -50f, 50f, "Foliage noise pattern bias (higher values = lighter colors");
+		
+		wFreq = config.getFloat("waterFreq", categoryId, 50f, 1f, 1000f, "Water noise pattern frequency (higher values = larger pattern)");
+		wMult = config.getFloat("waterMult", categoryId, 14f, -50f, 50f, "Water noise pattern multiplier (higher values = stronger effect)");
+		wAdd = config.getFloat("waterAdd", categoryId, 15f, -50f, 50f, "Water noise pattern bias (higher values = lighter colors");
+	}
+	
 	@SubscribeEvent
 	public static void blockColors(ColorHandlerEvent.Block e) {
 		BlockColors bc = e.getBlockColors();
@@ -45,7 +67,7 @@ public class Foliage implements ISubMod {
 			if(world == null || pos == null) return color;
 			else {
 				int greenLevel = (color & 0x00FF00) >> 8;
-				greenLevel += NOISE.getValue(pos.getX() / 50d, pos.getZ() / 50d) * 7 + 7;
+				greenLevel += (int) (NOISE.getValue(pos.getX() / fFreq, pos.getZ() / fFreq) * fMult + fAdd);
 				greenLevel = MathHelper.clamp(greenLevel, 0, 255);
 				
 				return (color & 0xFF00FF) | (greenLevel << 8);
@@ -57,7 +79,7 @@ public class Foliage implements ISubMod {
 			if(world == null || pos == null) return color;
 			else {
 				int blueLevel = color & 0x0000FF;
-				blueLevel += NOISE.getValue(pos.getX() / 50d, pos.getZ() / 50d) * 14 + 15;
+				blueLevel += NOISE.getValue(pos.getX() / wFreq, pos.getZ() / wFreq) * wMult + wAdd;
 				blueLevel = MathHelper.clamp(blueLevel, 0, 255);
 				
 				return (color & 0xFFFF00) | blueLevel;
