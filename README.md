@@ -9,6 +9,7 @@ Coding mods yourself is hard, so why not make one with some help from the commun
 4. Must not contain or result in illegal content or activity. Including violating the TOS of any platforms involved.
 5. Code must not be obfuscated. 
 6. License must not be edited.
+7. Sub mods must not crash the game on purpose
 
 PRs may be denied for other reasons as well and ultimately the project maintainers will have the final say. Project maintainers may also grant exceptions to these rules on an individual basis. For example, if you would like to add a soft-dep on a mod please contact us on [Discord](https://discord.mcmoddev.com)
 

@@ -5,6 +5,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.Objects;
@@ -37,5 +38,14 @@ public class RegUtil {
 		reg.register(item);
 		
 		return item;
+	}
+
+	public static SoundEvent registerSound(IForgeRegistry<SoundEvent> reg, ResourceLocation name) {
+		SoundEvent event = new SoundEvent(name);
+		event.setRegistryName(name);
+
+		reg.register(event);
+
+		return event;
 	}
 }

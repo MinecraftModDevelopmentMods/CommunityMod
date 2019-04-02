@@ -13,9 +13,6 @@ public class ParticleBasic extends Particle {
             double ySpeedIn, double zSpeedIn, ResourceLocation locIn, float sizeIn) {
         super(worldIn, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
 
-        this.motionX = 0.0F;
-        this.motionY = 0.0F;
-        this.motionZ = 0.0F;
         this.posX += (this.rand.nextFloat() - this.rand.nextFloat()) * 0.05F;
         this.posY += (this.rand.nextFloat() - this.rand.nextFloat()) * 0.05F;
         this.posZ += (this.rand.nextFloat() - this.rand.nextFloat()) * 0.05F;

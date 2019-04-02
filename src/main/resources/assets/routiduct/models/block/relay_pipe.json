@@ -1,0 +1,81 @@
+{
+  "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
+  "textures": {
+    "0": "#routiduct"
+  },
+  "elements": [
+    {
+      "name": "Pipe",
+      "from": [
+        4.0,
+        4.0,
+        0.0
+      ],
+      "to": [
+        12.0,
+        12.0,
+        2.0
+      ],
+      "faces": {
+        "north": {
+          "texture": "#-1",
+          "uv": [
+            0.0,
+            0.0,
+            8.0,
+            8.0
+          ],
+          "cullface": "north"
+        },
+        "east": {
+          "texture": "#0",
+          "uv": [
+            0.0,
+            8.0,
+            2.0,
+            16.0
+          ]
+        },
+        "south": {
+          "texture": "#-1",
+          "uv": [
+            0.0,
+            0.0,
+            8.0,
+            8.0
+          ],
+          "cullface": "south"
+        },
+        "west": {
+          "texture": "#0",
+          "uv": [
+            0.0,
+            8.0,
+            2.0,
+            16.0
+          ]
+        },
+        "up": {
+          "texture": "#0",
+          "uv": [
+            0.0,
+            8.0,
+            2.0,
+            16.0
+          ],
+          "rotation": 90
+        },
+        "down": {
+          "texture": "#0",
+          "uv": [
+            0.0,
+            8.0,
+            2.0,
+            16.0
+          ],
+          "rotation": 90
+        }
+      }
+    }
+  ]
+}

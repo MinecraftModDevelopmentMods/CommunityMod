@@ -1,11 +1,9 @@
 package com.mcmoddev.communitymod.lemons.fatsheep;
 
-import java.util.Random;
-
 import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
-
+import com.mcmoddev.communitymod.lemons.fatsheep.model.RenderOvergrownSheep;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.item.ItemFood;
@@ -13,21 +11,32 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.registries.IForgeRegistry;
+
+import java.util.Random;
 
 @SubMod(name = "Fat Sheep", description = "Fixes sheep not getting fat", attribution = "Lemons")
-@Mod.EventBusSubscriber(modid = CommunityGlobals.MOD_ID)
 public class FatSheep implements ISubMod
 {
-	@SubscribeEvent
-	public static void onRegisterEntity(RegistryEvent.Register<EntityEntry> event)
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void onPreInit (FMLPreInitializationEvent event) {
+		RenderingRegistry.registerEntityRenderingHandler(EntityOvergrownSheep.class, RenderOvergrownSheep::new);
+	}
+
+	@Override
+	public void registerEntities(IForgeRegistry<EntityEntry> reg)
 	{
-		event.getRegistry().register(EntityEntryBuilder.create().name("Overgrown Sheep").entity(EntityOvergrownSheep.class).id(new ResourceLocation(CommunityGlobals.MOD_ID, "overgrown_sheep"), CommunityGlobals.entity_id++).tracker(80, 3, true).build());
+		reg.register(EntityEntryBuilder.create().name("Overgrown Sheep").entity(EntityOvergrownSheep.class).id(new ResourceLocation(CommunityGlobals.MOD_ID, "overgrown_sheep"), CommunityGlobals.entity_id++).tracker(80, 3, true).build());
 	}
 
 	@SubscribeEvent

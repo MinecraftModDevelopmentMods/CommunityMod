@@ -4,7 +4,6 @@ import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.client.resources.IReloadableResourceManager;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
@@ -13,17 +12,22 @@ public class SexyFontRenderer extends FontRenderer {
 	public SexyFontRenderer(GameSettings settings, ResourceLocation res, TextureManager tx, boolean unicode) {
 		super(settings, res, tx, unicode);
 		
-		((IReloadableResourceManager) Minecraft.getMinecraft().getResourceManager()).registerReloadListener(this);
+		//Load the font texture n shit.
+		onResourceManagerReload(null);
 	}
 	
 	@Override
 	public int drawString(String text, float x, float y, int color, boolean dropShadow) {
-		//Make it only happen to random pieces of text
-		int hash = text.hashCode();
-		int offset = (int) (Minecraft.getSystemTime() / 230f) % 8;
-		
-		if((hash + offset) % 8 != 0) {
+		if(!(SexyFont.sexyTime || SexyFont.alwaysSexyTime)) {
 			return super.drawString(text, x, y, color, dropShadow);
+		}
+		
+		if(SexyFont.intermittentSexyTime) {
+			int hash = text.hashCode() % 8;
+			int offset = (int) (Minecraft.getSystemTime() / 230f) % 8;
+			if((hash + offset) % 8 != 0) {
+				return super.drawString(text, x, y, color, dropShadow);
+			}
 		}
 		
 		//Ok this is epic

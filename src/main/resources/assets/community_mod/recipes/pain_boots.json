@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S S",
+    "D D"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "D": {
+      "item": "community_mod:dab"
+    }
+  },
+  "result": {
+    "item": "community_mod:pain_boots"
+  }
+}

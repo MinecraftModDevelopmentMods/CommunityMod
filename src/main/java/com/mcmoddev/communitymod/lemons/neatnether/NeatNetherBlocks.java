@@ -4,47 +4,34 @@ import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.lemons.neatnether.block.BlockSmoulderingAsh;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 
-@Mod.EventBusSubscriber(modid = CommunityGlobals.MOD_ID)
 @GameRegistry.ObjectHolder(CommunityGlobals.MOD_ID)
 public class NeatNetherBlocks
 {
 	public static final Block SMOULDERING_ASH = Blocks.AIR;
 	public static final Block SOUL_GLASS = Blocks.AIR;
 
-	@SubscribeEvent
-	public static void onRegisterBlock(RegistryEvent.Register<Block> event)
+	public static void registerBlocks(IForgeRegistry<Block> reg)
 	{
-		IForgeRegistry<Block> r = event.getRegistry();
-
-		registerBlock(setAttribues(new BlockSmoulderingAsh(), 0.5F, 0.5F), "smouldering_ash", r);
-		registerBlock(setAttribues(new BlockSoulGlass(), 0.25F, 1F), "soul_glass", r);
+		registerBlock(setAttribues(new BlockSmoulderingAsh(), 0.5F, 0.5F), "smouldering_ash", reg);
+		registerBlock(setAttribues(new BlockSoulGlass(), 0.25F, 1F), "soul_glass", reg);
 	}
 
-	@SubscribeEvent
-	public static void onRegisterItem(RegistryEvent.Register<Item> event)
+	public static void registerItems(IForgeRegistry<Item> reg)
 	{
-		IForgeRegistry<Item> r = event.getRegistry();
-
-		registerItemBlock(SMOULDERING_ASH, r);
-		registerItemBlock(SOUL_GLASS, r);
+		registerItemBlock(SMOULDERING_ASH, reg);
+		registerItemBlock(SOUL_GLASS, reg);
 	}
 
-
-	@SubscribeEvent
-	public static void onRegisterModel(ModelRegistryEvent event)
+	public static void registerModels(ModelRegistryEvent event)
 	{
 		registerBlockItemModel(SMOULDERING_ASH);
 		registerBlockItemModel(SOUL_GLASS);

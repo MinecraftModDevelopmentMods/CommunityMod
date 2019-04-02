@@ -3,13 +3,9 @@ package com.mcmoddev.communitymod;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.fml.common.event.FMLConstructionEvent;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
-import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
+import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.fml.common.event.*;
+import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -51,13 +47,26 @@ public interface ISubMod {
     default void registerBlocks (IForgeRegistry<Block> reg) {
         
     }
-    
+
     default void registerItems (IForgeRegistry<Item> reg) {
-        
+
+    }
+
+    default void registerEntities (IForgeRegistry<EntityEntry> reg) {
+
     }
     
     @SideOnly(Side.CLIENT)
     default void registerModels (ModelRegistryEvent event) {
         
     }
+
+	default boolean enabledByDefault() {
+		
+		return true;
+	}
+
+	default void setupConfiguration(Configuration config, String categoryId) {
+		
+	}
 }
