@@ -2,22 +2,31 @@ package com.mcmoddev.communitymod.clayrain;
 
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
+import com.mcmoddev.communitymod.shared.ClientUtil;
+import com.mcmoddev.communitymod.shared.RegUtil;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLLog;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.registries.IForgeRegistry;
 
 //TODO everything
 @SubMod(name = "Clay Clay Go Away", attribution = "al132")
 public class ClayRainMod implements ISubMod {
 
     static int maxRange = 12;
+
+    public static ItemRainStick rainStick;
 
     @Override
     public void onPreInit(FMLPreInitializationEvent e) {
@@ -48,5 +57,16 @@ public class ClayRainMod implements ISubMod {
                 }
             }
         }
+    }
+
+    @Override
+    public void registerItems(IForgeRegistry<Item> reg) {
+        rainStick = RegUtil.registerItem(reg, new ItemRainStick(), "rain_stick");
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void registerModels(ModelRegistryEvent e) {
+        ClientUtil.simpleItemModel(rainStick);
     }
 }

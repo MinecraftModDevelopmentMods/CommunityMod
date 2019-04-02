@@ -1,7 +1,7 @@
-package com.mcmoddev.communitymod.fatsheep.model;
+package com.mcmoddev.communitymod.lemons.fatsheep.model;
 
 import com.mcmoddev.communitymod.CommunityGlobals;
-import com.mcmoddev.communitymod.fatsheep.EntityOvergrownSheep;
+import com.mcmoddev.communitymod.lemons.fatsheep.EntityOvergrownSheep;
 import net.minecraft.client.model.ModelSheep2;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
