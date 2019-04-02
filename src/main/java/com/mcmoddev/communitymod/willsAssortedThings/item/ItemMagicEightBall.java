@@ -1,5 +1,6 @@
 package com.mcmoddev.communitymod.willsAssortedThings.item;
 
+import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.willsAssortedThings.SpecialPlayerHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -11,13 +12,14 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 
 public class ItemMagicEightBall extends Item {
 
-    public static Map<SpecialPlayerHandler.SpecialPlayerEnum, String[]> messages;
+    public static Map<SpecialPlayerHandler.SpecialPlayerEnum, String[]> messages = new HashMap<>();
 
     static {
         messages.put(SpecialPlayerHandler.SpecialPlayerEnum.NONE, new String[]{
@@ -64,6 +66,13 @@ public class ItemMagicEightBall extends Item {
                 "Modder, Artist, Streamer/Youtuber, Modpack Maker, Translator... Is there anything you don't do?",
                 "WHAT ARE THOSE?"
         });
+    }
+
+    public ItemMagicEightBall() {
+        super();
+        this.setRegistryName("magic_eight_ball");
+        this.setCreativeTab(CommunityGlobals.TAB);
+        this.setTranslationKey(getRegistryName().toString());
     }
 
     @Override

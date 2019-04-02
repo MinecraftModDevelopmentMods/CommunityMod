@@ -3,6 +3,7 @@ package com.mcmoddev.communitymod.willsAssortedThings;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
 import com.mcmoddev.communitymod.willsAssortedThings.block.ModBlocks;
+import com.mcmoddev.communitymod.willsAssortedThings.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -40,6 +41,10 @@ public class WillsAssortedThingsSubMod implements ISubMod {
         for (Block block : ModBlocks.blocks) {
             reg.register(new ItemBlock(block).setRegistryName(block.getRegistryName()));
         }
+
+        for (Item item : ModItems.items) {
+            reg.register(item);
+        }
     }
 
     @Override
@@ -47,5 +52,8 @@ public class WillsAssortedThingsSubMod implements ISubMod {
        for (Block block : ModBlocks.blocks) {
             simpleItemModel(Item.getItemFromBlock(block));
         }
+       for (Item item : ModItems.items) {
+           simpleItemModel(item);
+       }
     }
 }
