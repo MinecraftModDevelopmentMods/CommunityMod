@@ -1,6 +1,6 @@
 package com.mcmoddev.communitymod.musksrockets.packets;
 
-import com.mcmoddev.communitymod.musksrockets.BaseVehicleEntity;
+import com.mcmoddev.communitymod.blockyentities.BaseVehicleEntity;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;

@@ -1,4 +1,4 @@
-package com.mcmoddev.communitymod.musksrockets;
+package com.mcmoddev.communitymod.blockyentities;
 
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldProvider;

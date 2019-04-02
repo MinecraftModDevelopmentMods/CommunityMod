@@ -1,4 +1,4 @@
-package com.mcmoddev.communitymod.musksrockets;
+package com.mcmoddev.communitymod.blockyentities;
 
 import com.mcmoddev.communitymod.CommunityGlobals;
 
@@ -41,6 +41,6 @@ public class CellDataStorage {
 
 	public static BlockPos findFreeSpace() {
 		CellSavedWorldData data = getCellData(DimensionManager.getWorld(StorageDimReg.storageDimensionType.getId()));
-		return new BlockPos((MusksRockets.MaxRocketSize * data.getIndex()) + 8, 0, 0);
+		return new BlockPos((BlockyEntities.MaxRocketSize * data.getIndex()) + 8, 0, 0);
 	}
 }

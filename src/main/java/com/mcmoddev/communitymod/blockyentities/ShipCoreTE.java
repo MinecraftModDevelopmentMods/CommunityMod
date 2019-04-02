@@ -1,4 +1,4 @@
-package com.mcmoddev.communitymod.musksrockets;
+package com.mcmoddev.communitymod.blockyentities;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,7 +30,7 @@ public class ShipCoreTE extends TileEntity implements ITickable {
 
     @Override
     public void update() {
-	if (doScan && toConstruct.size() < MusksRockets.MaxRocketSize) {
+	if (doScan && toConstruct.size() < BlockyEntities.MaxRocketSize) {
 	    doScan = false;
 	    if (toConstruct.isEmpty())
 		toConstruct.add(pos);

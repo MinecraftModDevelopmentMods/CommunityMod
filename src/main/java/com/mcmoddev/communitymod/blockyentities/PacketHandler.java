@@ -1,4 +1,4 @@
-package com.mcmoddev.communitymod.musksrockets;
+package com.mcmoddev.communitymod.blockyentities;
 
 import com.mcmoddev.communitymod.musksrockets.packets.SeatSyncPacket;
 import com.mcmoddev.communitymod.musksrockets.packets.VehicleUpdatePacket;

@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.mcmoddev.communitymod.musksrockets.BaseVehicleEntity;
-import com.mcmoddev.communitymod.musksrockets.BlockStorage;
-import com.mcmoddev.communitymod.musksrockets.StorageDimReg;
+import com.mcmoddev.communitymod.blockyentities.BaseVehicleEntity;
+import com.mcmoddev.communitymod.blockyentities.BlockStorage;
+import com.mcmoddev.communitymod.blockyentities.StorageDimReg;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;

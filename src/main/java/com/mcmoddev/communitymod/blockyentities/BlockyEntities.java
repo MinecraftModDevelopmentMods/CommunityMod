@@ -1,4 +1,4 @@
-package com.mcmoddev.communitymod.musksrockets;
+package com.mcmoddev.communitymod.blockyentities;
 
 import java.util.List;
 
@@ -6,6 +6,7 @@ import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.CommunityMod;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
+import com.mcmoddev.communitymod.shared.ClientUtil;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.entity.Render;
@@ -30,9 +31,9 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 
-@SubMod(name = "Musks Rockets", attribution = "Snakefangox")
+@SubMod(name = "blocky entities", attribution = "Snakefangox")
 @EventBusSubscriber
-public class MusksRockets implements ISubMod {
+public class BlockyEntities implements ISubMod {
 
 	public static int MaxRocketSize = 10000;
 	ShipCore shipCore;
@@ -40,6 +41,7 @@ public class MusksRockets implements ISubMod {
 	@Override
 	public void registerModels(ModelRegistryEvent event) {
 		RenderingRegistry.registerEntityRenderingHandler(BaseVehicleEntity.class, new IRenderFactory<BaseVehicleEntity>(){public Render<BaseVehicleEntity> createRenderFor(RenderManager manager) {return new BaseVehicleRender(manager);}}); 
+		ClientUtil.simpleItemModel(Item.getItemFromBlock(shipCore));
 	}
 	
 	@Override
