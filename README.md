@@ -1,6 +1,11 @@
 # CommunityMod
 A mod made together by the community!
 
+[![](https://img.shields.io/badge/Discord-MMD-green.svg?style=flat&logo=Discord)](https://discord.mcmoddev.com)
+[![](http://cf.way2muchnoise.eu/full_318535_downloads.svg)](https://minecraft.curseforge.com/projects/community-mod)
+[![](http://cf.way2muchnoise.eu/versions/318535.svg)](https://minecraft.curseforge.com/projects/community-mod)
+[![Build Status](https://ci.mcmoddev.com/job/DarkhaxMC/job/1.12.X/job/CommunityMod/badge/icon)](https://ci.mcmoddev.com/job/DarkhaxMC/job/1.12.X/job/CommunityMod/)
+
 Coding mods yourself is hard, so why not make one with some help from the community? We will be accepting virtually all pull requests to this repo. Each push to this repo will cause a new mod version to up uploaded to our Maven and to CurseForge. To keep things fun and safe for everyone we will be reviewing PRs for the following things.
 
 1. README.md file must not be edited.
