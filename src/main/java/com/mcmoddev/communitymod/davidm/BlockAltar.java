@@ -8,6 +8,7 @@ import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -31,7 +32,7 @@ public class BlockAltar extends Block {
 	
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if (!world.isRemote && !player.isSneaking()) {
+		if (!world.isRemote) {
 			TileEntity tileEntity = world.getTileEntity(pos);
 			if (tileEntity instanceof TileEntityAltar) {
 				((TileEntityAltar) tileEntity).rightClick(player);
@@ -41,7 +42,20 @@ public class BlockAltar extends Block {
 	}
 	
 	@Override
-	public boolean hasTileEntity() {
+	public void breakBlock(World world, BlockPos pos, IBlockState state) {
+		TileEntity tileEntity = world.getTileEntity(pos);
+		if (tileEntity instanceof TileEntityAltar) {
+			ItemStack stack = ((TileEntityAltar) tileEntity).getStack();
+			if (!stack.isEmpty()) {
+				EntityItem drop = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack);
+				world.spawnEntity(drop);
+			}
+		}
+		super.breakBlock(world, pos, state);
+	}
+	
+	@Override
+	public boolean hasTileEntity(IBlockState state) {
 		return true;
 	}
 	

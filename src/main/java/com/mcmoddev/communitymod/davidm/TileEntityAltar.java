@@ -13,29 +13,27 @@ public class TileEntityAltar extends TileEntity implements ITickable {
 	private ItemStackHandler inventory = new ItemStackHandler(1);
 	
 	public void rightClick(EntityPlayer player) {
-		System.out.println(321);
 		if (this.getStack().isEmpty()) {
 			ItemStack playerStack = player.inventory.getCurrentItem();
 			ItemStack copy = playerStack.copy();
 			copy.setCount(1);
 			this.setStack(copy);
 			playerStack.shrink(1);
+			player.inventory.markDirty();
 		} else {
-			EntityItem drop = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, this.getStack());
+			EntityItem drop = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 0.8, pos.getZ() + 0.5, this.getStack());
 			this.world.spawnEntity(drop);
 			this.setStack(ItemStack.EMPTY);
 		}
 		this.markDirty();
 	}
 	
-	private ItemStack getStack() {
+	public ItemStack getStack() {
 		return this.inventory.getStackInSlot(0);
 	}
 	
-	private void setStack(ItemStack stack) {
-		if (this.getStack().isEmpty()) {
-			this.inventory.setStackInSlot(0, stack);
-		}
+	public void setStack(ItemStack stack) {
+		this.inventory.setStackInSlot(0, stack);
 	}
 
 	@Override
