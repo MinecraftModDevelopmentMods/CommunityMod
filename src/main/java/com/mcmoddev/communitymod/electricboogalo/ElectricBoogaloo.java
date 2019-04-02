@@ -1,6 +1,5 @@
 package com.mcmoddev.communitymod.electricboogalo;
 
-import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
 import joptsimple.internal.Strings;
@@ -8,16 +7,13 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemArrow;
 import net.minecraft.item.ItemPotion;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.Side;
 
 import java.util.regex.Pattern;
 
 @SubMod(name = "Electric Boogaloo", attribution = "Lomeli", clientSideOnly = true,
         description = "Adds \": Electric Boogaloo\" to items with 2s at the end of their tooltips")
-@Mod.EventBusSubscriber(modid = CommunityGlobals.MOD_ID, value = {Side.CLIENT})
 public class ElectricBoogaloo implements ISubMod {
     private static String[] twosList;
     private static final String POTION_TIME_REGEX = "\\(\\d{1,2}:\\d{1,2}\\)";

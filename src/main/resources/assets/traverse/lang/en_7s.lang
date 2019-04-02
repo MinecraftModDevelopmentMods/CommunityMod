@@ -1,0 +1,50 @@
+itemGroup.traverse=Traverse
+
+tile.traverse:brown_autumnal_leaves.name=Dyin' Leaves o' Brown
+tile.traverse:brown_autumnal_sapling.name=Dyin' shrub o' Brown
+
+tile.traverse:orange_autumnal_leaves.name=Dyin' Leaves o' Orange
+tile.traverse:orange_autumnal_sapling.name=Dyin' shrub o' Orange
+
+tile.traverse:red_autumnal_leaves.name=Dyin' Leaves o' Red
+tile.traverse:red_autumnal_sapling.name=Dyin' shrub o' Red
+
+tile.traverse:yellow_autumnal_leaves.name=Dyin' Leaves o' Yellow
+tile.traverse:yellow_autumnal_sapling.name=Dyin' shrub o' Yellow
+
+tile.traverse:fir_sapling.name=Fir Tiny Timber
+tile.traverse:fir_leaves.name=Leaves o' Fir Timber
+tile.traverse:fir_log.name=Fir Timber
+tile.traverse:fir_planks.name=Planks o' Fir Timber
+tile.traverse:fir_stairs.name=Stairs o' Fir Timber
+tile.traverse:fir_slab.name=Slab o' Fir Timber
+tile.traverse:fir_door.name=Door o' Fir Timber
+tile.traverse:fir_fence.name=Picket o' Fir Timber
+tile.traverse:fir_fence_gate.name=Picket Gate o' Fir Timber
+
+tile.traverse:red_rock.name=Scarlet Stone
+tile.traverse:red_rock_bricks.name=Bricks o' Scarlet Stone
+tile.traverse:red_rock_bricks_stairs.name=Stairs o' Bricks o' Scarlet Stone
+tile.traverse:red_rock_bricks_slab.name=Slab o' Bricks o' Scarlet Stone
+tile.traverse:red_rock_bricks_chiseled.name=Carv'd Scarlet Stone
+tile.traverse:red_rock_bricks_cracked.name=Cracked Scarlet Stone
+tile.traverse:red_rock_slab.name=Slab o' Scarlet Stone
+tile.traverse:red_rock_cobblestone.name=Scarlet Pebbles
+tile.traverse:red_rock_cobblestone_stairs.name=Stairs o' Scarlet Pebbles
+tile.traverse:red_rock_cobblestone_slab.name=Slab o' Scarlet Pebbles
+tile.traverse:red_rock_cobblestone_wall.name=Wall o' Scarlet Pebbles
+
+tile.traverse:blue_rock.name=Blue Rock
+tile.traverse:blue_rock_bricks.name=Bricks o' Blue Rock
+tile.traverse:blue_rock_bricks_stairs.name=Stairs o' Bricks o' Blue Rock
+tile.traverse:blue_rock_bricks_slab.name=Slab o' Bricks o' Blue Rock
+tile.traverse:blue_rock_bricks_chiseled.name=Carv'd Blue Rock
+tile.traverse:blue_rock_bricks_cracked.name=Cracked Blue Rock
+tile.traverse:blue_rock_slab.name=Slab o' Blue Rock
+tile.traverse:blue_rock_cobblestone.name=Blue Pebbles
+tile.traverse:blue_rock_cobblestone_stairs.name=Stairs o' Blue Pebbles
+tile.traverse:blue_rock_cobblestone_slab.name=Slab o' Blue Pebbles
+tile.traverse:blue_rock_cobblestone_wall.name=Wall o' Blue Pebbles
+
+tile.traverse:dead_grass.name=Wasted weeds
+tile.traverse:cold_grass.name=Iced weeds

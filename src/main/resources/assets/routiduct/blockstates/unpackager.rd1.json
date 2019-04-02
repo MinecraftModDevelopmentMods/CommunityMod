@@ -1,0 +1,89 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"transform": "forge:default-block",
+		"model": "routiduct:unpackager",
+		"textures": {
+			"routiduct": "routiduct:blocks/routiduct",
+			"unpackager": "routiduct:blocks/unpackager",
+			"particle": "routiduct:blocks/routiduct"
+		}
+	},
+	"variants": {
+		"inventory": [
+			{
+				"transform": {
+					"gui": {
+						"rotation": [
+							{"x": 30}, {"y": 45}, {"z": 0}
+						],
+						"translation": [0.12, -0.06, 0],
+						"scale": 0.625
+					},
+					"ground": {
+						"rotation": [
+							{"x": 0}, {"y": 0}, {"z": 0}
+						],
+						"translation": [0, 0, 0.07],
+						"scale": 0.25
+					},
+					"firstperson_righthand": {
+						"rotation": [
+							{"x": 0}, {"y": 45}, {"z": 0}
+						],
+						"translation": [0, 0, 0],
+						"scale": 0.4
+					},
+					"firstperson_lefthand": {
+						"rotation": [
+							{"x": 0}, {"y": 225}, {"z": 0}
+						],
+						"translation": [0, 0, 0],
+						"scale": 0.4
+					},
+					"thirdperson_righthand": {
+						"rotation": [
+							{"x": 75}, {"y": 45}, {"z": 0}
+						],
+						"translation": [0, 0, 0],
+						"scale": 0.375
+					},
+					"thirdperson_lefthand": {
+						"rotation": [
+							{"x": 75}, {"y": 45}, {"z": 0}
+						],
+						"translation": [0, 0, 0],
+						"scale": 0.375
+					},
+					"fixed": {
+						"rotation": [
+							{"x": 0}, {"y": 0}, {"z": 0}
+						],
+						"translation": [0, 0, 0],
+						"scale": 0.5
+					}
+				},
+				"model": "routiduct:unpackager",
+				"textures": {
+					"routiduct": "routiduct:blocks/routiduct",
+					"unpackager": "routiduct:blocks/unpackager",
+					"particle": "routiduct:blocks/routiduct"
+				}
+			}
+		],
+		"connection": {
+			"true": {
+				"submodel": "routiduct:submodel_pipe"
+			},
+			"false": {}
+		},
+		"facing": {
+			"east": {"y": 90},
+			"west": {"y": 270},
+			"north": {},
+			"south": {"y": 180},
+			"up": {"x": 270},
+			"down": {"x": 90}
+		}
+	}
+}

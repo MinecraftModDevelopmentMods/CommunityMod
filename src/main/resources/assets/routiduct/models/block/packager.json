@@ -1,0 +1,82 @@
+{
+  "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
+  "textures": {
+    "0": "#back",
+    "1": "#side",
+    "2": "#front"
+  },
+  "elements": [
+    {
+      "name": "Cube",
+      "from": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "to": [
+        16.0,
+        16.0,
+        8.0
+      ],
+      "faces": {
+        "north": {
+          "texture": "#0",
+          "uv": [
+            0.0,
+            0.0,
+            16.0,
+            16.0
+          ]
+        },
+        "east": {
+          "texture": "#1",
+          "uv": [
+            0.0,
+            0.0,
+            8.0,
+            16.0
+          ]
+        },
+        "south": {
+          "texture": "#2",
+          "uv": [
+            0.0,
+            0.0,
+            16.0,
+            16.0
+          ]
+        },
+        "west": {
+          "texture": "#1",
+          "uv": [
+            0.0,
+            0.0,
+            8.0,
+            16.0
+          ],
+          "rotation": 180
+        },
+        "up": {
+          "texture": "#1",
+          "uv": [
+            0.0,
+            0.0,
+            8.0,
+            16.0
+          ],
+          "rotation": 270
+        },
+        "down": {
+          "texture": "#1",
+          "uv": [
+            0.0,
+            0.0,
+            8.0,
+            16.0
+          ],
+          "rotation": 90
+        }
+      }
+    }
+  ]
+}

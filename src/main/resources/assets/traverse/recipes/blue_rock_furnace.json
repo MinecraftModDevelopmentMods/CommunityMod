@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"PPP",
+		"P P",
+		"PPP"
+	],
+	"key": {
+		"P": {
+			"item": "traverse:blue_rock_cobblestone"
+		}
+	},
+	"result": {
+		"item": "minecraft:furnace",
+		"count": 1
+	}
+}
