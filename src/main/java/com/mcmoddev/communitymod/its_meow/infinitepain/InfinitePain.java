@@ -4,7 +4,6 @@ import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
 import com.mcmoddev.communitymod.shared.ClientUtil;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -16,15 +15,13 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.player.PlayerFlyableFallEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.registries.IForgeRegistry;
 
-@Mod.EventBusSubscriber
 @SubMod(name = "Infinite Pain", description = "Now you fall forever because I said so", attribution = "its_meow")
 public class InfinitePain implements ISubMod {
 
@@ -33,10 +30,10 @@ public class InfinitePain implements ISubMod {
 	public static int minTriggerHeight = 5;
 	public static int heightToAdd = 0;
 	public static float damageOnImpact = 2F;
-	
-	@SubscribeEvent
-	public static void registerItems(RegistryEvent.Register<Item> event) {
-		event.getRegistry().register(PAIN_BOOTS);
+
+	@Override
+	public void registerItems(IForgeRegistry<Item> reg) {
+		reg.register(PAIN_BOOTS);
 	}
 	
 	@SideOnly(Side.CLIENT)

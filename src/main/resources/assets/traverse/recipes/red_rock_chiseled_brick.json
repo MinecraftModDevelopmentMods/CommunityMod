@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"P",
+		"P"
+	],
+	"key": {
+		"P": {
+			"item": "traverse:red_rock_bricks_slab",
+			"data": 0
+		}
+	},
+	"result": {
+		"item": "traverse:red_rock_bricks_chiseled",
+		"count": 1
+	}
+}

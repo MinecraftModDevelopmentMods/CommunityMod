@@ -7,7 +7,7 @@ import net.minecraft.item.ItemArmor;
 
 public class SpaceHelm extends ItemArmor {
 	public SpaceHelm() {
-		super(ArmorMaterial.IRON, 0, EntityEquipmentSlot.HEAD);
+		super(Space.SPACEHELM, 0, EntityEquipmentSlot.HEAD);
 		setRegistryName("spacehelm");
         setTranslationKey(CommunityGlobals.MOD_ID + ".spacehelm");
 		setCreativeTab(CommunityGlobals.TAB);

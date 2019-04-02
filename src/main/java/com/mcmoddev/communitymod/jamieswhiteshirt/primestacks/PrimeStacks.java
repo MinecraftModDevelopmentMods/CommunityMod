@@ -4,7 +4,6 @@ import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -16,7 +15,6 @@ import java.util.TreeSet;
     description = "Rounds the default max stack size to the previous prime number",
     attribution = "JamiesWhiteShirt"
 )
-@Mod.EventBusSubscriber
 public class PrimeStacks implements ISubMod {
     private static int nextPrimeCandidate = 3;
     private static SortedSet<Integer> primes = new TreeSet<>();

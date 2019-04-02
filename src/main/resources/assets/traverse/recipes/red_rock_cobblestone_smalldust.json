@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "type": "forge:ore_dict",
+      "ore": "cobblestone"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "cobblestone"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "dustSmallRedstone"
+    }
+  ],
+  "result": {
+    "item": "traverse:red_rock_cobblestone",
+    "count": 2
+  }
+}

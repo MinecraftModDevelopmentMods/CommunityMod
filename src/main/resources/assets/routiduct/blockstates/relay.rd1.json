@@ -1,0 +1,80 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "transform": "forge:default-block",
+    "model": "routiduct:relay",
+    "textures": {
+      "routiduct": "routiduct:blocks/routiduct",
+      "relay": "routiduct:blocks/relay",
+      "particle": "routiduct:blocks/relay"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {
+        "transform": "forge:default-block",
+        "model": "routiduct:relay",
+        "textures": {
+          "routiduct": "routiduct:blocks/routiduct",
+          "relay": "routiduct:blocks/relay",
+          "particle": "routiduct:blocks/relay"
+        }
+      }
+    ],
+    "down": {
+      "true": {
+        "submodel": {
+          "pipeDown": {
+            "model": "routiduct:relay_pipe",
+            "x": 90
+          }
+        }
+      },
+      "false": {
+      }
+    },
+    "east": {
+      "true": {
+        "submodel": "routiduct:relay_pipe",
+        "y": 90
+      },
+      "false": {
+      }
+    },
+    "north": {
+      "true": {
+        "submodel": "routiduct:relay_pipe"
+      },
+      "false": {
+      }
+    },
+    "south": {
+      "true": {
+        "submodel": "routiduct:relay_pipe",
+        "y": 180
+      },
+      "false": {
+      }
+    },
+    "up": {
+      "true": {
+        "submodel": {
+          "pipeUp": {
+            "model": "routiduct:relay_pipe",
+            "x": 270
+          }
+        }
+      },
+      "false": {
+      }
+    },
+    "west": {
+      "true": {
+        "submodel": "routiduct:relay_pipe",
+        "y": 270
+      },
+      "false": {
+      }
+    }
+  }
+}
