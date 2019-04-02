@@ -1,0 +1,10 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "community_mod:shipcore"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]
+  }
+}

@@ -16,6 +16,8 @@ import net.minecraft.world.WorldServer;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
@@ -33,7 +35,6 @@ public class Space implements ISubMod {
 	static int damageTick = 20;
 
 	public static final ItemArmor.ArmorMaterial SPACEHELM = EnumHelper.addArmorMaterial(CommunityGlobals.MOD_ID + "_spacehelm", new ResourceLocation(CommunityGlobals.MOD_ID, "spacesuit").toString(), 100, new int[]{2, 2, 2, 2}, 0, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 5);
-
 	public static void registerDimensions() {
 		DimensionManager.registerDimension(SPACE.getId(), SPACE);
 	}
@@ -52,11 +53,12 @@ public class Space implements ISubMod {
 			e.player.changeDimension(0, new DimTransfer((WorldServer) e.player.world, e.player.posX, 255, e.player.posZ));
 			e.player.setFire(30);
 		}
-		if(damageTick == 0 && e.player.dimension == SPACE_DIM_ID) {
+
+		if(damageTick == 0 && e.player.dimension == 78634876) {
 			damageTick = 20;
 			if(e.player.inventory.armorItemInSlot(3).getItem() != spaceHelm)
 			e.player.attackEntityFrom(DamageSource.GENERIC, 2f);
-		}else if(e.player.dimension == SPACE_DIM_ID){
+		}else if(e.player.dimension == 78634876){
 			if(e.player.world.playerEntities.indexOf(e.player) == 0)
 			--damageTick;
 		}
