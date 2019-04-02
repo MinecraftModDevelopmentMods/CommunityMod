@@ -17,7 +17,6 @@ import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -32,7 +31,6 @@ import java.lang.reflect.Field;
         description = "Flatten entities with a piston",
         attribution = "gegy1000"
 )
-@Mod.EventBusSubscriber(modid = CommunityGlobals.MOD_ID)
 public class SquashableMod implements ISubMod {
     @CapabilityInject(Squashable.class)
     private static Capability<Squashable> squashableCapability;
@@ -134,32 +132,31 @@ public class SquashableMod implements ISubMod {
     }
 
     @SideOnly(Side.CLIENT)
-    @Mod.EventBusSubscriber(modid = CommunityGlobals.MOD_ID, value = Side.CLIENT)
-    public static class Client {
-        private static ModelBase originalModel;
+    private static ModelBase originalModel;
 
-        @SubscribeEvent
-        public static void onRenderLivingPre(RenderLivingEvent.Pre<?> event) {
-            EntityLivingBase entity = event.getEntity();
-            Squashable squashable = entity.getCapability(squashableCap(), null);
-            if (squashable == null) {
-                return;
-            }
-
-            EnumFacing.Axis squashedAxis = squashable.getSquashedAxis();
-            if (squashedAxis != null) {
-                RenderLivingBase<?> renderer = event.getRenderer();
-                originalModel = renderer.getMainModel();
-                setMainModel(renderer, new FlattenedModel(originalModel, squashedAxis));
-            }
+    @SubscribeEvent
+    @SideOnly(Side.CLIENT)
+    public static void onRenderLivingPre(RenderLivingEvent.Pre<?> event) {
+        EntityLivingBase entity = event.getEntity();
+        Squashable squashable = entity.getCapability(squashableCap(), null);
+        if (squashable == null) {
+            return;
         }
 
-        @SubscribeEvent
-        public static void onRenderLivingPost(RenderLivingEvent.Post<?> event) {
-            if (originalModel != null) {
-                setMainModel(event.getRenderer(), originalModel);
-                originalModel = null;
-            }
+        EnumFacing.Axis squashedAxis = squashable.getSquashedAxis();
+        if (squashedAxis != null) {
+            RenderLivingBase<?> renderer = event.getRenderer();
+            originalModel = renderer.getMainModel();
+            setMainModel(renderer, new FlattenedModel(originalModel, squashedAxis));
+        }
+    }
+
+    @SubscribeEvent
+    @SideOnly(Side.CLIENT)
+    public static void onRenderLivingPost(RenderLivingEvent.Post<?> event) {
+        if (originalModel != null) {
+            setMainModel(event.getRenderer(), originalModel);
+            originalModel = null;
         }
     }
 }

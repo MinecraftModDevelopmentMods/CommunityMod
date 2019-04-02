@@ -8,26 +8,16 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.passive.HorseArmorType;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemAxe;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemHoe;
-import net.minecraft.item.ItemPickaxe;
-import net.minecraft.item.ItemSnowball;
-import net.minecraft.item.ItemSpade;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
+import net.minecraft.item.*;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos.PooledMutableBlockPos;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
@@ -39,15 +29,11 @@ import java.util.stream.Collectors;
 import static com.mcmoddev.communitymod.CommunityGlobals.MOD_ID;
 import static com.mcmoddev.communitymod.CommunityGlobals.TAB;
 import static com.mcmoddev.communitymod.shared.ClientUtil.simpleItemModel;
-import static net.minecraft.inventory.EntityEquipmentSlot.CHEST;
-import static net.minecraft.inventory.EntityEquipmentSlot.FEET;
-import static net.minecraft.inventory.EntityEquipmentSlot.HEAD;
-import static net.minecraft.inventory.EntityEquipmentSlot.LEGS;
+import static net.minecraft.inventory.EntityEquipmentSlot.*;
 import static net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 
 @SubMod(name = "Poke", attribution = "Cadiboo")
 @ObjectHolder(MOD_ID)
-@EventBusSubscriber(modid = MOD_ID)
 public final class PokeMod implements ISubMod {
 
 	public static final Block POKE_ORE = _null();
@@ -67,17 +53,17 @@ public final class PokeMod implements ISubMod {
 	public static final Item POKE_HORSE_ARMOR = _null();
 	public static final ItemSnowball POKEBALL = _null();
 
-	@SubscribeEvent
-	public static void regBlocks(final RegistryEvent.Register<Block> event) {
-		event.getRegistry().registerAll(
+	@Override
+	public void registerBlocks(IForgeRegistry<Block> reg) {
+		reg.registerAll(
 				setup(new Block(Material.ROCK) {{ this.setSoundType(SoundType.STONE); }}.setHardness(0x1.8p1f).setResistance(0x1.4p2f), "poke_ore"),
 				setup(new Block(Material.IRON) {{ this.setSoundType(SoundType.METAL); }}.setHardness(0x1.8p2f).setResistance(0x1.4p3f), "poke_block")
 		);
 	}
 
-	@SubscribeEvent
-	public static void regItems(final RegistryEvent.Register<Item> event) {
-		event.getRegistry().registerAll(
+	@Override
+	public void registerItems(IForgeRegistry<Item> reg) {
+		reg.registerAll(
 				setup(new Item(), "poke_ingot"),
 				setup(new Item(), "poke_nugget"),
 				setup(new ItemPickaxe(ToolMaterialHelper.POKE) {}, "poke_pickaxe"),
@@ -169,6 +155,7 @@ public final class PokeMod implements ISubMod {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public void registerModels(final ModelRegistryEvent event) {
 
 		simpleItemModel(POKE_INGOT);

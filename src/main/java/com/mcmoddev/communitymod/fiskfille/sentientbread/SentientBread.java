@@ -1,25 +1,18 @@
 package com.mcmoddev.communitymod.fiskfille.sentientbread;
 
-import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
 import com.mojang.text2speech.Narrator;
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextComponentString;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-@SubMod(name = "Sentient Bread", description = "Bread will plead for its life if you try to eat it.", attribution = "FiskFille")
-@Mod.EventBusSubscriber(modid = CommunityGlobals.MOD_ID, value = Side.CLIENT)
+@SubMod(name = "Sentient Bread", description = "Bread will plead for its life if you try to eat it.", attribution = "FiskFille", clientSideOnly = true)
 public class SentientBread implements ISubMod
 {
     private static final String[] MESSAGES_STOP = {
@@ -48,52 +41,35 @@ public class SentientBread implements ISubMod
             "End my suffering"
     };
 
-    @SideOnly(Side.CLIENT)
     private static final Narrator NARRATOR = Narrator.getNarrator();
 
-    private static ItemStack prevActiveItem = ItemStack.EMPTY;
-
     @SubscribeEvent
-    public static void onRightClickItem(PlayerInteractEvent.RightClickItem event)
+    public static void onClientTick(TickEvent.ClientTickEvent event)
     {
-        ItemStack stack = event.getItemStack();
-        EntityPlayer player = event.getEntityPlayer();
+        Minecraft mc = Minecraft.getMinecraft();
 
-        if (!stack.isEmpty() && stack.getItem() == Items.BREAD && player.canEat(false))
+        if (event.phase == TickEvent.Phase.END && mc.world != null && !mc.isGamePaused())
         {
-            prevActiveItem = stack;
-        }
-    }
+            ItemStack stack = mc.player.getActiveItemStack();
 
-    @SubscribeEvent
-    public static void onPlayerTick(TickEvent.PlayerTickEvent event)
-    {
-        if (event.phase == TickEvent.Phase.END)
-        {
-            if (!prevActiveItem.isEmpty())
+            if (!stack.isEmpty() && stack.getItem() == Items.BREAD)
             {
-                Random rand = event.player.world.rand;
+                Random rand = mc.player.world.rand;
 
-                if (event.player.getItemInUseCount() % 7 == 6 || rand.nextFloat() < 0.05)
+                if (rand.nextFloat() < 0.04)
                 {
-                    say(event.player, MESSAGES_STOP[rand.nextInt(MESSAGES_STOP.length)]);
-                }
+                    String msg = MESSAGES_STOP[rand.nextInt(MESSAGES_STOP.length)];
+                    int i = mc.gameSettings.narrator;
 
-                prevActiveItem = ItemStack.EMPTY;
+                    if (NARRATOR.active() && (i == 0 || i == 3)) // Don't narrate if the setting is already turned on
+                    {
+                        NARRATOR.clear();
+                        NARRATOR.say(msg);
+                    }
+
+                    mc.player.sendMessage(stack.getTextComponent().appendSibling(new TextComponentString(": " + msg)));
+                }
             }
         }
-    }
-
-    private static void say(EntityPlayer player, String msg)
-    {
-        int i = Minecraft.getMinecraft().gameSettings.narrator;
-
-        if (NARRATOR.active() && (i == 0 || i == 3)) // Don't narrate if the setting is already turned on
-        {
-            NARRATOR.clear();
-            NARRATOR.say(msg);
-        }
-
-        player.sendMessage(prevActiveItem.getTextComponent().appendSibling(new TextComponentString(": " + msg)));
     }
 }
