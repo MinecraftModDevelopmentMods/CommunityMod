@@ -1,0 +1,50 @@
+itemGroup.traverse=Traverse
+
+tile.traverse:brown_autumnal_leaves.name=Braune herbstliche Blätter
+tile.traverse:brown_autumnal_sapling.name=Brauner herbstlicher Setzling
+
+tile.traverse:orange_autumnal_leaves.name=Orange herbstliche Blätter
+tile.traverse:orange_autumnal_sapling.name=Oranger herbstlicher Setzling
+
+tile.traverse:red_autumnal_leaves.name=Rote herbstliche Blätter
+tile.traverse:red_autumnal_sapling.name=Roter herbstlicher Setzling
+
+tile.traverse:yellow_autumnal_leaves.name=Gelbe herbstliche Blätter
+tile.traverse:yellow_autumnal_sapling.name=Gelber herbstlicher Setzling
+
+tile.traverse:fir_sapling.name=Tannensetzling
+tile.traverse:fir_leaves.name=Tannenlaub
+tile.traverse:fir_log.name=Tannenholz
+tile.traverse:fir_planks.name=Tannenholzbretter
+tile.traverse:fir_stairs.name=Tannenholztreppe
+tile.traverse:fir_slab.name=Tannenholzstufe
+tile.traverse:fir_door.name=Tannenholztür
+tile.traverse:fir_fence.name=Tannenholzzaun
+tile.traverse:fir_fence_gate.name=Tannenholzzauntor
+
+tile.traverse:red_rock.name=Rotes Gestein
+tile.traverse:red_rock_bricks.name=Rote Gesteinsziegel
+tile.traverse:red_rock_bricks_stairs.name=Rote Gesteinsziegeltreppe
+tile.traverse:red_rock_bricks_slab.name=Rote Gesteinsziegelstufe
+tile.traverse:red_rock_bricks_chiseled.name=Gemeißelte rote Gesteinsziegel
+tile.traverse:red_rock_bricks_cracked.name=Rissige rote Gesteinsziegel
+tile.traverse:red_rock_slab.name=Rote Gesteinsstufe
+tile.traverse:red_rock_cobblestone.name=Roter Gesteinsbruchstein
+tile.traverse:red_rock_cobblestone_stairs.name=Rote Gesteinsbruchsteintreppe
+tile.traverse:red_rock_cobblestone_slab.name=Rote Gesteinsbruchsteinstufe
+tile.traverse:red_rock_cobblestone_wall.name=Rote Gesteinsbruchsteinmauer
+
+tile.traverse:blue_rock.name=Felsgestein
+tile.traverse:blue_rock_bricks.name=Felsgesteinziegel
+tile.traverse:blue_rock_bricks_stairs.name=Felsgesteinziegeltreppe
+tile.traverse:blue_rock_bricks_slab.name=Felsgesteinziegelstufe
+tile.traverse:blue_rock_bricks_chiseled.name=Gemeißelte Felsgesteinziegel
+tile.traverse:blue_rock_bricks_cracked.name=Rissige Felsgesteinziegel
+tile.traverse:blue_rock_slab.name=Felsgesteinstufe
+tile.traverse:blue_rock_cobblestone.name=Felsgesteinbruchstein
+tile.traverse:blue_rock_cobblestone_stairs.name=Felsgesteinbruchsteintreppe
+tile.traverse:blue_rock_cobblestone_slab.name=Felsgesteinbruchsteinstufe
+tile.traverse:blue_rock_cobblestone_wall.name=Felsgesteinbruchsteinmauer
+
+tile.traverse:dead_grass.name=Totes Gras
+tile.traverse:cold_grass.name=Kaltes Gras

@@ -1,0 +1,11 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "cube_all",
+		"textures": { "all": "traverse:block/blue_rock/cobblestone" }
+	},
+	"variants": {
+		"inventory": { "transform": "forge:default-block" },
+		"normal": [{}]
+	}
+}

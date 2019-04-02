@@ -1,0 +1,21 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "half_slab",
+		"textures": {
+			"top": "traverse:block/blue_rock/cobblestone",
+			"bottom": "traverse:block/blue_rock/cobblestone",
+			"side": "traverse:block/blue_rock/cobblestone"
+		}
+	},
+	"variants": {
+		"inventory": { "transform": "forge:default-block" },
+		"half": {
+			"top": { "model": "upper_slab" },
+			"bottom": { "model": "half_slab" }
+		},
+		"variant": {
+			"default": {}
+		}
+	}
+}

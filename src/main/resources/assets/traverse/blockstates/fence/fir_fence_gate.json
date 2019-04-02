@@ -1,0 +1,23 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "fence_gate_closed",
+		"uvlock": true,
+		"textures": {
+			"texture": "traverse:block/planks/fir_planks"
+		}
+	},
+	"variants": {
+		"inventory": [{}],
+		"facing": {
+			"south": { "y": 0 },
+			"west": { "y": 90 },
+			"north": { "y": 180 },
+			"east": { "y": 270 }
+		},
+		"open": {
+			"true": { "model": "fence_gate_open" },
+			"false": { "model": "fence_gate_closed" }
+		}
+	}
+}

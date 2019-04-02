@@ -1,0 +1,15 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "cube_all",
+		"textures": {
+			"all": "traverse:block/planks/fir_planks"
+		}
+	},
+	"variants": {
+		"inventory": { "transform": "forge:default-block" },
+		"variant": {
+			"default": {}
+		}
+	}
+}
