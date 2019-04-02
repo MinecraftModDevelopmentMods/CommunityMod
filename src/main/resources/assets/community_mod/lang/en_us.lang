@@ -62,6 +62,11 @@ tooltip.community_mod.tight_pants.inactive=I was already wearing tight pants, I 
 
 item.community_mod.spacehelm.name=Space Helm
 
+#Will
+tile.community_mod:e_block.name=E Block
+community_mod.subtitle.e_sound=E
+item.community_mod:magic_eight_ball.name=Magic 8 Ball
+
 #Commoble
 entity.community_mod.exploding_chicken.name=Exploding Chicken
 

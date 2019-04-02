@@ -1,4 +1,9 @@
 {
+  "e_sound": {
+    "category": "block",
+    "subtitle": "community_mod.subtitle.e_sound",
+    "sounds": [ "community_mod:e_sound" ]
+  },
   "mob.gnome.say": {
     "category": "neutral",
     "sounds": ["community_mod:mob/gnome_say"]
