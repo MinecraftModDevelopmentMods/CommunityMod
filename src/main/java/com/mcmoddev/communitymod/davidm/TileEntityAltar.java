@@ -10,7 +10,15 @@ import net.minecraftforge.items.ItemStackHandler;
 
 public class TileEntityAltar extends TileEntity implements ITickable {
 
-	private ItemStackHandler inventory = new ItemStackHandler(1);
+	private ItemStackHandler inventory = new ItemStackHandler(1) {
+		
+		@Override
+		protected void onContentsChanged(int slot) {
+			if (!world.isRemote) {
+				
+			}
+		}
+	};
 	
 	public void rightClick(EntityPlayer player) {
 		if (this.getStack().isEmpty()) {
