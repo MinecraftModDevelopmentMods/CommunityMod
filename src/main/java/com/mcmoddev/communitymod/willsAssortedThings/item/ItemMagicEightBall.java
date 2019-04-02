@@ -2,8 +2,12 @@ package com.mcmoddev.communitymod.willsAssortedThings.item;
 
 import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.willsAssortedThings.SpecialPlayerHandler;
+import com.mojang.text2speech.Narrator;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -20,6 +24,8 @@ import java.util.UUID;
 public class ItemMagicEightBall extends Item {
 
     public static Map<SpecialPlayerHandler.SpecialPlayerEnum, String[]> messages = new HashMap<>();
+
+    private static final Narrator NARRATOR = Narrator.getNarrator();
 
     static {
         messages.put(SpecialPlayerHandler.SpecialPlayerEnum.NONE, new String[]{
@@ -39,7 +45,14 @@ public class ItemMagicEightBall extends Item {
                 "Invalid",
                 "They all know it",
                 "Stop trying to hide it.",
-                "Deleting /*"});
+                "Deleting /*",
+                "I know",
+                "You should do it.",
+                "Don't be stupid.",
+                "Of course the answer you're looking for is §kUNREADABLE §r, you just won't accept it.",
+                "§kPLEASE HELP ME",
+                "I'm trapped in a Magic 8 Ball Factory!"
+        });
         messages.put(SpecialPlayerHandler.SpecialPlayerEnum.Poke1650, new String[]{
                 "Are you spooked yet?",
                 "DAB ONE MORE TIME, I DARE YOU!",
@@ -59,7 +72,8 @@ public class ItemMagicEightBall extends Item {
                 "We've had nothing but maggoty bread for three stinking days!",
                 "I've done nothing but teleport bread for three days...",
                 "Please don't eat me!",
-                "You have brought life to the bread, and so you shall be forced to become bread after death."
+                "You have brought life to the bread, and so you shall be forced to become bread after death.",
+                "YOU HAVE GIVEN ME A VOICE!"
         });
         messages.put(SpecialPlayerHandler.SpecialPlayerEnum.sokratis12GR, new String[]{
                 "As Socrates (oh, sorry, _sokratis_) said: \"Minecraft mods are the greatest form of art.\"",
@@ -76,16 +90,26 @@ public class ItemMagicEightBall extends Item {
     }
 
     @Override
-    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
+        if (!worldIn.isRemote)
+            return super.onItemRightClick(worldIn, playerIn, handIn);
+
         if (worldIn.rand.nextBoolean())
-            giveSpecialPlayerMessage(player, worldIn.rand, SpecialPlayerHandler.getSpecialPlayer(player));
+            giveSpecialPlayerMessage(playerIn, worldIn.rand, SpecialPlayerHandler.getSpecialPlayer(playerIn));
         else
-            giveSpecialPlayerMessage(player, worldIn.rand, SpecialPlayerHandler.SpecialPlayerEnum.NONE);
-        return EnumActionResult.SUCCESS;
+            giveSpecialPlayerMessage(playerIn, worldIn.rand, SpecialPlayerHandler.SpecialPlayerEnum.NONE);
+        return super.onItemRightClick(worldIn, playerIn, handIn);
     }
 
     private void giveMessage(EntityPlayer player, String message) {
         player.sendMessage(new TextComponentString(message));
+
+        int i = Minecraft.getMinecraft().gameSettings.narrator;
+        if (NARRATOR.active() && (i == 0 || i == 3)) // Don't narrate if the setting is already turned on
+        {
+            NARRATOR.clear();
+            NARRATOR.say(message);
+        } // Thank you FiskFille, very cool
     }
 
     private void giveSpecialPlayerMessage(EntityPlayer player, Random rand, SpecialPlayerHandler.SpecialPlayerEnum playerEnum) {
