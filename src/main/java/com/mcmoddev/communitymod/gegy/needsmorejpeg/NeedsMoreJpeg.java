@@ -14,7 +14,6 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -34,6 +33,9 @@ public class NeedsMoreJpeg implements ISubMod {
     private static final ResourceLocation SHADER_LOCATION = new ResourceLocation(CommunityGlobals.MOD_ID, "shaders/post/jpeg.json");
 
     @SideOnly(Side.CLIENT)
+    private static boolean hadGoggles;
+
+    @SideOnly(Side.CLIENT)
     @Override
     public void registerModels(ModelRegistryEvent event) {
         ClientUtil.simpleItemModel(JPEG_GOGGLES);
@@ -44,44 +46,42 @@ public class NeedsMoreJpeg implements ISubMod {
         RegUtil.registerItem(reg, new ItemArmor(ItemArmor.ArmorMaterial.LEATHER, 0, EntityEquipmentSlot.HEAD), "jpeg_goggles");
     }
 
-    @Mod.EventBusSubscriber(modid = CommunityGlobals.MOD_ID, value = Side.CLIENT)
-    public static class Client {
-        private static boolean hadGoggles;
+    @SubscribeEvent
+    @SideOnly(Side.CLIENT)
+    public static void onRenderTick(TickEvent.RenderTickEvent event) {
+        if (event.phase == TickEvent.Phase.START) {
+            Minecraft client = Minecraft.getMinecraft();
 
-        @SubscribeEvent
-        public static void onRenderTick(TickEvent.RenderTickEvent event) {
-            if (event.phase == TickEvent.Phase.START) {
-                Minecraft client = Minecraft.getMinecraft();
-
-                boolean hasGoggles = hasGoggles(client);
-                if (hasGoggles != hadGoggles) {
-                    client.entityRenderer.loadEntityShader(null);
-                }
-
-                if (hasGoggles && shouldChangeShader(client)) {
-                    ShaderGroup activeGroup = client.entityRenderer.getShaderGroup();
-                    if (activeGroup != null) {
-                        activeGroup.deleteShaderGroup();
-                    }
-                    client.entityRenderer.loadShader(SHADER_LOCATION);
-                }
-
-                hadGoggles = hasGoggles;
-            }
-        }
-
-        private static boolean shouldChangeShader(Minecraft client) {
-            ShaderGroup activeGroup = client.entityRenderer.getShaderGroup();
-            return activeGroup == null || !activeGroup.getShaderGroupName().equals(SHADER_LOCATION.toString());
-        }
-
-        private static boolean hasGoggles(Minecraft client) {
-            if (client.player == null) {
-                return false;
+            boolean hasGoggles = hasGoggles(client);
+            if (hasGoggles != hadGoggles) {
+                client.entityRenderer.loadEntityShader(null);
             }
 
-            ItemStack headStack = client.player.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
-            return headStack.getItem() == JPEG_GOGGLES;
+            if (hasGoggles && shouldChangeShader(client)) {
+                ShaderGroup activeGroup = client.entityRenderer.getShaderGroup();
+                if (activeGroup != null) {
+                    activeGroup.deleteShaderGroup();
+                }
+                client.entityRenderer.loadShader(SHADER_LOCATION);
+            }
+
+            hadGoggles = hasGoggles;
         }
+    }
+
+    @SideOnly(Side.CLIENT)
+    private static boolean shouldChangeShader(Minecraft client) {
+        ShaderGroup activeGroup = client.entityRenderer.getShaderGroup();
+        return activeGroup == null || !activeGroup.getShaderGroupName().equals(SHADER_LOCATION.toString());
+    }
+
+    @SideOnly(Side.CLIENT)
+    private static boolean hasGoggles(Minecraft client) {
+        if (client.player == null) {
+            return false;
+        }
+
+        ItemStack headStack = client.player.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
+        return headStack.getItem() == JPEG_GOGGLES;
     }
 }

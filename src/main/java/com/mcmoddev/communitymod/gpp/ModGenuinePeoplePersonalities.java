@@ -1,15 +1,8 @@
 package com.mcmoddev.communitymod.gpp;
 
-
-import java.util.Random;
-import java.util.UUID;
-
-import javax.annotation.Nullable;
-
 import com.mcmoddev.communitymod.CommunityMod;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
-
 import com.mcmoddev.communitymod.poke.PokeMod;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.block.Block;
@@ -28,14 +21,15 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.Side;
 
-@SubMod(name = "Genuine People Personalities", attribution = "Sirius Cybernetics Corporation")
-@Mod.EventBusSubscriber(modid = "community_mod", value = Side.CLIENT)
+import javax.annotation.Nullable;
+import java.util.Random;
+import java.util.UUID;
+
+@SubMod(name = "Genuine People Personalities", attribution = "Sirius Cybernetics Corporation", clientSideOnly = true)
 public class ModGenuinePeoplePersonalities implements ISubMod {
     private static String obnoxious = TextFormatting.AQUA + "" + TextFormatting.BOLD;
     private static Object2IntOpenHashMap<UUID> cooldownMap = new Object2IntOpenHashMap<>();
