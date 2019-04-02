@@ -67,3 +67,8 @@ entity.community_mod.exploding_chicken.name=Exploding Chicken
 
 entity.community_mod.wood_gnome.name=Wood Gnome
 tile.antcake.full_of_ants=Heck no, it's full of ants
+
+#DavidM
+tile.community_mod.meme_altar.name=Meme Altar
+tooltip.community_mod.meme_altar_1=Right click to insert item.
+tooltip.community_mod.meme_altar_2=Right click again to extract item.
