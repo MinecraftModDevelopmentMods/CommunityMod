@@ -9,11 +9,11 @@ public class ModClassWriter extends ClassWriter {
 	public ModClassWriter(int flags) {
 		super(flags);
 	}
-	
+
 	public ModClassWriter(ClassReader classReader, int flags) {
 		super(classReader, flags);
 	}
-	
+
 	protected String getCommonSuperClass(final String type1, final String type2) {
 		Class<?> c, d;
 		ClassLoader classLoader = Launch.classLoader;

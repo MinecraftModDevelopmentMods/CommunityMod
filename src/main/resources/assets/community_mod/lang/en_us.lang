@@ -9,12 +9,14 @@ entity.community_mod.notch_but_with_worserer_pants.name=notch (but with loser pa
 
 tooltip.community_mod.electric=%s: Electric Boogaloo
 tooltip.community_mod.electric.two= 2/ two/ to/ too/ ii
+tooltip.community_mod.bsod=A stop error, better known as a Blue Screen of Death (also known as a blue screen or BSoD), is an error screen displayed on a Windows computer system after a system crash.
 
 item.community_mod.dab.name=Dab
 item.community_mod.sexy_glasses.name=Sexy Glasses
 item.community_mod.rain_stick.name=Rain Stick
 item.community_mod.jpeg_goggles.name=Jpeg Goggles
 item.community_mod.pain_boots.name=Boots of Great Pain and Suffering
+item.community_mod.bsod.name=BSOD
 
 #PokeMod
 item.community_mod.poke_ingot.name=Poke Ingot
