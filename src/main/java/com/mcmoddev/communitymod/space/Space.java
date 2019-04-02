@@ -1,9 +1,11 @@
 package com.mcmoddev.communitymod.space;
 
-import com.mcmoddev.communitymod.CommunityGlobals;
+import static com.mcmoddev.communitymod.CommunityGlobals.MOD_ID;
+
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
 import com.mcmoddev.communitymod.shared.ClientUtil;
+
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;

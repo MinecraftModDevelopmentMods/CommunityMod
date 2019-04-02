@@ -3,14 +3,18 @@ package com.mcmoddev.communitymod.commoble.gnomes;
 import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
+
 import com.mcmoddev.communitymod.commoble.gnomes.client.RenderGnomeWood;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.event.RegistryEvent;
+
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
+
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
@@ -41,7 +45,7 @@ public class SubmodGnomes implements ISubMod
 			RenderingRegistry.registerEntityRenderingHandler(EntityGnomeWood.class, RenderGnomeWood::new);
 		}
 	}
-
+  
 	@Override
 	public void registerBlocks(IForgeRegistry<Block> registry)
 	{

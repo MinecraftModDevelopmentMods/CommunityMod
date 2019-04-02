@@ -1,0 +1,12 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "traverse:fir_log"
+		}
+	],
+	"result": {
+		"item": "traverse:fir_planks",
+		"count": 4
+	}
+}

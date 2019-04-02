@@ -1,0 +1,15 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cake_uneaten",
+    "uvlock": true
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory":
+    {
+      "model": "cake_uneaten",
+      "transform": "forge:default-block"
+    }
+  }
+}

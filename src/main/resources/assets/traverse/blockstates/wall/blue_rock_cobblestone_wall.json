@@ -1,0 +1,35 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"uvlock": true,
+		"textures": {
+			"wall": "traverse:block/blue_rock/cobblestone"
+		}
+	},
+	"variants": {
+		"inventory": {
+			"model": "wall_inventory",
+			"transform": "forge:default-block"
+		},
+		"east": {
+			"true": { "submodel": "wall_side", "y": 90 },
+			"false": {}
+		},
+		"north": {
+			"true": { "submodel": "wall_side" },
+			"false": {}
+		},
+		"south": {
+			"true": { "submodel": "wall_side", "y": 180 },
+			"false": {}
+		},
+		"west": {
+			"true": { "submodel": "wall_side", "y": 270 },
+			"false": {}
+		},
+		"up": {
+			"true": { "submodel": "wall_post" },
+			"false": {}
+		}
+	}
+}

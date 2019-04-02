@@ -10,5 +10,9 @@
   "you_could_make_a_religion_out_of_this": {
     "category": "master",
     "sounds": ["community_mod:you_could_make_a_religion_out_of_this"]
+  },
+  "gnu_linux": {
+    "category": "master",
+    "sounds": ["community_mod:gnu_linux"]
   }
 }
