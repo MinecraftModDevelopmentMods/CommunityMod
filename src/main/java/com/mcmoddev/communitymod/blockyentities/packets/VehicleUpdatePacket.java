@@ -1,4 +1,4 @@
-package com.mcmoddev.communitymod.musksrockets.packets;
+package com.mcmoddev.communitymod.blockyentities.packets;
 
 import java.util.HashMap;
 import java.util.Map;

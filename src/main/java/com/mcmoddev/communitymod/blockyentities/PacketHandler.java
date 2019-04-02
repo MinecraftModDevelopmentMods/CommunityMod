@@ -1,7 +1,7 @@
 package com.mcmoddev.communitymod.blockyentities;
 
-import com.mcmoddev.communitymod.musksrockets.packets.SeatSyncPacket;
-import com.mcmoddev.communitymod.musksrockets.packets.VehicleUpdatePacket;
+import com.mcmoddev.communitymod.blockyentities.packets.SeatSyncPacket;
+import com.mcmoddev.communitymod.blockyentities.packets.VehicleUpdatePacket;
 
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;

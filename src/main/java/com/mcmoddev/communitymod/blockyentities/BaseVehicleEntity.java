@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.mcmoddev.communitymod.CommunityMod;
-import com.mcmoddev.communitymod.musksrockets.packets.VehicleUpdatePacket;
+import com.mcmoddev.communitymod.blockyentities.packets.VehicleUpdatePacket;
 import com.mcmoddev.communitymod.space.SpaceWorldProvider;
 
 import io.netty.buffer.ByteBuf;
