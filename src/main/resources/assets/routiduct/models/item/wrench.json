@@ -1,0 +1,32 @@
+{
+	"parent": "minecraft:item/generated",
+	"textures": {
+		"layer0": "routiduct:items/wrench"
+	},
+	"overrides": [
+		{
+			"predicate": {
+				"routiduct:lat": 1
+			},
+			"model": "routiduct:item/wrench_lat"
+		},
+		{
+			"predicate": {
+				"routiduct:ugly": 1
+			},
+			"model": "routiduct:item/wrench_ugly"
+		},
+		{
+			"predicate": {
+				"routiduct:drawn": 1
+			},
+			"model": "routiduct:item/wrench_drawn"
+		},
+		{
+			"predicate": {
+				"routiduct:hawk": 1
+			},
+			"model": "routiduct:item/wrench_hawk"
+		}
+	]
+}
