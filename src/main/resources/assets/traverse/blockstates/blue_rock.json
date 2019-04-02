@@ -1,0 +1,16 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "cube_all",
+		"textures": { "all": "traverse:block/blue_rock/smooth" }
+	},
+	"variants": {
+		"inventory": { "transform": "forge:default-block" },
+		"normal": [
+			{ "y": 0, "x": 0 },
+			{ "y": 90, "x": 90 },
+			{ "y": 180, "x": 180 },
+			{ "y": 270, "x": 270 }
+		]
+	}
+}

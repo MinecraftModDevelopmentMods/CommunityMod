@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"PPP"
+	],
+	"key": {
+		"P": {
+			"item": "traverse:red_rock_bricks"
+		}
+	},
+	"result": {
+		"item": "traverse:red_rock_bricks_slab",
+		"data": 0,
+		"count": 6
+	}
+}
