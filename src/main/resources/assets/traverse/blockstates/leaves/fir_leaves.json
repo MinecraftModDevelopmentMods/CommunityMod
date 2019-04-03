@@ -1,0 +1,11 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "cube_all",
+		"textures": { "all": "traverse:block/leaves/fir_leaves" }
+	},
+	"variants": {
+		"inventory": { "transform": "forge:default-block" },
+		"normal": [{}]
+	}
+}

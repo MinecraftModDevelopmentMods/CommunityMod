@@ -1,10 +1,8 @@
 package com.mcmoddev.communitymod.nyan;
 
-import java.util.Random;
-import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
-import com.mcmoddev.communitymod.explodingchickens.EntityExplodingChicken;
+import com.mcmoddev.communitymod.commoble.explodingchickens.EntityExplodingChicken;
 import com.mcmoddev.communitymod.lemons.fatsheep.EntityOvergrownSheep;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.boss.EntityWither;
@@ -20,15 +18,15 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import java.util.Random;
 
 @SubMod(
 		name = "Nyan",
 		description = "Fixes the frankly unacceptable lack of nyan entities in Minecraft",
 		attribution = "TheRandomLabs"
 )
-@Mod.EventBusSubscriber(modid = CommunityGlobals.MOD_ID)
 public class Nyan implements ISubMod {
 	public static final String HAS_NYAN_ENTITY_KEY = "HasNyanEntity";
 	public static final String NYAN_ENTITY_UUID_KEY = "NyanEntityUUID";

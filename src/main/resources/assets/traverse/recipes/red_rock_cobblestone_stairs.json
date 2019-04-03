@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"P  ",
+		"PP ",
+		"PPP"
+	],
+	"key": {
+		"P": {
+			"item": "traverse:red_rock_cobblestone"
+		}
+	},
+	"result": {
+		"item": "traverse:red_rock_cobblestone_stairs",
+		"count": 4
+	}
+}

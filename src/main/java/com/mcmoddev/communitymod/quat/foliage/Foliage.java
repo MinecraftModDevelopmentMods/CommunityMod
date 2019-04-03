@@ -1,6 +1,5 @@
 package com.mcmoddev.communitymod.quat.foliage;
 
-import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
 import net.minecraft.block.Block;
@@ -14,10 +13,8 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.gen.NoiseGeneratorPerlin;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.registries.IRegistryDelegate;
 
 import javax.annotation.Nullable;
@@ -29,10 +26,6 @@ import java.util.Random;
 	description = "Adds foliage color variation!",
 	attribution = "quaternary",
 	clientSideOnly = true
-)
-@Mod.EventBusSubscriber(
-	modid = CommunityGlobals.MOD_ID,
-	value = Side.CLIENT
 )
 public class Foliage implements ISubMod {
 	private static final NoiseGeneratorPerlin NOISE = new NoiseGeneratorPerlin(new Random(6969), 4);

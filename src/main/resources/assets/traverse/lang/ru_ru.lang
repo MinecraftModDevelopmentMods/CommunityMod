@@ -1,0 +1,50 @@
+itemGroup.traverse=Traverse
+#ru_RU translation by TimeConqueror
+tile.traverse:brown_autumnal_leaves.name=Коричневые осенние листья
+tile.traverse:brown_autumnal_sapling.name=Коричневый осенний саженец
+
+tile.traverse:orange_autumnal_leaves.name=Оранжевые осенние листья
+tile.traverse:orange_autumnal_sapling.name=Оранжевый осенний саженец
+
+tile.traverse:red_autumnal_leaves.name=Красные осенние листья
+tile.traverse:red_autumnal_sapling.name=Красный осенний саженец
+
+tile.traverse:yellow_autumnal_leaves.name=Жёлтая осенние листья
+tile.traverse:yellow_autumnal_sapling.name=Жёлтый осенний саженец
+
+tile.traverse:fir_sapling.name=Саженец пихты
+tile.traverse:fir_leaves.name=Листва пихты
+tile.traverse:fir_log.name=Древесина пихты
+tile.traverse:fir_planks.name=Доски из пихты
+tile.traverse:fir_stairs.name=Ступеньки из пихты
+tile.traverse:fir_slab.name=Плита из пихты
+tile.traverse:fir_door.name=Дверь из пихты
+tile.traverse:fir_fence.name=Забор из пихты
+tile.traverse:fir_fence_gate.name=Калитка из пихты
+
+tile.traverse:red_rock.name=Красный камень
+tile.traverse:red_rock_bricks.name=Кирпичи из красного камня
+tile.traverse:red_rock_bricks_stairs.name=Ступеньки из кирпичей красного камня
+tile.traverse:red_rock_bricks_slab.name=Плита из кирпичей красного камня
+tile.traverse:red_rock_bricks_chiseled.name=Резные кирпичи из красного камня
+tile.traverse:red_rock_bricks_cracked.name=Потрескавшиеся кирпичи из красного камня
+tile.traverse:red_rock_slab.name=Плита из красного камня
+tile.traverse:red_rock_cobblestone.name=Булыжник красного камня
+tile.traverse:red_rock_cobblestone_stairs.name=Ступеньки из булыжника красного камня
+tile.traverse:red_rock_cobblestone_slab.name=Плита из булыжника красного камня
+tile.traverse:red_rock_cobblestone_wall.name=Ограда из булыжника красного камня
+
+tile.traverse:blue_rock.name=Скалистый камень
+tile.traverse:blue_rock_bricks.name=Кирпичи из скалистого камня
+tile.traverse:blue_rock_bricks_stairs.name=Ступеньки из кирпичей скалистого камня
+tile.traverse:blue_rock_bricks_slab.name=Плита из кирпичей скалистого камня
+tile.traverse:blue_rock_bricks_chiseled.name=Резные кирпичи из скалистого камня
+tile.traverse:blue_rock_bricks_cracked.name=Потрескавшиеся кирпичи из скалистого камня
+tile.traverse:blue_rock_slab.name=Плита из скалистого камня
+tile.traverse:blue_rock_cobblestone.name=Булыжник скалистого камня
+tile.traverse:blue_rock_cobblestone_stairs.name=Ступеньки из булыжника скалистого камня
+tile.traverse:blue_rock_cobblestone_slab.name=Плита из булыжника скалистого камня
+tile.traverse:blue_rock_cobblestone_wall.name=Ограда из булыжника скалистого камня
+
+tile.traverse:dead_grass.name=Мёртвая трава
+tile.traverse:cold_grass.name=Замёрзшая трава

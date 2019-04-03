@@ -1,0 +1,50 @@
+itemGroup.traverse=Traverse
+
+tile.traverse:brown_autumnal_leaves.name=Foglie di Albero Autunnale Marrone
+tile.traverse:brown_autumnal_sapling.name=Arboscello di Albero Autunnale Marrone
+
+tile.traverse:orange_autumnal_leaves.name=Foglie di Albero Autunnale Arancione
+tile.traverse:orange_autumnal_sapling.name=Arboscello di Albero Autunnale Arancione
+
+tile.traverse:red_autumnal_leaves.name=Foglie di Albero Autunnale Rosso
+tile.traverse:red_autumnal_sapling.name=Arboscello di Albero Autunnale Rosso
+
+tile.traverse:yellow_autumnal_leaves.name=Foglie di Albero Autunnale Giallo
+tile.traverse:yellow_autumnal_sapling.name=Arboscello di Albero Autunnale Giallo
+
+tile.traverse:fir_sapling.name=Arboscello di Abete
+tile.traverse:fir_leaves.name=Foglie di Abete
+tile.traverse:fir_log.name=Legno di Abete
+tile.traverse:fir_planks.name=Assi di Abete
+tile.traverse:fir_stairs.name=Scalini di Abete
+tile.traverse:fir_slab.name=Lastra di Abete
+tile.traverse:fir_door.name=Porta di Abete
+tile.traverse:fir_fence.name=Staccionata di Abete
+tile.traverse:fir_fence_gate.name=Cancelletto di Abete
+
+tile.traverse:red_rock.name=Roccia Rossa
+tile.traverse:red_rock_bricks.name=Mattoni di Roccia Rossa
+tile.traverse:red_rock_bricks_stairs.name=Scalini di Mattoni di Roccia Rossa
+tile.traverse:red_rock_bricks_slab.name=Lastra di Mattoni di Roccia Rossa
+tile.traverse:red_rock_bricks_chiseled.name=Mattoni di Roccia Rossa Cesellati
+tile.traverse:red_rock_bricks_cracked.name=Mattoni di Roccia Rossa Incrinati
+tile.traverse:red_rock_slab.name=Lastra di Roccia Rossa
+tile.traverse:red_rock_cobblestone.name=Pietra Rossa
+tile.traverse:red_rock_cobblestone_stairs.name=Scalini di Pietra Rossa
+tile.traverse:red_rock_cobblestone_slab.name=Lastra di Pietra Rossa
+tile.traverse:red_rock_cobblestone_wall.name=Muro di Pietra Rossa
+
+tile.traverse:blue_rock.name=Roccia Blu
+tile.traverse:blue_rock_bricks.name=Mattoni di Roccia Blu
+tile.traverse:blue_rock_bricks_stairs.name=Scalini di Mattoni di Roccia Blu
+tile.traverse:blue_rock_bricks_slab.name=Lastra di Mattoni di Roccia Blu
+tile.traverse:blue_rock_bricks_chiseled.name=Mattoni di Roccia Blu Cesellati
+tile.traverse:blue_rock_bricks_cracked.name=Mattoni di Roccia Blu Incrinati
+tile.traverse:blue_rock_slab.name=Lastra di Roccia Blu
+tile.traverse:blue_rock_cobblestone.name=Pietra Blu
+tile.traverse:blue_rock_cobblestone_stairs.name=Scalini di Pietra Blu
+tile.traverse:blue_rock_cobblestone_slab.name=Lastra di Pietra Blu
+tile.traverse:blue_rock_cobblestone_wall.name=Muro di Pietra Blu
+
+tile.traverse:dead_grass.name=Erba Morta
+tile.traverse:cold_grass.name=Erba Fredda

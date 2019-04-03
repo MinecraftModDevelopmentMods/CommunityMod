@@ -10,7 +10,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-@EventBusSubscriber
+@EventBusSubscriber(value=Side.CLIENT) // TODO: This should probably be moved into its own ISubMod
 public class MenuEventHandler {
 
 	@SubscribeEvent

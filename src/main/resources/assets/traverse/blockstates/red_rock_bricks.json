@@ -1,0 +1,34 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cube_all",
+    "textures": {
+      "all": "traverse:block/red_rock/brick"
+    }
+  },
+  "variants": {
+    "inventory": {
+      "transform": "forge:default-block"
+    },
+    "normal": [
+      {
+        "textures": {
+          "all": "traverse:block/red_rock/brick"
+        },
+        "weight": 18
+      },
+      {
+        "textures": {
+          "all": "traverse:block/red_rock/brick1"
+        },
+        "weight": 4
+      },
+      {
+        "textures": {
+          "all": "traverse:block/red_rock/brick2"
+        },
+        "weight": 3
+      }
+    ]
+  }
+}
