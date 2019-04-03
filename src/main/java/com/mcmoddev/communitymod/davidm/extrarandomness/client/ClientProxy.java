@@ -31,6 +31,5 @@ public class ClientProxy implements IProxy {
 		GlStateManager.glNewList(sphereInId, GL11.GL_COMPILE);
 		sphere.draw(0.5F, 32, 32);
 		sphere.draw(0.5F, 32, 32);
-		System.out.println("Yay proxy");
 	}
 }

@@ -5,5 +5,4 @@ import com.mcmoddev.communitymod.davidm.extrarandomness.core.EnumAltarAnimation;
 public interface IAltarAnimation {
 
 	public EnumAltarAnimation animationType();
-	public int animationLength();
 }

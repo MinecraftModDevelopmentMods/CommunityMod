@@ -11,6 +11,7 @@ import com.mcmoddev.communitymod.davidm.extrarandomness.common.block.BlockAltar;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.GoldenEgg;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.LexWand;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.Shocker;
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketAltarAnimation;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketRequestUpdateAltar;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketUpdateAltar;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.tileentity.TileEntityAltar;
@@ -55,6 +56,7 @@ public class ExtraRandomness implements ISubMod {
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(CommunityGlobals.MOD_ID);
 		network.registerMessage(new PacketUpdateAltar.Handler(), PacketUpdateAltar.class, 0, Side.CLIENT);
 		network.registerMessage(new PacketRequestUpdateAltar.Handler(), PacketRequestUpdateAltar.class, 1, Side.SERVER);
+		network.registerMessage(new PacketAltarAnimation.Handler(), PacketAltarAnimation.class, 2, Side.CLIENT);
 	}
 	
 	@Override

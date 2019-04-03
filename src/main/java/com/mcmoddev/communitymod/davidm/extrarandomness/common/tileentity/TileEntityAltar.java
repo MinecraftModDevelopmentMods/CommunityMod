@@ -1,7 +1,6 @@
 package com.mcmoddev.communitymod.davidm.extrarandomness.common.tileentity;
 
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.ExtraRandomness;
-import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.IAltarAnimation;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketRequestUpdateAltar;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketUpdateAltar;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.AltarItem;
@@ -63,23 +62,18 @@ public class TileEntityAltar extends TileEntity implements ITickable {
 	@Override
 	public void update() {
 		if (!this.world.isRemote) {
-			if (this.getStack().getItem() instanceof IAltarAnimation) {
-				IAltarAnimation animationItem = (IAltarAnimation) this.getStack().getItem();
-				if (this.animationProgress++ < animationItem.animationLength()) {
-					this.altarAnimation = animationItem.animationType();
-				} else {
-					this.animationProgress = 0;
-					this.altarAnimation = null;
-				}
-			} else {
-				this.animationProgress = 0;
-				this.altarAnimation = null;
-			}
 			if (this.getStack().getItem() instanceof AltarItem) {
 				AltarItem altarItem = (AltarItem) this.getStack().getItem();
 				if (this.cooldown++ >= altarItem.getCooldown()) {
 					this.cooldown = 0;
 					altarItem.onAltarAction(this.world, this.pos);
+				}
+			}
+		} else {
+			if (this.altarAnimation != null) {
+				if (this.animationProgress++ >= this.altarAnimation.animationLength()) {
+					this.altarAnimation = null;
+					this.animationProgress = 0;
 				}
 			}
 		}
