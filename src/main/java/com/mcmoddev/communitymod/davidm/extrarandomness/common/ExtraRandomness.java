@@ -49,7 +49,7 @@ public class ExtraRandomness implements ISubMod {
 	public static Block blockAltar;
 	public static ItemBlock itemBlockAltar;
 	
-	public static List<AltarItem> altarItems;
+	public static List<Item> altarItems;
 	
 	@Override
 	public void onPreInit(FMLPreInitializationEvent event) {
@@ -61,13 +61,13 @@ public class ExtraRandomness implements ISubMod {
 	
 	@Override
 	public void registerItems(IForgeRegistry<Item> event) {
-		altarItems = new ArrayList<AltarItem>();
+		altarItems = new ArrayList<Item>();
 		
 		itemBlockAltar = RegUtil.registerItemBlock(event, new ItemBlock(blockAltar));
 		
-		altarItems.add(RegUtil.<AltarItem>registerItem(event, new LexWand(), "lex_wand"));
-		altarItems.add(RegUtil.<AltarItem>registerItem(event, new GoldenEgg(), "golden_egg"));
-		altarItems.add(RegUtil.<AltarItem>registerItem(event, new Shocker(), "shocker"));
+		altarItems.add(RegUtil.registerItem(event, new LexWand(), "lex_wand"));
+		altarItems.add(RegUtil.registerItem(event, new GoldenEgg(), "golden_egg"));
+		altarItems.add(RegUtil.registerItem(event, new Shocker(), "shocker"));
 	}
 	
 	@Override
