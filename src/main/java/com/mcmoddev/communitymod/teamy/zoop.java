@@ -17,7 +17,8 @@ import static org.lwjgl.opengl.GL12.*;
 @SubMod(
 		name = "zoop",
 		description = "makes loading screen fun",
-		attribution = "TeamDman"
+		attribution = "TeamDman",
+		clientSideOnly = true
 )
 public class zoop implements ISubMod {
 	public zoop() {
