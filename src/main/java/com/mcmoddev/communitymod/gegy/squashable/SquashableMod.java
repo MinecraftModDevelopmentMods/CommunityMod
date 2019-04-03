@@ -38,9 +38,9 @@ public class SquashableMod implements ISubMod {
 
     private static final SimpleNetworkWrapper NETWORK = new SimpleNetworkWrapper(CommunityGlobals.MOD_ID + ".squashable");
 
-    private static final Field PISTON_PUSH_TIME_FIELD = ObfuscationReflectionHelper.findField(Entity.class, "pistonDeltasGameTime");
-    private static final Field PISTON_DELTAS_FIELD = ObfuscationReflectionHelper.findField(Entity.class, "pistonDeltas");
-    private static final Field RENDERER_MODEL_FIELD = ObfuscationReflectionHelper.findField(RenderLivingBase.class, "mainModel");
+    private static final Field PISTON_PUSH_TIME_FIELD = ObfuscationReflectionHelper.findField(Entity.class, "field_191506_aJ");
+    private static final Field PISTON_DELTAS_FIELD = ObfuscationReflectionHelper.findField(Entity.class, "field_191505_aI");
+    private static final Field RENDERER_MODEL_FIELD = ObfuscationReflectionHelper.findField(RenderLivingBase.class, "field_77045_g");
 
     private static long getPistonPushTime(Entity entity) {
         try {
