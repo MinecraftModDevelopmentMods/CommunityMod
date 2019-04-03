@@ -24,7 +24,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.Random;
 
-@SubMod(name = "Neat Nether", description = "Adds some neat stuff to the Nether", attribution = "Lemons")
+@SubMod(modid = "neatnether", name = "Neat Nether", description = "Adds some neat stuff to the Nether", attribution = "Lemons")
 public class NeatNether implements ISubMod
 {
 	@Override

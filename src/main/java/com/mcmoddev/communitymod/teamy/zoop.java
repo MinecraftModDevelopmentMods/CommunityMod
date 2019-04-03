@@ -1,20 +1,32 @@
 package com.mcmoddev.communitymod.teamy;
 
-import com.mcmoddev.communitymod.ISubMod;
-import com.mcmoddev.communitymod.SubMod;
-import net.minecraftforge.fml.client.SplashProgress;
-import net.minecraftforge.fml.common.ProgressManager;
-import org.lwjgl.opengl.Display;
+import static org.lwjgl.opengl.GL11.GL_QUADS;
+import static org.lwjgl.opengl.GL11.glBegin;
+import static org.lwjgl.opengl.GL11.glColor3ub;
+import static org.lwjgl.opengl.GL11.glEnd;
+import static org.lwjgl.opengl.GL11.glPopMatrix;
+import static org.lwjgl.opengl.GL11.glPushMatrix;
+import static org.lwjgl.opengl.GL11.glRotatef;
+import static org.lwjgl.opengl.GL11.glTranslatef;
+import static org.lwjgl.opengl.GL11.glVertex2f;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-import java.util.*;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Semaphore;
 
-import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL12.*;
+import org.lwjgl.opengl.Display;
+
+import com.mcmoddev.communitymod.ISubMod;
+import com.mcmoddev.communitymod.SubMod;
+
+import net.minecraftforge.fml.client.SplashProgress;
+import net.minecraftforge.fml.common.ProgressManager;
 @SubMod(
+		modid = "zoop",
 		name = "zoop",
 		description = "makes loading screen fun",
 		attribution = "TeamDman"

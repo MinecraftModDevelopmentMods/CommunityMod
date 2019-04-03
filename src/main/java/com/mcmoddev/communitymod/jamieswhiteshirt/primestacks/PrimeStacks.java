@@ -11,6 +11,7 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 @SubMod(
+	modid = "primestacks",
     name = "Prime Stacks",
     description = "Rounds the default max stack size to the previous prime number",
     attribution = "JamiesWhiteShirt"

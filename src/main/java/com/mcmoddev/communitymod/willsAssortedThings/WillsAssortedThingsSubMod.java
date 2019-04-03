@@ -1,9 +1,12 @@
 package com.mcmoddev.communitymod.willsAssortedThings;
 
+import static com.mcmoddev.communitymod.shared.ClientUtil.simpleItemModel;
+
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
 import com.mcmoddev.communitymod.willsAssortedThings.block.ModBlocks;
 import com.mcmoddev.communitymod.willsAssortedThings.item.ModItems;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -12,11 +15,8 @@ import net.minecraftforge.fml.common.FMLLog;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
-import java.util.UUID;
-
-import static com.mcmoddev.communitymod.shared.ClientUtil.simpleItemModel;
-
 @SubMod(
+		modid = "willsthings",
         name = "Will's Assorted Things",
         description = "Assorted things from Willbl3pic",
         attribution = "Willbl3pic"

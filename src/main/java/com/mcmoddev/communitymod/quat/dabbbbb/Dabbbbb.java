@@ -12,6 +12,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
 @SubMod(
+	modid = "dabitem",
 	name = "dabbbbbbb",
 	description = "Adds an item that really makes you say dab",
 	attribution = "quaternary"

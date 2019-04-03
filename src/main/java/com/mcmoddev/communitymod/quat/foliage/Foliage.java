@@ -22,6 +22,7 @@ import java.util.Map;
 import java.util.Random;
 
 @SubMod(
+	modid = "foliage",
 	name = "foliage",
 	description = "Adds foliage color variation!",
 	attribution = "quaternary",

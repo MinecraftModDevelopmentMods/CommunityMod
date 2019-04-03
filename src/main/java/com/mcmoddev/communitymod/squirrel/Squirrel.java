@@ -1,14 +1,37 @@
 package com.mcmoddev.communitymod.squirrel;
 
+import static com.mcmoddev.communitymod.CommunityGlobals.MOD_ID;
+import static com.mcmoddev.communitymod.CommunityGlobals.TAB;
+import static com.mcmoddev.communitymod.shared.ClientUtil.simpleItemModel;
+import static net.minecraft.inventory.EntityEquipmentSlot.CHEST;
+import static net.minecraft.inventory.EntityEquipmentSlot.FEET;
+import static net.minecraft.inventory.EntityEquipmentSlot.HEAD;
+import static net.minecraft.inventory.EntityEquipmentSlot.LEGS;
+
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
+import javax.annotation.Nonnull;
+
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.passive.HorseArmorType;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemAxe;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemHoe;
+import net.minecraft.item.ItemPickaxe;
+import net.minecraft.item.ItemSpade;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos.PooledMutableBlockPos;
 import net.minecraft.world.gen.feature.WorldGenMinable;
@@ -16,23 +39,13 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
-import javax.annotation.Nonnull;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-
-import static com.mcmoddev.communitymod.CommunityGlobals.MOD_ID;
-import static com.mcmoddev.communitymod.CommunityGlobals.TAB;
-import static com.mcmoddev.communitymod.shared.ClientUtil.simpleItemModel;
-import static net.minecraft.inventory.EntityEquipmentSlot.*;
-import static net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
-
-@SubMod(name = "Squirrel", attribution = "Cadiboo")
+@SubMod(modid = "squirrel", name = "Squirrel", attribution = "Cadiboo")
 @ObjectHolder(MOD_ID)
 public final class Squirrel implements ISubMod {
 

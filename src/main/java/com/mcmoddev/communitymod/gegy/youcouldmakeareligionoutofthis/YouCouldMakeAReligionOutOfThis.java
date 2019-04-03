@@ -20,6 +20,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.Random;
 
 @SubMod(
+		modid = "youcouldmakeareligionoutofthis",
         name = "youcouldmakeareligionoutofthis",
         description = "You know, you really could make a religion out of this",
         attribution = "Bill Wurtz (& gegy1000)"

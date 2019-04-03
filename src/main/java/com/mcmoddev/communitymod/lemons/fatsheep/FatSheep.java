@@ -23,7 +23,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.Random;
 
-@SubMod(name = "Fat Sheep", description = "Fixes sheep not getting fat", attribution = "Lemons")
+@SubMod(modid = "fatsheep", name = "Fat Sheep", description = "Fixes sheep not getting fat", attribution = "Lemons")
 public class FatSheep implements ISubMod
 {
 

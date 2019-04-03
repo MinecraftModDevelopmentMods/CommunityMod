@@ -23,6 +23,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import java.util.Random;
 
 @SubMod(
+		modid = "nyan",
 		name = "Nyan",
 		description = "Fixes the frankly unacceptable lack of nyan entities in Minecraft",
 		attribution = "TheRandomLabs"

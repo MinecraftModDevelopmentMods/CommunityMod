@@ -8,7 +8,7 @@ import com.mcmoddev.communitymod.SubMod;
 import net.minecraftforge.fml.common.FMLLog;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@SubMod(name = "Example SubMod", attribution = "MMD Team")
+@SubMod(modid = "examplemod", name = "Example SubMod", attribution = "MMD Team")
 public class ModTest implements ISubMod {
     
     private final String[] messages = { "Loading herobrine", "Deleting save files", "Subscribing to Vazkii on Patreon", "Teleporting behind you", "Preparing to *nuzzles*" };

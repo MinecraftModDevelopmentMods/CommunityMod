@@ -8,6 +8,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import java.util.regex.Pattern;
 
 @SubMod(
+	modid = "vazkii",
     name = "mod by vazkii",
     description = "mod by vazkii",
     attribution = "JamiesWhiteShirt",

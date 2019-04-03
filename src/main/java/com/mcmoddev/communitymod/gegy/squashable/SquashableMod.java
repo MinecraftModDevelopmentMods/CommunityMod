@@ -28,6 +28,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.lang.reflect.Field;
 
 @SubMod(
+		modid = "squashable",
         name = "squashable",
         description = "Flatten entities with a piston",
         attribution = "gegy1000"

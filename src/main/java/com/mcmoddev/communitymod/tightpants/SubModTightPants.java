@@ -20,7 +20,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
-@SubMod(name = "Tight Pants", attribution = "Darkhax", description = "Lets you can wear the tightest of pants!")
+@SubMod(modid = "tightpants", name = "Tight Pants", attribution = "Darkhax", description = "Lets you can wear the tightest of pants!")
 public class SubModTightPants implements ISubMod {
 	
 	private static Item tightPants = new ItemTightPants();

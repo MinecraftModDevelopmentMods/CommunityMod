@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.registries.IForgeRegistry;
 
-@SubMod(name = "Ants", description = "This is how you get ants", attribution = "Commoble")
+@SubMod(modid = "ants", name = "Ants", description = "This is how you get ants", attribution = "Commoble")
 @Mod.EventBusSubscriber(modid = "community_mod")
 public class SubmodAnts implements ISubMod
 {

@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.registries.IForgeRegistry;
 
-@SubMod(name = "IntradimensionalPortals", description = "holes in the sky", attribution = "Commoble")
+@SubMod(modid = "intradimensionalportals", name = "IntradimensionalPortals", description = "holes in the sky", attribution = "Commoble")
 public class SubmodIntradimensionalPortals implements ISubMod
 {
 	@SidedProxy(clientSide="com.mcmoddev.communitymod.commoble.intradimensional_portals.client.IntraportalClientProxy",

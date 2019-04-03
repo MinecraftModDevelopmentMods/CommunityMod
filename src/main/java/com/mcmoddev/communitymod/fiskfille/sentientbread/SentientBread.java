@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import java.util.Random;
 
-@SubMod(name = "Sentient Bread", description = "Bread will plead for its life if you try to eat it.", attribution = "FiskFille", clientSideOnly = true)
+@SubMod(modid = "sentientbread", name = "Sentient Bread", description = "Bread will plead for its life if you try to eat it.", attribution = "FiskFille", clientSideOnly = true)
 public class SentientBread implements ISubMod
 {
     private static final String[] MESSAGES_STOP = {

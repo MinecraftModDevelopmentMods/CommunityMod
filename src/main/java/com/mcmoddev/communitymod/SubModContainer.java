@@ -12,13 +12,13 @@ public class SubModContainer {
 
 	private final String id;
 	
-	public SubModContainer(String name, String description, String attribution, ISubMod subMod) {
+	public SubModContainer(String name, String description, String attribution, ISubMod subMod, String id) {
 		
 		this.name = name;
 		this.description = description;
 		this.attribution = attribution;
 		this.subMod = subMod;
-		this.id = name.replaceAll(" ","_").replaceAll("(\\\\W|^_)*", "").toLowerCase();
+		this.id = id;
 	}
 
 	public String getName() {
@@ -38,7 +38,6 @@ public class SubModContainer {
 	}
 	
 	public String getId() {
-		
 		return id;
 	}
 }

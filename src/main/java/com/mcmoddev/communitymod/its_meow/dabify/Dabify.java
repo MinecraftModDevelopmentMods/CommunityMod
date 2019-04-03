@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
 
 import java.util.Random;
 
-@SubMod(name = "Dabify", description = "Get dabbed on every tick", attribution = "its_meow", clientSideOnly = true)
+@SubMod(modid = "dabify", name = "Dabify", description = "Get dabbed on every tick", attribution = "its_meow", clientSideOnly = true)
 public class Dabify implements ISubMod {
 
 	private final String[] messages = { "Dabbing on em", "Supercharging dab engine", "Banishing Vazkii to hell", "Dabification Initializationification", "Overusing the dab joke" };

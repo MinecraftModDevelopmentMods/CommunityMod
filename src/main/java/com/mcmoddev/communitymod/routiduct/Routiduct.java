@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-@SubMod(name = "Routiduct", attribution = "pippity poppity prospector")
+@SubMod(modid = "routiduct", name = "Routiduct", attribution = "pippity poppity prospector")
 public class Routiduct implements ISubMod {
 
     @SidedProxy(clientSide = RoutiductConstants.CLIENT_PROXY_CLASS, serverSide = RoutiductConstants.SERVER_PROXY_CLASS)

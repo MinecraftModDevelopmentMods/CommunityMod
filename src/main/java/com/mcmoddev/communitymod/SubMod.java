@@ -33,4 +33,11 @@ public @interface SubMod {
      * This can be used to make your module only load on the client.
      */
     boolean clientSideOnly() default false;
+    
+    /**
+     * Define the sub modid of your submod here. This is required for all submods.
+     * This is not a forge modid, it cannot conflict with forge mods- but it can conflict with other submods.
+     * Must be all lowercase, or your submod will fail to load with an exception.
+     */
+    String modid(); 
 }

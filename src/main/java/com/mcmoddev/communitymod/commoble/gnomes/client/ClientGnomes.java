@@ -8,7 +8,7 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@SubMod(name = "Gnomes Client", description = "Client side submod for the gnomes", attribution = "Commoble", clientSideOnly = true)
+@SubMod(modid = "gnomesclient", name = "Gnomes Client", description = "Client side submod for the gnomes", attribution = "Commoble", clientSideOnly = true)
 @Mod.EventBusSubscriber(modid = "community_mod")
 public class ClientGnomes implements ISubMod
 {

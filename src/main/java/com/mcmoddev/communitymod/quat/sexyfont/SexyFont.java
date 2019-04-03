@@ -21,6 +21,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
 @SubMod(
+	modid = "sexyfont",
 	name = "sexyfont",
 	description = "Makes the Minecraft font very sexy!",
 	attribution = "quaternary"

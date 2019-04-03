@@ -12,7 +12,7 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.FMLLog;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 
-@SubMod(name = "Chickenificator", description = "Replaces things with chickens", attribution = "its_meow", clientSideOnly = true)
+@SubMod(modid = "chickenificator", name = "Chickenificator", description = "Replaces things with chickens", attribution = "its_meow", clientSideOnly = true)
 public class Chickenificator implements ISubMod {
 
 	@SuppressWarnings("deprecation")

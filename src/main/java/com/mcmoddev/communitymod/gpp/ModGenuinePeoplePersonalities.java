@@ -29,7 +29,7 @@ import javax.annotation.Nullable;
 import java.util.Random;
 import java.util.UUID;
 
-@SubMod(name = "Genuine People Personalities", attribution = "Sirius Cybernetics Corporation", clientSideOnly = true)
+@SubMod(modid = "gpp", name = "Genuine People Personalities", attribution = "Sirius Cybernetics Corporation", clientSideOnly = true)
 public class ModGenuinePeoplePersonalities implements ISubMod {
     private static String obnoxious = TextFormatting.AQUA + "" + TextFormatting.BOLD;
     private static Object2IntOpenHashMap<UUID> cooldownMap = new Object2IntOpenHashMap<>();

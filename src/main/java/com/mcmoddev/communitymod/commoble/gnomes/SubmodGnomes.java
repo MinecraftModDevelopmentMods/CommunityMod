@@ -23,7 +23,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.registries.IForgeRegistry;
 
-@SubMod(name = "Gnomes", description = "Implemegnts gnomes", attribution = "Commoble")
+@SubMod(modid = "gnomes", name = "Gnomes", description = "Implemegnts gnomes", attribution = "Commoble")
 public class SubmodGnomes implements ISubMod
 {
 	@ObjectHolder(CommunityGlobals.MOD_ID + ":" + "gnome_cache")

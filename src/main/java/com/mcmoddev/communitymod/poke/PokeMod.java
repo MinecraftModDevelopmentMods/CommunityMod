@@ -32,7 +32,7 @@ import static com.mcmoddev.communitymod.shared.ClientUtil.simpleItemModel;
 import static net.minecraft.inventory.EntityEquipmentSlot.*;
 import static net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 
-@SubMod(name = "Poke", attribution = "Cadiboo")
+@SubMod(modid = "poke", name = "Poke", attribution = "Cadiboo")
 @ObjectHolder(MOD_ID)
 public final class PokeMod implements ISubMod {
 

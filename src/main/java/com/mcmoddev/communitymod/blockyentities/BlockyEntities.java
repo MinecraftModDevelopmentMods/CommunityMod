@@ -31,7 +31,7 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 
-@SubMod(name = "blocky entities", attribution = "Snakefangox")
+@SubMod(modid = "blockyentities", name = "blocky entities", attribution = "Snakefangox")
 @EventBusSubscriber
 public class BlockyEntities implements ISubMod {
 

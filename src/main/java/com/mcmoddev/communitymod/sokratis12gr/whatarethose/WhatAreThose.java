@@ -1,9 +1,9 @@
 package com.mcmoddev.communitymod.sokratis12gr.whatarethose;
 
+import java.util.Random;
+
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,11 +13,11 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
-import java.util.Random;
-
 @SubMod(
+	modid = "whatarethose",
     name = "What are Those",
     description = "WHAT ARE THOOOOOSE!?",
     attribution = "sokratis12GR"

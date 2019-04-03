@@ -23,7 +23,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 @Mod.EventBusSubscriber(modid = CommunityGlobals.MOD_ID, value = Side.CLIENT)
-@SubMod(name = "BiJumpClient", attribution = "SkyHawkB", clientSideOnly = true)
+@SubMod(modid = "bijumpclient", name = "BiJumpClient", attribution = "SkyHawkB", clientSideOnly = true)
 public class BoingHandler implements ISubMod {
     /*
 		I'm Also Making a whole submod for this because i couldn't be bothered making proxies

@@ -1,9 +1,11 @@
 package com.mcmoddev.communitymod.its_meow.infinitepain;
 
 import com.mcmoddev.communitymod.CommunityGlobals;
+import com.mcmoddev.communitymod.DependsOn;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
 import com.mcmoddev.communitymod.shared.ClientUtil;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -22,7 +24,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
-@SubMod(name = "Infinite Pain", description = "Now you fall forever because I said so", attribution = "its_meow")
+@DependsOn(modid = "infinitepain", depend = {"dabitem"})
+@SubMod(modid = "infinitepain", name = "Infinite Pain", description = "Now you fall forever because I said so", attribution = "its_meow")
 public class InfinitePain implements ISubMod {
 
 	public static final ItemArmor PAIN_BOOTS = (ItemArmor) new ItemArmor(ArmorMaterial.LEATHER, 0, EntityEquipmentSlot.FEET).setRegistryName(new ResourceLocation(CommunityGlobals.MOD_ID, "pain_boots")).setCreativeTab(CommunityGlobals.TAB).setTranslationKey(CommunityGlobals.MOD_ID + ".pain_boots");

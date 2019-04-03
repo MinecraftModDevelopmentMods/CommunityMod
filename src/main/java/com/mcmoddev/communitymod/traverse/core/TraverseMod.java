@@ -17,7 +17,7 @@ import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-@SubMod(name = "Traverse", attribution = "prospectus dude")
+@SubMod(modid = "traverse", name = "Traverse", attribution = "prospectus dude")
 public class TraverseMod implements ISubMod {
 
     @SidedProxy(clientSide = TraverseConstants.CLIENT_PROXY_CLASS, serverSide = TraverseConstants.SERVER_PROXY_CLASS)

@@ -1,13 +1,13 @@
 package com.mcmoddev.communitymod.therealpoke;
 
+import java.util.regex.Pattern;
+
 import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
 import com.mcmoddev.communitymod.shared.RegUtil;
+
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.audio.ISound;
-import net.minecraft.client.audio.PositionedSoundRecord;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.client.event.ClientChatEvent;
@@ -16,11 +16,9 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.registries.IForgeRegistry;
-
-import java.util.regex.Pattern;
 
 @SubMod(
+		modid = "gnulinux",
         name = "GNULinux",
         description = "it's GNU/Linux",
         attribution = "Poke"

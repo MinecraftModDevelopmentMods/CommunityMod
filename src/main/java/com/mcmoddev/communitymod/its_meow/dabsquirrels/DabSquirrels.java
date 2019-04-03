@@ -22,7 +22,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 import java.util.Random;
 import java.util.Set;
 
-@SubMod(name = "Dab Squirrels", attribution = "its_meow")
+@SubMod(modid = "dabsquirrels", name = "Dab Squirrels", attribution = "its_meow")
 public class DabSquirrels implements ISubMod {
     
 	private final String[] messages = { "Increasing dabaliciousness of squirrels", "Creating dab engine", "Deleting Vazkii from existence", "Increasing dab version", "Enjoying some dabalicious nuts with some squirrel" };

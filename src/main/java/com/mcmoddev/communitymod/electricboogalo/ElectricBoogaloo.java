@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.regex.Pattern;
 
-@SubMod(name = "Electric Boogaloo", attribution = "Lomeli", clientSideOnly = true,
+@SubMod(modid = "submod2electricboogaloo", name = "Electric Boogaloo", attribution = "Lomeli", clientSideOnly = true,
         description = "Adds \": Electric Boogaloo\" to items with 2s at the end of their tooltips")
 public class ElectricBoogaloo implements ISubMod {
     private static String[] twosList;

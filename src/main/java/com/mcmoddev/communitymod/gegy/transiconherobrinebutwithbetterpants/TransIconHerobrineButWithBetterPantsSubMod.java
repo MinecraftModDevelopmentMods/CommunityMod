@@ -13,6 +13,7 @@ import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
 import net.minecraftforge.registries.IForgeRegistry;
 
 @SubMod(
+		modid = "transiconherobrinebutwithbetterpants",
         name = "transiconherobrinebutwithbetterpants",
         description = "Trans Icon Herobrine (but with better pants)",
         attribution = "anon1449, gegy1000"

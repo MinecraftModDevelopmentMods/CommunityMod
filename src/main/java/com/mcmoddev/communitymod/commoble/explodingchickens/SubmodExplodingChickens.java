@@ -21,7 +21,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 import java.util.HashSet;
 import java.util.Set;
 
-@SubMod(name = "Exploding Chickens", description = "Like chickens but louder", attribution = "Commoble")
+@SubMod(modid = "explodingchickens", name = "Exploding Chickens", description = "Like chickens but louder", attribution = "Commoble")
 public class SubmodExplodingChickens implements ISubMod
 {
 	public static Set<Biome> most_biomes = new HashSet<Biome>();

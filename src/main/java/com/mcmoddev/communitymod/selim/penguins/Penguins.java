@@ -25,7 +25,7 @@ import java.util.Map.Entry;
  * <a href="https://minecraft.curseforge.com/projects/penguins">Selim's
  * Penguins</a> mod
  */
-@SubMod(name = "selim_penguins", attribution = "Selim")
+@SubMod(modid = "selim_penguins", name = "selim_penguins", attribution = "Selim")
 public class Penguins implements ISubMod {
 
 	@Override

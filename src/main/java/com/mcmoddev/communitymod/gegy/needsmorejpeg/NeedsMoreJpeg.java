@@ -22,6 +22,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
 @SubMod(
+		modid  = "jpeg",
         name = "needsmorejpeg",
         description = "We need more JPEG",
         attribution = "gegy1000"
