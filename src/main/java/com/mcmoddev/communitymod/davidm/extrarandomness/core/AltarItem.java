@@ -22,8 +22,10 @@ public abstract class AltarItem extends Item {
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		tooltip.add(TextFormatting.AQUA + I18n.format("tooltip.community_mod.altar_item"));
+		tooltip.add(TextFormatting.AQUA + this.getExtraInfo());
 	}
 	
 	public abstract int getCooldown();
+	public abstract String getExtraInfo();
 	public abstract void onAltarAction(World world, BlockPos pos);
 }

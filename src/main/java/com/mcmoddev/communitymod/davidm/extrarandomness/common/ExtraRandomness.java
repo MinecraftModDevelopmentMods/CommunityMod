@@ -10,11 +10,12 @@ import com.mcmoddev.communitymod.davidm.extrarandomness.client.render.RenderAlta
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.block.BlockAltar;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.GoldenEgg;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.LexWand;
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.Shocker;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketRequestUpdateAltar;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketUpdateAltar;
-import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketUpdateAltar.Handler;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.tileentity.TileEntityAltar;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.AltarItem;
+import com.mcmoddev.communitymod.davidm.extrarandomness.core.IProxy;
 import com.mcmoddev.communitymod.shared.ClientUtil;
 import com.mcmoddev.communitymod.shared.RegUtil;
 
@@ -23,6 +24,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
@@ -35,6 +38,12 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class ExtraRandomness implements ISubMod {
 
 	public static SimpleNetworkWrapper network;
+	
+	@SidedProxy(
+			clientSide = "com.mcmoddev.communitymod.davidm.extrarandomness.client.ClientProxy",
+			serverSide = "com.mcmoddev.communitymod.davidm.extrarandomness.common.ServerProxy"
+	)
+	public static IProxy proxy;
 	
 	public static Block blockAltar;
 	public static ItemBlock itemBlockAltar;
@@ -56,6 +65,7 @@ public class ExtraRandomness implements ISubMod {
 		
 		altarItems.add(RegUtil.<AltarItem>registerItem(event, new LexWand(), "lex_wand"));
 		altarItems.add(RegUtil.<AltarItem>registerItem(event, new GoldenEgg(), "golden_egg"));
+		altarItems.add(RegUtil.<AltarItem>registerItem(event, new Shocker(), "shocker"));
 	}
 	
 	@Override
@@ -74,5 +84,10 @@ public class ExtraRandomness implements ISubMod {
 		
 		// I am lazy.
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAltar.class, new RenderAltar());
+	}
+	
+	@Override
+	public void onInit(FMLInitializationEvent event) {
+		proxy.init();
 	}
 }

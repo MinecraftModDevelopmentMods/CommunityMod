@@ -2,6 +2,7 @@ package com.mcmoddev.communitymod.davidm.extrarandomness.common.item;
 
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.AltarItem;
 
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.projectile.EntityEgg;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -11,6 +12,11 @@ public class GoldenEgg extends AltarItem {
 	@Override
 	public int getCooldown() {
 		return 2;
+	}
+	
+	@Override
+	public String getExtraInfo() {
+		return I18n.format("tooltip.community_mod.golden_egg_extra");
 	}
 
 	@Override

@@ -1,9 +1,11 @@
 package com.mcmoddev.communitymod.davidm.extrarandomness.common.tileentity;
 
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.ExtraRandomness;
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.IAltarAnimation;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketRequestUpdateAltar;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketUpdateAltar;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.AltarItem;
+import com.mcmoddev.communitymod.davidm.extrarandomness.core.EnumAltarAnimation;
 
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -30,6 +32,9 @@ public class TileEntityAltar extends TileEntity implements ITickable {
 	};
 	
 	private int cooldown;
+	
+	public EnumAltarAnimation altarAnimation;
+	public int animationProgress;
 	
 	public void rightClick(EntityPlayer player) {
 		if (this.getStack().isEmpty()) {
@@ -58,6 +63,18 @@ public class TileEntityAltar extends TileEntity implements ITickable {
 	@Override
 	public void update() {
 		if (!this.world.isRemote) {
+			if (this.getStack().getItem() instanceof IAltarAnimation) {
+				IAltarAnimation animationItem = (IAltarAnimation) this.getStack().getItem();
+				if (this.animationProgress++ < animationItem.animationLength()) {
+					this.altarAnimation = animationItem.animationType();
+				} else {
+					this.animationProgress = 0;
+					this.altarAnimation = null;
+				}
+			} else {
+				this.animationProgress = 0;
+				this.altarAnimation = null;
+			}
 			if (this.getStack().getItem() instanceof AltarItem) {
 				AltarItem altarItem = (AltarItem) this.getStack().getItem();
 				if (this.cooldown++ >= altarItem.getCooldown()) {

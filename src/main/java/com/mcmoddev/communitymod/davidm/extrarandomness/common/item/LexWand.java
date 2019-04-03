@@ -32,12 +32,18 @@ public class LexWand extends AltarItem {
 			"for being ANNOYING!!!",
 			"because DO NOT insult staffs!!!",
 			"because don't SPAM!!!",
-			"for creating a CRACKED client!!!"
+			"for creating a CRACKED client!!!",
+			"because DON'T you correct my grammar!!!"
 	};
 	
 	@Override
 	public int getCooldown() {
 		return 60;
+	}
+	
+	@Override
+	public String getExtraInfo() {
+		return I18n.format("tooltip.community_mod.lex_wand_extra");
 	}
 
 	@Override

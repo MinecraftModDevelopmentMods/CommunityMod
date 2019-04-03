@@ -49,7 +49,7 @@ public class PacketRequestUpdateAltar implements IMessage {
 				World world = FMLCommonHandler.instance().getMinecraftServerInstance().getWorld(message.dimension);
 				TileEntity tileEntity = world.getTileEntity(message.pos);
 				if (tileEntity instanceof TileEntityAltar) {
-					return new PacketRequestUpdateAltar((TileEntityAltar) tileEntity);
+					return new PacketUpdateAltar((TileEntityAltar) tileEntity);
 				}
 			} else {
 				System.out.println("Bad packet (wrong side: CLIENT)!");
