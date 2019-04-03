@@ -1,0 +1,47 @@
+{
+	"textures": {
+		"obsidian": "community_mod:blocks/obsidian",
+		"particle": "community_mod:blocks/obsidian"
+	},
+	"elements": [
+		{
+			"name": "base",
+			"from": [2, 0, 2],
+			"to": [14, 2, 14],
+			"faces": {
+				"north": {"uv": [0, 0, 12, 3], "texture": "#obsidian"},
+				"east": {"uv": [0, 0, 12, 3], "texture": "#obsidian"},
+				"south": {"uv": [0, 0, 12, 3], "texture": "#obsidian"},
+				"west": {"uv": [0, 0, 12, 3], "texture": "#obsidian"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#obsidian"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#obsidian"}
+			}
+		},
+		{
+			"name": "support",
+			"from": [5.5, 2, 5.5],
+			"to": [10.5, 9, 10.5],
+			"faces": {
+				"north": {"uv": [0, 0, 5, 8], "texture": "#obsidian"},
+				"east": {"uv": [0, 0, 5, 8], "texture": "#obsidian"},
+				"south": {"uv": [0, 0, 5, 8], "texture": "#obsidian"},
+				"west": {"uv": [0, 0, 5, 8], "texture": "#obsidian"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#obsidian"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#obsidian"}
+			}
+		},
+		{
+			"name": "top",
+			"from": [4, 9, 4],
+			"to": [12, 11, 12],
+			"faces": {
+				"north": {"uv": [0, 0, 8, 3], "texture": "#obsidian"},
+				"east": {"uv": [0, 0, 8, 3], "texture": "#obsidian"},
+				"south": {"uv": [0, 0, 8, 3], "texture": "#obsidian"},
+				"west": {"uv": [0, 0, 8, 3], "texture": "#obsidian"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#obsidian"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#obsidian"}
+			}
+		}
+	]
+}
