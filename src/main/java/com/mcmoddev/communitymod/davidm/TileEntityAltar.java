@@ -1,11 +1,12 @@
 package com.mcmoddev.communitymod.davidm;
 
-import net.minecraft.client.renderer.texture.ITickable;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ITickable;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.items.ItemStackHandler;
 
 public class TileEntityAltar extends TileEntity implements ITickable {
@@ -15,10 +16,15 @@ public class TileEntityAltar extends TileEntity implements ITickable {
 		@Override
 		protected void onContentsChanged(int slot) {
 			if (!world.isRemote) {
-				
+				DavidM.network.sendToAllAround(
+						new PacketUpdateAltar(TileEntityAltar.this),
+						new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 64)
+				);
 			}
 		}
 	};
+	
+	private int cooldown;
 	
 	public void rightClick(EntityPlayer player) {
 		if (this.getStack().isEmpty()) {
@@ -45,19 +51,36 @@ public class TileEntityAltar extends TileEntity implements ITickable {
 	}
 
 	@Override
-	public void tick() {
-		
+	public void update() {
+		if (!this.world.isRemote) {
+			if (this.getStack().getItem() instanceof AltarItem) {
+				AltarItem altarItem = (AltarItem) this.getStack().getItem();
+				if (this.cooldown++ >= altarItem.getCooldown()) {
+					this.cooldown = 0;
+					altarItem.onAltarAction(this.world, this.pos);
+				}
+			}
+		}
+	}
+	
+	@Override
+	public void onLoad() {
+		if (world.isRemote) {
+			DavidM.network.sendToServer(new PacketRequestUpdateAltar(this));
+		}
 	}
 	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		compound.setTag("inventory", this.inventory.serializeNBT());
+		compound.setInteger("cooldown", this.cooldown);
 		return super.writeToNBT(compound);
 	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		inventory.deserializeNBT(compound.getCompoundTag("inventory"));
+		this.cooldown = compound.getInteger("cooldown");
 		super.readFromNBT(compound);
 	}
 }

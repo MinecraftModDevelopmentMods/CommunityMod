@@ -1,6 +1,7 @@
 package com.mcmoddev.communitymod.davidm;
 
 import java.util.List;
+import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -14,6 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -47,11 +49,32 @@ public class BlockAltar extends Block {
 		if (tileEntity instanceof TileEntityAltar) {
 			ItemStack stack = ((TileEntityAltar) tileEntity).getStack();
 			if (!stack.isEmpty()) {
-				EntityItem drop = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack);
+				EntityItem drop = new EntityItem(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, stack);
 				world.spawnEntity(drop);
 			}
 		}
 		super.breakBlock(world, pos, state);
+	}
+	
+	@Override
+	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
+		TileEntity tileEntity = world.getTileEntity(pos);
+		if (tileEntity instanceof TileEntityAltar) {
+			ItemStack stack = ((TileEntityAltar) tileEntity).getStack();
+			if (stack.getItem() instanceof AltarItem) {
+				for (int i = 0; i < 10; i++) {
+					int xOffset = rand.nextInt(2) * 2 - 1;
+					int zOffset = rand.nextInt(2) * 2 - 1;
+					
+					double xCoord = pos.getX() + 0.5 + 0.25 * xOffset;
+					double yCoord = pos.getY() + rand.nextFloat();
+					double zCoord = pos.getZ() + 0.5 + 0.25 * zOffset;
+					double xSpeed = rand.nextFloat() - 0.5;
+					double zSpeed = rand.nextFloat() - 0.5;
+					world.spawnParticle(EnumParticleTypes.PORTAL, xCoord, yCoord, zCoord, xSpeed, 0, zSpeed);
+				}
+			}
+		}
 	}
 	
 	@Override

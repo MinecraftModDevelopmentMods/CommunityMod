@@ -1,5 +1,8 @@
 package com.mcmoddev.communitymod.davidm;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
@@ -10,6 +13,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
@@ -26,14 +30,22 @@ public class DavidM implements ISubMod {
 	public static Block blockAltar;
 	public static ItemBlock itemBlockAltar;
 	
+	public static List<AltarItem> altarItems;
+	
 	@Override
 	public void onPreInit(FMLPreInitializationEvent event) {
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(CommunityGlobals.MOD_ID);
+		network.registerMessage(new PacketUpdateAltar.Handler(), PacketUpdateAltar.class, 0, Side.CLIENT);
+		network.registerMessage(new PacketRequestUpdateAltar.Handler(), PacketRequestUpdateAltar.class, 1, Side.SERVER);
 	}
 	
 	@Override
 	public void registerItems(IForgeRegistry<Item> event) {
+		altarItems = new ArrayList<AltarItem>();
+		
 		itemBlockAltar = RegUtil.registerItemBlock(event, new ItemBlock(blockAltar));
+		
+		altarItems.add(RegUtil.<AltarItem>registerItem(event, new LexWand(), "lex_wand"));
 	}
 	
 	@Override
@@ -47,5 +59,10 @@ public class DavidM implements ISubMod {
 	@Override
 	public void registerModels(ModelRegistryEvent event) {
 		ClientUtil.simpleItemModel(itemBlockAltar);
+		
+		altarItems.forEach(ClientUtil::simpleItemModel);
+		
+		// I am lazy.
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAltar.class, new RenderAltar());
 	}
 }

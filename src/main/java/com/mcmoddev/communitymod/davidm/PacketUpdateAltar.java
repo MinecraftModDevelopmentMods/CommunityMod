@@ -16,6 +16,14 @@ public class PacketUpdateAltar implements IMessage {
 	private BlockPos pos;
 	private ItemStack stack;
 	
+	public PacketUpdateAltar() {
+		
+	}
+	
+	public PacketUpdateAltar(TileEntityAltar tileEntityAltar) {
+		this(tileEntityAltar.getPos(), tileEntityAltar.getStack());
+	}
+	
 	public PacketUpdateAltar(BlockPos pos, ItemStack stack) {
 		this.pos = pos;
 		this.stack = stack;
@@ -49,7 +57,7 @@ public class PacketUpdateAltar implements IMessage {
 					}
 				});
 			} else {
-				System.out.println("Bad packet (wrong side)!");
+				System.out.println("Bad packet (wrong side: SERVER)!");
 			}
 			return null;
 		}
