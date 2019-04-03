@@ -1,7 +1,10 @@
-package com.mcmoddev.communitymod.davidm;
+package com.mcmoddev.communitymod.davidm.extrarandomness.common.block;
 
 import java.util.List;
 import java.util.Random;
+
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.tileentity.TileEntityAltar;
+import com.mcmoddev.communitymod.davidm.extrarandomness.core.AltarItem;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

@@ -1,4 +1,6 @@
-package com.mcmoddev.communitymod.davidm;
+package com.mcmoddev.communitymod.davidm.extrarandomness.common.item;
+
+import com.mcmoddev.communitymod.davidm.extrarandomness.core.AltarItem;
 
 import net.minecraft.entity.projectile.EntityEgg;
 import net.minecraft.util.math.BlockPos;

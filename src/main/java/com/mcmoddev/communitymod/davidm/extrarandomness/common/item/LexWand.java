@@ -1,7 +1,9 @@
-package com.mcmoddev.communitymod.davidm;
+package com.mcmoddev.communitymod.davidm.extrarandomness.common.item;
 
 import java.util.List;
 import java.util.Random;
+
+import com.mcmoddev.communitymod.davidm.extrarandomness.core.AltarItem;
 
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;

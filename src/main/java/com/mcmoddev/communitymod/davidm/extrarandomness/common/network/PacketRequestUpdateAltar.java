@@ -1,4 +1,6 @@
-package com.mcmoddev.communitymod.davidm;
+package com.mcmoddev.communitymod.davidm.extrarandomness.common.network;
+
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.tileentity.TileEntityAltar;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.tileentity.TileEntity;

@@ -1,4 +1,9 @@
-package com.mcmoddev.communitymod.davidm;
+package com.mcmoddev.communitymod.davidm.extrarandomness.common.tileentity;
+
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.ExtraRandomness;
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketRequestUpdateAltar;
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketUpdateAltar;
+import com.mcmoddev.communitymod.davidm.extrarandomness.core.AltarItem;
 
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,7 +21,7 @@ public class TileEntityAltar extends TileEntity implements ITickable {
 		@Override
 		protected void onContentsChanged(int slot) {
 			if (!world.isRemote) {
-				DavidM.network.sendToAllAround(
+				ExtraRandomness.network.sendToAllAround(
 						new PacketUpdateAltar(TileEntityAltar.this),
 						new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 64)
 				);
@@ -66,7 +71,7 @@ public class TileEntityAltar extends TileEntity implements ITickable {
 	@Override
 	public void onLoad() {
 		if (world.isRemote) {
-			DavidM.network.sendToServer(new PacketRequestUpdateAltar(this));
+			ExtraRandomness.network.sendToServer(new PacketRequestUpdateAltar(this));
 		}
 	}
 	

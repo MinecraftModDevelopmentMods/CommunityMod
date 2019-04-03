@@ -1,4 +1,4 @@
-package com.mcmoddev.communitymod.davidm;
+package com.mcmoddev.communitymod.davidm.extrarandomness.common;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,15 @@ import java.util.List;
 import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
+import com.mcmoddev.communitymod.davidm.extrarandomness.client.render.RenderAltar;
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.block.BlockAltar;
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.GoldenEgg;
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.LexWand;
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketRequestUpdateAltar;
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketUpdateAltar;
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketUpdateAltar.Handler;
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.tileentity.TileEntityAltar;
+import com.mcmoddev.communitymod.davidm.extrarandomness.core.AltarItem;
 import com.mcmoddev.communitymod.shared.ClientUtil;
 import com.mcmoddev.communitymod.shared.RegUtil;
 
@@ -23,7 +32,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
 @SubMod(name = "ExtraRandomness", description = "Read: Bunch of random ideas", attribution = "DavidM")
-public class DavidM implements ISubMod {
+public class ExtraRandomness implements ISubMod {
 
 	public static SimpleNetworkWrapper network;
 	

@@ -1,4 +1,6 @@
-package com.mcmoddev.communitymod.davidm;
+package com.mcmoddev.communitymod.davidm.extrarandomness.client.render;
+
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.tileentity.TileEntityAltar;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;

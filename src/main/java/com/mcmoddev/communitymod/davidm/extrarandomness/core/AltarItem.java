@@ -1,4 +1,4 @@
-package com.mcmoddev.communitymod.davidm;
+package com.mcmoddev.communitymod.davidm.extrarandomness.core;
 
 import java.util.List;
 
