@@ -41,7 +41,6 @@ public class LexWand extends AltarItem {
 	@Override
 	public void onAltarAction(World world, BlockPos pos) {
 		List<Entity> entities = world.getEntitiesWithinAABB(EntityLivingBase.class, AOE.offset(pos));
-		System.out.println(entities.size());
 		if (entities.isEmpty()) return;
 			
 		Entity entity = entities.get(world.rand.nextInt(entities.size()));
