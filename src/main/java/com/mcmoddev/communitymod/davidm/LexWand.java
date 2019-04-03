@@ -35,7 +35,7 @@ public class LexWand extends AltarItem {
 	
 	@Override
 	public int getCooldown() {
-		return 15;
+		return 60;
 	}
 
 	@Override
