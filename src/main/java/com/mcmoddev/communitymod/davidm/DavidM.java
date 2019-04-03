@@ -46,6 +46,7 @@ public class DavidM implements ISubMod {
 		itemBlockAltar = RegUtil.registerItemBlock(event, new ItemBlock(blockAltar));
 		
 		altarItems.add(RegUtil.<AltarItem>registerItem(event, new LexWand(), "lex_wand"));
+		altarItems.add(RegUtil.<AltarItem>registerItem(event, new GoldenEgg(), "golden_egg"));
 	}
 	
 	@Override
