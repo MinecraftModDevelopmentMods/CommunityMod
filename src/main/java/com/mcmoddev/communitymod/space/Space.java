@@ -1,7 +1,5 @@
 package com.mcmoddev.communitymod.space;
 
-import static com.mcmoddev.communitymod.CommunityGlobals.MOD_ID;
-
 import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
