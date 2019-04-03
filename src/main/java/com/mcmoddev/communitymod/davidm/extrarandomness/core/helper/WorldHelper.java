@@ -2,8 +2,6 @@ package com.mcmoddev.communitymod.davidm.extrarandomness.core.helper;
 
 import java.util.List;
 
-import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.LexWand;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -29,7 +27,7 @@ public class WorldHelper {
 	public static <T extends Entity> List<T> getEntitiesInBox(World world, Class<? extends T> entityClass, AxisAlignedBB box) {
 		List<T> entities = world.<T>getEntitiesWithinAABB(entityClass, box);
 		entities.removeIf(
-				entity -> entity instanceof EntityPlayer && ((EntityPlayer) entity).inventory.getCurrentItem().getItem() instanceof LexWand
+				entity -> entity instanceof EntityPlayer && ((EntityPlayer) entity).isCreative()
 		);
 		return entities;
 	}
