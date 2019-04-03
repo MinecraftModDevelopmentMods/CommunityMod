@@ -1,27 +1,25 @@
 package com.mcmoddev.communitymod.erdbeerbaerlp.iconmod;
-import static org.objectweb.asm.Opcodes.*;
+import static org.objectweb.asm.Opcodes.ALOAD;
+import static org.objectweb.asm.Opcodes.GETFIELD;
+import static org.objectweb.asm.Opcodes.INVOKESTATIC;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URL;
-import java.nio.ByteBuffer;
 import java.util.Arrays;
 
-import org.apache.commons.io.FileUtils;
-import org.lwjgl.opengl.Display;
 import org.objectweb.asm.ClassReader;
-import org.objectweb.asm.tree.*;
-import org.objectweb.asm.tree.analysis.Frame;
+import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.tree.AbstractInsnNode;
+import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.tree.FieldInsnNode;
+import org.objectweb.asm.tree.InsnList;
+import org.objectweb.asm.tree.LabelNode;
+import org.objectweb.asm.tree.LdcInsnNode;
+import org.objectweb.asm.tree.MethodInsnNode;
+import org.objectweb.asm.tree.MethodNode;
+import org.objectweb.asm.tree.VarInsnNode;
 
 import com.mcmoddev.communitymod.CommunityGlobals;
-import com.mcmoddev.communitymod.CommunityMod;
 
 import net.minecraft.launchwrapper.IClassTransformer;
-import net.minecraft.util.ResourceLocation;
-import scala.tools.asm.Label;
 
 public class IconClassTransformer implements IClassTransformer{
 	private static final String[] classesBeingTransformed =
@@ -55,7 +53,7 @@ public class IconClassTransformer implements IClassTransformer{
 
 			}
 
-			ModClassWriter classWriter = new ModClassWriter(ModClassWriter.COMPUTE_MAXS | ModClassWriter.COMPUTE_FRAMES);
+			ClassWriter classWriter = new ClassWriter(ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES);
 			classNode.accept(classWriter);
 			return classWriter.toByteArray();
 		}

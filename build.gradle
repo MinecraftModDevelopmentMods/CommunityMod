@@ -52,6 +52,7 @@ minecraft {
     replace '@VERSION@', project.version
     replace '@FINGERPRINT@', project.findProperty('signSHA1')
     replaceIn "${mod_class}.java"
+    clientJvmArgs = serverJvmArgs = ["-Dfml.coreMods.load=com.mcmoddev.communitymod.CommunityCoremodLoadingPlugin"]
 }
 
 processResources {

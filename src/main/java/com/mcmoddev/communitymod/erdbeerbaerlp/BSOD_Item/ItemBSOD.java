@@ -28,6 +28,7 @@ public class ItemBSOD extends Item {
 		return super.onItemRightClick(worldIn, playerIn, handIn);
 	}
 	@Override
+	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		tooltip.clear();
 		tooltip.add(I18n.format("tooltip.community_mod.bsod"));
