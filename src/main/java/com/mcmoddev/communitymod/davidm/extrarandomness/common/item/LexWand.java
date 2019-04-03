@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.AltarItem;
+import com.mcmoddev.communitymod.davidm.extrarandomness.core.helper.WorldHelper;
 
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -49,7 +50,7 @@ public class LexWand extends Item implements AltarItem {
 
 	@Override
 	public void onAltarAction(World world, BlockPos pos) {
-		List<Entity> entities = world.getEntitiesWithinAABB(EntityLivingBase.class, AOE.offset(pos));
+		List<Entity> entities = WorldHelper.getEntitiesInBox(world, EntityLivingBase.class, AOE.offset(pos));
 		if (entities.isEmpty()) return;
 			
 		Entity entity = entities.get(world.rand.nextInt(entities.size()));
