@@ -12,10 +12,9 @@ import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.GoldenEgg;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.LexWand;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.Shocker;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketAltarAnimation;
-import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketRequestUpdateAltar;
-import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketUpdateAltar;
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketRequestUpdateTileEntity;
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketUpdateTileEntity;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.tileentity.TileEntityAltar;
-import com.mcmoddev.communitymod.davidm.extrarandomness.core.AltarItem;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.IProxy;
 import com.mcmoddev.communitymod.shared.ClientUtil;
 import com.mcmoddev.communitymod.shared.RegUtil;
@@ -23,6 +22,7 @@ import com.mcmoddev.communitymod.shared.RegUtil;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -54,8 +54,8 @@ public class ExtraRandomness implements ISubMod {
 	@Override
 	public void onPreInit(FMLPreInitializationEvent event) {
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(CommunityGlobals.MOD_ID);
-		network.registerMessage(new PacketUpdateAltar.Handler(), PacketUpdateAltar.class, 0, Side.CLIENT);
-		network.registerMessage(new PacketRequestUpdateAltar.Handler(), PacketRequestUpdateAltar.class, 1, Side.SERVER);
+		network.registerMessage(new PacketUpdateTileEntity.Handler(), PacketUpdateTileEntity.class, 0, Side.CLIENT);
+		network.registerMessage(new PacketRequestUpdateTileEntity.Handler(), PacketRequestUpdateTileEntity.class, 1, Side.SERVER);
 		network.registerMessage(new PacketAltarAnimation.Handler(), PacketAltarAnimation.class, 2, Side.CLIENT);
 	}
 	
@@ -74,7 +74,7 @@ public class ExtraRandomness implements ISubMod {
 	public void registerBlocks(IForgeRegistry<Block> event) {
 		blockAltar = RegUtil.registerBlock(event, new BlockAltar(), "meme_altar");
 		
-		GameRegistry.registerTileEntity(TileEntityAltar.class, "tile_meme_altar");
+		GameRegistry.registerTileEntity(TileEntityAltar.class, new ResourceLocation(CommunityGlobals.MOD_ID, "tile_meme_altar"));
 	}
 	
 	@SideOnly(Side.CLIENT)

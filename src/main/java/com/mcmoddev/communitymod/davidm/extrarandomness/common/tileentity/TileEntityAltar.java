@@ -1,8 +1,8 @@
 package com.mcmoddev.communitymod.davidm.extrarandomness.common.tileentity;
 
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.ExtraRandomness;
-import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketRequestUpdateAltar;
-import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketUpdateAltar;
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketRequestUpdateTileEntity;
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketUpdateTileEntity;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.AltarItem;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.EnumAltarAnimation;
 
@@ -23,7 +23,7 @@ public class TileEntityAltar extends TileEntity implements ITickable {
 		protected void onContentsChanged(int slot) {
 			if (!world.isRemote) {
 				ExtraRandomness.network.sendToAllAround(
-						new PacketUpdateAltar(TileEntityAltar.this),
+						new PacketUpdateTileEntity(TileEntityAltar.this),
 						new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 64)
 				);
 			}
@@ -82,7 +82,7 @@ public class TileEntityAltar extends TileEntity implements ITickable {
 	@Override
 	public void onLoad() {
 		if (world.isRemote) {
-			ExtraRandomness.network.sendToServer(new PacketRequestUpdateAltar(this));
+			ExtraRandomness.network.sendToServer(new PacketRequestUpdateTileEntity(this));
 		}
 	}
 	
