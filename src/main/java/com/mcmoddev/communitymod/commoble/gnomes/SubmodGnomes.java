@@ -61,7 +61,7 @@ public class SubmodGnomes implements ISubMod
 				.entity(EntityGnomeWood.class)
 				.id(new ResourceLocation(CommunityGlobals.MOD_ID, "wood_gnome"), CommunityGlobals.entity_id++)
 				.tracker(80, 3, false)
-				.spawn(EnumCreatureType.CREATURE, 1, 1, 4, BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST))
+				.spawn(EnumCreatureType.CREATURE, 10, 1, 4, BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST))
 				.egg(0xd3753f, 0x774725)
 				.build());
 	}
