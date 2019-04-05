@@ -6,8 +6,10 @@ import java.util.List;
 import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
+import com.mcmoddev.communitymod.davidm.extrarandomness.client.CapacitorStateMapper;
 import com.mcmoddev.communitymod.davidm.extrarandomness.client.render.RenderAltar;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.block.BlockAltar;
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.block.BlockMemeCapacitor;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.GoldenEgg;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.LexWand;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.Shocker;
@@ -15,6 +17,7 @@ import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketAlt
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketRequestUpdateTileEntity;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketUpdateTileEntity;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.tileentity.TileEntityAltar;
+import com.mcmoddev.communitymod.davidm.extrarandomness.core.EnumCapacitor;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.IProxy;
 import com.mcmoddev.communitymod.shared.ClientUtil;
 import com.mcmoddev.communitymod.shared.RegUtil;
@@ -24,6 +27,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -49,6 +53,8 @@ public class ExtraRandomness implements ISubMod {
 	public static Block blockAltar;
 	public static ItemBlock itemBlockAltar;
 	
+	public static List<Block> blockCapacitors;
+	
 	public static List<Item> altarItems;
 	
 	@Override
@@ -65,6 +71,10 @@ public class ExtraRandomness implements ISubMod {
 		
 		itemBlockAltar = RegUtil.registerItemBlock(event, new ItemBlock(blockAltar));
 		
+		blockCapacitors.forEach(capacitor -> {
+			RegUtil.registerItemBlock(event, new ItemBlock(capacitor));
+		});
+		
 		altarItems.add(RegUtil.registerItem(event, new LexWand(), "lex_wand"));
 		altarItems.add(RegUtil.registerItem(event, new GoldenEgg(), "golden_egg"));
 		altarItems.add(RegUtil.registerItem(event, new Shocker(), "shocker"));
@@ -72,7 +82,15 @@ public class ExtraRandomness implements ISubMod {
 	
 	@Override
 	public void registerBlocks(IForgeRegistry<Block> event) {
+		blockCapacitors = new ArrayList<Block>();
+		
 		blockAltar = RegUtil.registerBlock(event, new BlockAltar(), "meme_altar");
+		for (EnumCapacitor enumCapacitor: EnumCapacitor.values()) {
+			String stringTier = enumCapacitor.getStringTier();
+			Block blockCapacitor = new BlockMemeCapacitor(enumCapacitor);
+			blockCapacitors.add(blockCapacitor);
+			RegUtil.registerBlock(event, blockCapacitor, "meme_capacitor_tier_" + stringTier);
+		}
 		
 		GameRegistry.registerTileEntity(TileEntityAltar.class, new ResourceLocation(CommunityGlobals.MOD_ID, "tile_meme_altar"));
 	}
@@ -81,6 +99,11 @@ public class ExtraRandomness implements ISubMod {
 	@Override
 	public void registerModels(ModelRegistryEvent event) {
 		ClientUtil.simpleItemModel(itemBlockAltar);
+		
+		blockCapacitors.forEach(capacitor -> {
+			ModelLoader.setCustomStateMapper(capacitor, new CapacitorStateMapper());
+			ClientUtil.simpleItemModel(Item.getItemFromBlock(capacitor));
+		});
 		
 		altarItems.forEach(ClientUtil::simpleItemModel);
 		

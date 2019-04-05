@@ -31,4 +31,8 @@ public enum EnumCapacitor {
 	public int getPower() {
 		return this.power;
 	}
+	
+	public String getStringTier() {
+		return String.valueOf(this.ordinal());
+	}
 }

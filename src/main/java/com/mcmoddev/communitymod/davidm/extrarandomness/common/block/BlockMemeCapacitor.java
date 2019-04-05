@@ -16,11 +16,11 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockCapacitor extends Block {
+public class BlockMemeCapacitor extends Block {
 
 	private final EnumCapacitor enumCapacitor;
 	
-	public BlockCapacitor(EnumCapacitor enumCapacitor) {
+	public BlockMemeCapacitor(EnumCapacitor enumCapacitor) {
 		super(enumCapacitor.getMaterial());
 		
 		this.enumCapacitor = enumCapacitor;
@@ -35,7 +35,7 @@ public class BlockCapacitor extends Block {
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
 		int currentPower = stack.getTagCompound().getInteger("power");
 		int totalPower = this.enumCapacitor.getPower();
-		tooltip.add(TextFormatting.AQUA + I18n.format("tooltip.community_mod.capacitor",currentPower, totalPower));
+		tooltip.add(TextFormatting.AQUA + I18n.format("tooltip.community_mod.meme_capacitor",currentPower, totalPower));
 	}
 	
 	@Override
@@ -61,5 +61,9 @@ public class BlockCapacitor extends Block {
 	@Override
 	public int getLightOpacity(IBlockState state) {
 		return 0;
+	}
+	
+	public EnumCapacitor getEnumCapacitor() {
+		return this.enumCapacitor;
 	}
 }
