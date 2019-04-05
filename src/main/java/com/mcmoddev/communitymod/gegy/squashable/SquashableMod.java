@@ -38,9 +38,8 @@ public class SquashableMod implements ISubMod {
 
     private static final SimpleNetworkWrapper NETWORK = new SimpleNetworkWrapper(CommunityGlobals.MOD_ID + ".squashable");
 
-    private static final Field PISTON_PUSH_TIME_FIELD = ObfuscationReflectionHelper.findField(Entity.class, "pistonDeltasGameTime");
-    private static final Field PISTON_DELTAS_FIELD = ObfuscationReflectionHelper.findField(Entity.class, "pistonDeltas");
-    private static final Field RENDERER_MODEL_FIELD = ObfuscationReflectionHelper.findField(RenderLivingBase.class, "mainModel");
+    private static final Field PISTON_PUSH_TIME_FIELD = ObfuscationReflectionHelper.findField(Entity.class, "field_191506_aJ");
+    private static final Field PISTON_DELTAS_FIELD = ObfuscationReflectionHelper.findField(Entity.class, "field_191505_aI");
 
     private static long getPistonPushTime(Entity entity) {
         try {
@@ -55,14 +54,6 @@ public class SquashableMod implements ISubMod {
             return (double[]) PISTON_DELTAS_FIELD.get(entity);
         } catch (IllegalAccessException e) {
             return new double[3];
-        }
-    }
-
-    private static void setMainModel(RenderLivingBase<?> renderer, ModelBase model) {
-        try {
-            RENDERER_MODEL_FIELD.set(renderer, model);
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
         }
     }
 
@@ -148,7 +139,7 @@ public class SquashableMod implements ISubMod {
         if (squashedAxis != null) {
             RenderLivingBase<?> renderer = event.getRenderer();
             originalModel = renderer.getMainModel();
-            setMainModel(renderer, new FlattenedModel(originalModel, squashedAxis));
+            ModelHooks.setMainModel(renderer, new FlattenedModel(originalModel, squashedAxis));
         }
     }
 
@@ -156,8 +147,21 @@ public class SquashableMod implements ISubMod {
     @SideOnly(Side.CLIENT)
     public static void onRenderLivingPost(RenderLivingEvent.Post<?> event) {
         if (originalModel != null) {
-            setMainModel(event.getRenderer(), originalModel);
+            ModelHooks.setMainModel(event.getRenderer(), originalModel);
             originalModel = null;
+        }
+    }
+
+    @SideOnly(Side.CLIENT)
+    private static class ModelHooks {
+        private static final Field RENDERER_MODEL_FIELD = ObfuscationReflectionHelper.findField(RenderLivingBase.class, "field_77045_g");
+
+        private static void setMainModel(RenderLivingBase<?> renderer, ModelBase model) {
+            try {
+                RENDERER_MODEL_FIELD.set(renderer, model);
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }

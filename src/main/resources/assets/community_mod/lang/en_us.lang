@@ -74,3 +74,17 @@ entity.community_mod.exploding_chicken.name=Exploding Chicken
 
 entity.community_mod.wood_gnome.name=Wood Gnome
 tile.antcake.full_of_ants=Heck no, it's full of ants
+
+#DavidM
+tile.community_mod.meme_altar.name=Meme Altar
+tooltip.community_mod.meme_altar_1=Right click to insert item.
+tooltip.community_mod.meme_altar_2=Right click again to extract item.
+tooltip.community_mod.altar_item=Put this on the Meme Altar to:
+tooltip.community_mod.lex_wand=Right click on mob to BANISH it!
+tooltip.community_mod.lex_wand_extra=banish entities near it.
+tooltip.community_mod.golden_egg_extra=throw eggs everywhere!
+tooltip.community_mod.shocker_extra=generate shock waves!
+
+item.community_mod.lex_wand.name=Lex's Wand of Banishing
+item.community_mod.golden_egg.name=Golden Egg
+item.community_mod.shocker.name=Shocker
