@@ -40,10 +40,13 @@ public class BlockMemeCapacitor extends Block {
 	
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		TileEntity tileEntity = world.getTileEntity(pos);
-		if (tileEntity instanceof TileEntityCapacitor) {
-			((TileEntityCapacitor) tileEntity).onRightClick(player, facing);
+		if (!world.isRemote) {
+			TileEntity tileEntity = world.getTileEntity(pos);
+			if (tileEntity instanceof TileEntityCapacitor) {
+				((TileEntityCapacitor) tileEntity).onRightClick(player, facing);
+			}
 		}
+		
 		return true;
 	}
 	

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.ExtraRandomness;
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.MemeWrench;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketRequestUpdateTileEntity;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.EnumCapacitor;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.EnumSideConfig;
@@ -38,12 +39,24 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 	}
 	
 	public void onRightClick(EntityPlayer player, EnumFacing facing) {
+		if (player.inventory.getCurrentItem().getItem() instanceof MemeWrench) {
+			this.editSideConfig(facing);
+			this.markDirty();
+			NetworkHelper.sendTileEntityToNearby(this, 64);
+		}
+		
 		player.sendMessage(new TextComponentString(String.format("%s/%s", this.currentPower, this.enumCapacitor.getPower())));
+		player.sendMessage(new TextComponentString(String.valueOf(this.sideConfig[facing.ordinal()].ordinal())));
 	}
 	
 	public void setCapacitorData(EnumCapacitor enumCapacitor) {
 		this.enumCapacitor = enumCapacitor;
 		this.markDirty();
+	}
+	
+	private void editSideConfig(EnumFacing facing) {
+		int facingIndex = facing.ordinal();
+		this.sideConfig[facingIndex] = EnumSideConfig.values()[(this.sideConfig[facingIndex].ordinal() + 1) % 3];
 	}
 	
 	@Override
@@ -70,10 +83,13 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 				}
 			}
 			
-			int avg = this.currentPower / receivers.size();
-			receivers.forEach(receiver -> {
-				this.currentPower += receiver.receivePower(avg);
-			});
+			if (!receivers.isEmpty()) {
+				int avg = this.currentPower / receivers.size();
+				this.currentPower -= avg * receivers.size();
+				receivers.forEach(receiver -> {
+					this.currentPower += receiver.receivePower(avg);
+				});
+			}
 			
 			this.markDirty();
 			NetworkHelper.sendTileEntityToNearby(this, 64);

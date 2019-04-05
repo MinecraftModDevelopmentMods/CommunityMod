@@ -11,6 +11,7 @@ import com.mcmoddev.communitymod.davidm.extrarandomness.common.block.BlockAltar;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.block.BlockMemeCapacitor;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.GoldenEgg;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.LexWand;
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.MemeWrench;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.Shocker;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketAltarAnimation;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketRequestUpdateTileEntity;
@@ -55,6 +56,7 @@ public class ExtraRandomness implements ISubMod {
 	public static List<Block> blockCapacitors;
 	
 	public static List<Item> altarItems;
+	public static List<Item> miscItems;
 	
 	@Override
 	public void onPreInit(FMLPreInitializationEvent event) {
@@ -67,6 +69,7 @@ public class ExtraRandomness implements ISubMod {
 	@Override
 	public void registerItems(IForgeRegistry<Item> event) {
 		altarItems = new ArrayList<Item>();
+		miscItems = new ArrayList<Item>();
 		
 		itemBlockAltar = RegUtil.registerItemBlock(event, new ItemBlock(blockAltar));
 		
@@ -77,6 +80,8 @@ public class ExtraRandomness implements ISubMod {
 		altarItems.add(RegUtil.registerItem(event, new LexWand(), "lex_wand"));
 		altarItems.add(RegUtil.registerItem(event, new GoldenEgg(), "golden_egg"));
 		altarItems.add(RegUtil.registerItem(event, new Shocker(), "shocker"));
+		
+		miscItems.add(RegUtil.registerItem(event, new MemeWrench(), "meme_wrench"));
 	}
 	
 	@Override
@@ -105,6 +110,7 @@ public class ExtraRandomness implements ISubMod {
 		});
 		
 		altarItems.forEach(ClientUtil::simpleItemModel);
+		miscItems.forEach(ClientUtil::simpleItemModel);
 		
 		// I am lazy.
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAltar.class, new RenderAltar());
