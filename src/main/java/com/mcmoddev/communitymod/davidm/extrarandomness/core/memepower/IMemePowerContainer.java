@@ -10,5 +10,5 @@ public interface IMemePowerContainer {
 	
 	public boolean canReceivePowerFrom(EnumFacing facing);
 	
-	public void receivePower(int power);
+	public int receivePower(int power);
 }
