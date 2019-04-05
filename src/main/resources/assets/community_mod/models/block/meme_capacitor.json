@@ -1,6 +1,6 @@
 {
 	"textures": {
-		"glass": "community_mod:blocks/glass",
+		"glass": "community_mod:blocks/glass"
 	},
 	"elements": [
 		{

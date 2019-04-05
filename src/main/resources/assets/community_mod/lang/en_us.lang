@@ -88,8 +88,8 @@ item.community_mod.lex_wand.name=Lex's Wand of Banishing
 item.community_mod.golden_egg.name=Golden Egg
 item.community_mod.shocker.name=Shocker
 
-block.community_mod.meme_capacitor_tier_0.name=Meme Power Capacitor (Tier I)
-block.community_mod.meme_capacitor_tier_1.name=Meme Power Capacitor (Tier II)
-block.community_mod.meme_capacitor_tier_2.name=Meme Power Capacitor (Tier III)
-block.community_mod.meme_capacitor_tier_3.name=Meme Power Capacitor (Tier IV)
-block.community_mod.meme_capacitor_tier_4.name=Meme Power Capacitor (Tier V)
+tile.community_mod.meme_capacitor_tier_0.name=Meme Power Capacitor (Tier I)
+tile.community_mod.meme_capacitor_tier_1.name=Meme Power Capacitor (Tier II)
+tile.community_mod.meme_capacitor_tier_2.name=Meme Power Capacitor (Tier III)
+tile.community_mod.meme_capacitor_tier_3.name=Meme Power Capacitor (Tier IV)
+tile.community_mod.meme_capacitor_tier_4.name=Meme Power Capacitor (Tier V)

@@ -6,7 +6,6 @@ import java.util.List;
 import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
-import com.mcmoddev.communitymod.davidm.extrarandomness.client.CapacitorStateMapper;
 import com.mcmoddev.communitymod.davidm.extrarandomness.client.render.RenderAltar;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.block.BlockAltar;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.block.BlockMemeCapacitor;
@@ -27,7 +26,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -101,7 +99,6 @@ public class ExtraRandomness implements ISubMod {
 		ClientUtil.simpleItemModel(itemBlockAltar);
 		
 		blockCapacitors.forEach(capacitor -> {
-			ModelLoader.setCustomStateMapper(capacitor, new CapacitorStateMapper());
 			ClientUtil.simpleItemModel(Item.getItemFromBlock(capacitor));
 		});
 		
