@@ -51,7 +51,13 @@ public class ItemMagicEightBall extends Item {
                 "Don't be stupid.",
                 "Of course the answer you're looking for is §kUNREADABLE §r, you just won't accept it.",
                 "§kPLEASE HELP ME",
-                "I'm trapped in a Magic 8 Ball Factory!"
+                "I'm trapped in a Magic 8 Ball Factory!",
+                "Of course, the question is: does this ball actually have any wisdom?",
+                "You should probably download Essential Features.",
+                "The last thing said was a lie.",
+                "You are a horrible person",
+                "Of course not.",
+                "Haha, sure."
         });
         messages.put(SpecialPlayerHandler.SpecialPlayerEnum.Poke1650, new String[]{
                 "Are you spooked yet?",
@@ -79,6 +85,14 @@ public class ItemMagicEightBall extends Item {
                 "As Socrates (oh, sorry, _sokratis_) said: \"Minecraft mods are the greatest form of art.\"",
                 "Modder, Artist, Streamer/Youtuber, Modpack Maker, Translator... Is there anything you don't do?",
                 "WHAT ARE THOSE?"
+        });
+        messages.put(SpecialPlayerHandler.SpecialPlayerEnum.calweyland, new String[]{
+                "E",
+                "EEEE",
+                "EEEEEEEEEEEEEEEEEEEEEEEE"
+        });
+        messages.put(SpecialPlayerHandler.SpecialPlayerEnum.Willbl3pic, new String[]{
+                "If you're reading this, this works."
         });
     }
 

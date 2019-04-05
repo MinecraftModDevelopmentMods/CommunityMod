@@ -65,6 +65,9 @@ item.community_mod.spacehelm.name=Space Helm
 #Will
 tile.community_mod:e_block.name=E Block
 community_mod.subtitle.e_sound=E
+tile.community_mod:bruh_2_block.name=Bruh Sound Effect #2 Block
+community_mod.subtitle.bruh_2_sound=Bruh Sound Effect #2
+
 item.community_mod:magic_eight_ball.name=Magic 8 Ball
 
 #Commoble
