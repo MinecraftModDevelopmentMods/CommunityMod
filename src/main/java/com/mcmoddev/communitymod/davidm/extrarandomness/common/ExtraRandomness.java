@@ -16,6 +16,7 @@ import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketAlt
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketRequestUpdateTileEntity;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketUpdateTileEntity;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.tileentity.TileEntityAltar;
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.tileentity.TileEntityCapacitor;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.EnumCapacitor;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.IProxy;
 import com.mcmoddev.communitymod.shared.ClientUtil;
@@ -91,6 +92,7 @@ public class ExtraRandomness implements ISubMod {
 		}
 		
 		GameRegistry.registerTileEntity(TileEntityAltar.class, new ResourceLocation(CommunityGlobals.MOD_ID, "tile_meme_altar"));
+		GameRegistry.registerTileEntity(TileEntityCapacitor.class, new ResourceLocation(CommunityGlobals.MOD_ID, "tile_meme_capacitor"));
 	}
 	
 	@SideOnly(Side.CLIENT)

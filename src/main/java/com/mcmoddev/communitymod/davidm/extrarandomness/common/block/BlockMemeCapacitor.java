@@ -2,6 +2,7 @@ package com.mcmoddev.communitymod.davidm.extrarandomness.common.block;
 
 import java.util.List;
 
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.tileentity.TileEntityCapacitor;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.EnumCapacitor;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.helper.NBTHelper;
 
@@ -11,9 +12,13 @@ import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
@@ -31,6 +36,34 @@ public class BlockMemeCapacitor extends Block {
 		this.setResistance(150);
 		
 		this.enumCapacitor = enumCapacitor;
+	}
+	
+	@Override
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		TileEntity tileEntity = world.getTileEntity(pos);
+		if (tileEntity instanceof TileEntityCapacitor) {
+			((TileEntityCapacitor) tileEntity).onRightClick(player, facing);
+		}
+		return true;
+	}
+	
+	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+		super.onBlockPlacedBy(world, pos, state, placer, stack);
+		
+		TileEntity tileEntity = world.getTileEntity(pos);
+		if (tileEntity instanceof TileEntityCapacitor) {
+			((TileEntityCapacitor) tileEntity).setCapacitorData(this.enumCapacitor);
+		}
+	}
+	
+	@Override
+	public boolean hasTileEntity(IBlockState state) {
+		return true;
+	}
+	
+	@Override
+	public TileEntity createTileEntity(World world, IBlockState state) {
+		return new TileEntityCapacitor();
 	}
 	
 	@Override
