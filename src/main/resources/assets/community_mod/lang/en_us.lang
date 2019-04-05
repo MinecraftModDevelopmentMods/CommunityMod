@@ -77,6 +77,7 @@ tile.antcake.full_of_ants=Heck no, it's full of ants
 tile.community_mod.meme_altar.name=Meme Altar
 tooltip.community_mod.meme_altar_1=Right click to insert item.
 tooltip.community_mod.meme_altar_2=Right click again to extract item.
+tooltip.community_mod.capacitor=Power: %s/%s
 tooltip.community_mod.altar_item=Put this on the Meme Altar to:
 tooltip.community_mod.lex_wand=Right click on mob to BANISH it!
 tooltip.community_mod.lex_wand_extra=banish entities near it.

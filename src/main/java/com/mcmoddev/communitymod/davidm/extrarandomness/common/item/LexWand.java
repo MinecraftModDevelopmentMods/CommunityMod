@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.AltarItem;
+import com.mcmoddev.communitymod.davidm.extrarandomness.core.helper.WorldHelper;
 
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -11,6 +12,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -19,7 +21,7 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
-public class LexWand extends AltarItem {
+public class LexWand extends Item implements AltarItem {
 
 	private static final AxisAlignedBB AOE = new AxisAlignedBB(0, 0, 0, 1, 1, 1).grow(4);
 	
@@ -36,19 +38,19 @@ public class LexWand extends AltarItem {
 			"because DON'T you correct my grammar!!!"
 	};
 	
+	public LexWand() {
+		super();
+		this.setMaxStackSize(1);
+	}	
+	
 	@Override
 	public int getCooldown() {
 		return 60;
 	}
-	
-	@Override
-	public String getExtraInfo() {
-		return I18n.format("tooltip.community_mod.lex_wand_extra");
-	}
 
 	@Override
 	public void onAltarAction(World world, BlockPos pos) {
-		List<Entity> entities = world.getEntitiesWithinAABB(EntityLivingBase.class, AOE.offset(pos));
+		List<Entity> entities = WorldHelper.getEntitiesInBox(world, EntityLivingBase.class, AOE.offset(pos));
 		if (entities.isEmpty()) return;
 			
 		Entity entity = entities.get(world.rand.nextInt(entities.size()));
@@ -74,7 +76,8 @@ public class LexWand extends AltarItem {
 	@Override
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flagIn) {
 		tooltip.add(TextFormatting.RED + I18n.format("tooltip.community_mod.lex_wand"));
-		super.addInformation(stack, world, tooltip, flagIn);
+		tooltip.add(TextFormatting.AQUA + I18n.format("tooltip.community_mod.altar_item"));
+		tooltip.add(TextFormatting.AQUA + I18n.format("tooltip.community_mod.shocker_extra"));
 	}
 	
 	private static String getBanMsg(Entity entity, Random rand) {
