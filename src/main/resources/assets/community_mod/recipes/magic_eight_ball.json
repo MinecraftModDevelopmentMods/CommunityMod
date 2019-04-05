@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "OOO",
+    "OEO",
+    "OOO"
+  ],
+  "key": {
+    "E": {
+      "item": "minecraft:egg"
+    },
+    "O": {
+      "item": "minecraft:obsidian"
+    }
+  },
+  "result": {
+    "item": "community_mod:magic_eight_ball"
+  }
+}
