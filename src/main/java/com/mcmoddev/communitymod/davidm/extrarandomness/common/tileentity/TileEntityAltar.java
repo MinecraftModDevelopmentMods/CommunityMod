@@ -11,6 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraftforge.items.ItemStackHandler;
 
@@ -63,6 +64,11 @@ public class TileEntityAltar extends TileEntity implements ITickable {
 				if (this.cooldown++ >= altarItem.getCooldown()) {
 					this.cooldown = 0;
 					altarItem.onAltarAction(this.world, this.pos);
+				}
+				
+				TileEntity tileEntity = this.world.getTileEntity(this.pos.offset(EnumFacing.DOWN));
+				if (tileEntity instanceof TileEntityCapacitor) {
+					((TileEntityCapacitor) tileEntity).receivePower(10);
 				}
 			}
 		} else {

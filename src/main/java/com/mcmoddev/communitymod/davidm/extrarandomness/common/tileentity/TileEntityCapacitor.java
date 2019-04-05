@@ -4,6 +4,7 @@ import com.mcmoddev.communitymod.davidm.extrarandomness.common.ExtraRandomness;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketRequestUpdateTileEntity;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.EnumCapacitor;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.EnumSideConfig;
+import com.mcmoddev.communitymod.davidm.extrarandomness.core.memepower.IMemePowerContainer;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -12,7 +13,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.text.TextComponentString;
 
-public class TileEntityCapacitor extends TileEntity implements ITickable {
+public class TileEntityCapacitor extends TileEntity implements ITickable, IMemePowerContainer {
 
 	private EnumCapacitor enumCapacitor;
 	private int currentPower;
@@ -35,6 +36,7 @@ public class TileEntityCapacitor extends TileEntity implements ITickable {
 	
 	public void setCapacitorData(EnumCapacitor enumCapacitor) {
 		this.enumCapacitor = enumCapacitor;
+		this.markDirty();
 	}
 	
 	@Override
@@ -61,5 +63,29 @@ public class TileEntityCapacitor extends TileEntity implements ITickable {
 		compound.setInteger("enumCapacitor", this.enumCapacitor.ordinal());
 		compound.setInteger("power", this.currentPower);
 		return super.writeToNBT(compound);
+	}
+
+	@Override
+	public int getPower() {
+		return this.currentPower;
+	}
+
+	@Override
+	public boolean isFull() {
+		return this.currentPower == this.enumCapacitor.getPower();
+	}
+
+	@Override
+	public boolean canReceivePowerFrom(EnumFacing facing) {
+		return this.sideConfig[facing.ordinal()] == EnumSideConfig.INPUT;
+	}
+
+	@Override
+	public void receivePower(int power) {
+		this.currentPower += power;
+		if (this.currentPower > this.enumCapacitor.getPower()) {
+			this.currentPower = this.enumCapacitor.getPower();
+		}
+		this.markDirty();
 	}
 }
