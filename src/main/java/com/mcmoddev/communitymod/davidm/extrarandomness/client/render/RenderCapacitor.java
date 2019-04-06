@@ -23,13 +23,23 @@ public class RenderCapacitor extends TileEntitySpecialRenderer<TileEntityCapacit
 	@Override
 	public void render(TileEntityCapacitor te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
 		long totalWorldTime = te.getWorld().getTotalWorldTime();
+		
+		GlStateManager.pushMatrix();
+		GlStateManager.disableLighting();
+		GlStateManager.enableBlend();
+		GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		
 		if (te.getPower() != 0) {
 			GlStateManager.color(1, 1, 1, (float) MathHelper.oscillate(totalWorldTime * 6, 0.5, 0.85));
 			this.renderPowerTank(te.getScaledPower(), x, y, z);
 		}
 		
 		this.renderSideConfig(te, x, y, z);
-		GL11.glColor4f(1, 1, 1, 1);
+		GlStateManager.color(1, 1, 1, 1);
+		
+		GlStateManager.enableLighting();
+		GlStateManager.disableBlend();
+		GlStateManager.popMatrix();
 	}
 	
 	private void renderSideConfig(TileEntityCapacitor te, double x, double y, double z) {

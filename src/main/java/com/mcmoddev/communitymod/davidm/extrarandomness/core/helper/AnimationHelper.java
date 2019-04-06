@@ -17,11 +17,6 @@ public class AnimationHelper {
 		Tessellator tessellator = Tessellator.getInstance();
 		BufferBuilder buffer = tessellator.getBuffer();
 		
-		GlStateManager.pushMatrix();
-		GlStateManager.translate(0, 0, 0);
-		GlStateManager.disableLighting();
-		GlStateManager.enableBlend();
-		
 		buffer.begin(7, DefaultVertexFormats.POSITION_TEX);
 		
 		buffer.pos(pos_1.x, pos_1.y, pos_1.z).tex(0, 0).endVertex();
@@ -30,10 +25,6 @@ public class AnimationHelper {
 		buffer.pos(pos_4.x, pos_4.y, pos_4.z).tex(1, 0).endVertex();
 		
 		tessellator.draw();
-		
-		GlStateManager.enableLighting();
-		GlStateManager.disableBlend();
-		GlStateManager.popMatrix();
 	}
 	
 	public static void drawDoublePlane(ResourceLocation texture, double x, double y, double z, double time, double radius, EnumFacing facing) {
@@ -46,11 +37,6 @@ public class AnimationHelper {
 		
 		Tessellator tessellator = Tessellator.getInstance();
 		BufferBuilder buffer = tessellator.getBuffer();
-		
-		GlStateManager.pushMatrix();
-		GlStateManager.translate(0, 0, 0);
-		GlStateManager.disableLighting();
-		GlStateManager.enableBlend();
 		
 		buffer.begin(7, DefaultVertexFormats.POSITION_TEX);
 		
@@ -77,9 +63,5 @@ public class AnimationHelper {
 		}
 		
 		tessellator.draw();
-		
-		GlStateManager.enableLighting();
-		GlStateManager.disableBlend();
-		GlStateManager.popMatrix();
 	}
 }
