@@ -4,12 +4,16 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
 import org.lwjgl.util.glu.Sphere;
 
+import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.IProxy;
 
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 
 public class ClientProxy implements IProxy {
 
+	public static final ModelResourceLocation OUTPUT_MODEL = new ModelResourceLocation(CommunityGlobals.MOD_ID + "block/output");
+	
 	public static int sphereOutId;
 	public static int sphereInId;
 	

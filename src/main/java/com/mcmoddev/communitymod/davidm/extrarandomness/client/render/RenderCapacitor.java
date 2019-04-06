@@ -3,13 +3,24 @@ package com.mcmoddev.communitymod.davidm.extrarandomness.client.render;
 import org.lwjgl.opengl.GL11;
 
 import com.mcmoddev.communitymod.CommunityGlobals;
+import com.mcmoddev.communitymod.davidm.extrarandomness.client.ClientProxy;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.tileentity.TileEntityCapacitor;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.helper.AnimationHelper;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.helper.MathHelper;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BlockModelRenderer;
+import net.minecraft.client.renderer.BufferBuilder;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.block.model.IBakedModel;
+import net.minecraft.client.renderer.block.model.ModelManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
 
 public class RenderCapacitor extends TileEntitySpecialRenderer<TileEntityCapacitor> {
 
@@ -17,11 +28,37 @@ public class RenderCapacitor extends TileEntitySpecialRenderer<TileEntityCapacit
 	
 	@Override
 	public void render(TileEntityCapacitor te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
+		long totalWorldTime = te.getWorld().getTotalWorldTime();
 		if (te.getPower() != 0) {
-			GL11.glColor4f(1, 1, 1, (float) MathHelper.oscillate(te.getWorld().getTotalWorldTime() * 6, 0.5, 0.85));
+			GL11.glColor4f(1, 1, 1, (float) MathHelper.oscillate(totalWorldTime * 6, 0.5, 0.85));
 			this.renderPowerTank(te.getScaledPower(), x, y, z);
-			GL11.glColor4f(1, 1, 1, 1);
 		}
+		GL11.glColor4f(1, 1, 1, (float) MathHelper.oscillate(totalWorldTime * 6, 0.5, 0.85));
+		this.renderSideConfig(te, x, y, z);
+		
+		GL11.glColor4f(1, 1, 1, 1);
+	}
+	
+	private void renderSideConfig(TileEntityCapacitor te, double x, double y, double z) {
+		ModelManager modelManager = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getModelManager();
+		BlockModelRenderer renderer = Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelRenderer();
+		Tessellator tessellator = Tessellator.getInstance();
+		BufferBuilder buffer = tessellator.getBuffer();
+		
+		IBakedModel outputModel = modelManager.getModel(ClientProxy.OUTPUT_MODEL);
+		
+		World world = te.getWorld();
+		BlockPos pos = te.getPos();
+		
+		GlStateManager.pushMatrix();
+		GlStateManager.disableLighting();
+		
+		tessellator.getBuffer().begin(GL11.GL_QUADS, DefaultVertexFormats.BLOCK);
+		renderer.renderModel(world, outputModel, world.getBlockState(pos), pos, buffer, false, 0);
+		tessellator.draw();
+		
+		GlStateManager.enableLighting();
+		GlStateManager.popMatrix();
 	}
 	
 	private void renderPowerTank(double scaledPowerLevel, double x, double y, double z) {

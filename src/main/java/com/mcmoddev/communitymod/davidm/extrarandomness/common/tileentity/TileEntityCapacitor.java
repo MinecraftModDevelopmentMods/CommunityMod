@@ -26,15 +26,15 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 	private EnumCapacitor enumCapacitor;
 	private int currentPower;
 	
-	private EnumSideConfig[] sideConfig;
+	private EnumSideConfig[] sideConfigs;
 	
 	public TileEntityCapacitor() {
 		super();
 		
 		this.enumCapacitor = EnumCapacitor.TIER_0; // Just in case.
-		this.sideConfig = new EnumSideConfig[6];
-		for (int i = 0; i < this.sideConfig.length; i++) {
-			this.sideConfig[i] = EnumSideConfig.NONE;
+		this.sideConfigs = new EnumSideConfig[6];
+		for (int i = 0; i < this.sideConfigs.length; i++) {
+			this.sideConfigs[i] = EnumSideConfig.NONE;
 		}
 	}
 	
@@ -46,7 +46,7 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 		}
 		
 		player.sendMessage(new TextComponentString(String.format("%s/%s", this.currentPower, this.enumCapacitor.getPower())));
-		player.sendMessage(new TextComponentString(String.valueOf(this.sideConfig[facing.ordinal()].ordinal())));
+		player.sendMessage(new TextComponentString(String.valueOf(this.sideConfigs[facing.ordinal()].ordinal())));
 	}
 	
 	public void setCapacitorData(EnumCapacitor enumCapacitor) {
@@ -56,7 +56,11 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 	
 	private void editSideConfig(EnumFacing facing) {
 		int facingIndex = facing.ordinal();
-		this.sideConfig[facingIndex] = EnumSideConfig.values()[(this.sideConfig[facingIndex].ordinal() + 1) % 3];
+		this.sideConfigs[facingIndex] = EnumSideConfig.values()[(this.sideConfigs[facingIndex].ordinal() + 1) % 3];
+	}
+	
+	public EnumSideConfig[] getSideConfigs() {
+		return this.sideConfigs;
 	}
 	
 	public double getScaledPower() {
@@ -68,8 +72,8 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 		if (!this.world.isRemote && this.world.getTotalWorldTime() % 20 == 0) {
 			List<IMemePowerContainer> receivers = new ArrayList<IMemePowerContainer>();
 			
-			for (int i = 0; i < this.sideConfig.length; i++) {
-				if (this.sideConfig[i] == EnumSideConfig.OUTPUT) {
+			for (int i = 0; i < this.sideConfigs.length; i++) {
+				if (this.sideConfigs[i] == EnumSideConfig.OUTPUT) {
 					for (int distance = 0; distance < TRANSPORT_RANGE; distance++) {
 						EnumFacing facing = EnumFacing.values()[i];
 						BlockPos receiverPos = this.pos.offset(facing, distance);
@@ -116,7 +120,7 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 		if (sides.length == 6) {
 			for (int i = 0; i < sides.length; i++) {
 				if (sides[i] < EnumSideConfig.values().length) {
-					this.sideConfig[i] = EnumSideConfig.values()[sides[i]];
+					this.sideConfigs[i] = EnumSideConfig.values()[sides[i]];
 				}
 			}
 		}
@@ -129,7 +133,7 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 		compound.setInteger("power", this.currentPower);
 		int[] sides = new int[6];
 		for (int i = 0; i < sides.length; i++) {
-			sides[i] = this.sideConfig[i].ordinal();
+			sides[i] = this.sideConfigs[i].ordinal();
 		}
 		compound.setIntArray("sides", sides);
 		return super.writeToNBT(compound);
@@ -147,7 +151,7 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 
 	@Override
 	public boolean canReceivePowerFrom(EnumFacing facing) {
-		return this.sideConfig[facing.ordinal()] == EnumSideConfig.INPUT;
+		return this.sideConfigs[facing.ordinal()] == EnumSideConfig.INPUT;
 	}
 
 	@Override
