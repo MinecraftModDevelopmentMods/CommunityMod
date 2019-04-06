@@ -105,7 +105,8 @@ public class BlockMemeCapacitor extends Block {
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
 		int currentPower =  NBTHelper.getOrCreateCompound(stack).getInteger("power");
 		int totalPower = this.enumCapacitor.getPower();
-		tooltip.add(TextFormatting.AQUA + I18n.format("tooltip.community_mod.meme_capacitor",currentPower, totalPower));
+		tooltip.add(TextFormatting.AQUA + I18n.format("tooltip.community_mod.meme_capacitor_1", currentPower, totalPower));
+		tooltip.add(TextFormatting.AQUA + I18n.format("tooltip.community_mod.meme_capacitor_2", this.enumCapacitor.getTransferRate()));
 	}
 	
 	@Override

@@ -98,7 +98,7 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 			}
 			
 			if (!receivers.isEmpty()) {
-				int avg = this.currentPower / receivers.size();
+				int avg = Math.min(this.currentPower / receivers.size(), this.enumCapacitor.getTransferRate());
 				this.currentPower -= avg * receivers.size();
 				receivers.forEach(receiver -> {
 					this.currentPower += receiver.receivePower(avg);
