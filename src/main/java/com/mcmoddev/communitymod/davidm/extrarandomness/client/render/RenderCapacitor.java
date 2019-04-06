@@ -51,13 +51,14 @@ public class RenderCapacitor extends TileEntitySpecialRenderer<TileEntityCapacit
 		BlockPos pos = te.getPos();
 		
 		GlStateManager.pushMatrix();
-		GlStateManager.disableLighting();
+		GlStateManager.translate(0, 0, 0);
+		// GlStateManager.disableLighting();
 		
 		tessellator.getBuffer().begin(GL11.GL_QUADS, DefaultVertexFormats.BLOCK);
-		renderer.renderModel(world, outputModel, world.getBlockState(pos), pos, buffer, false, 0);
+		renderer.renderModel(world, outputModel, world.getBlockState(pos), pos, buffer, true);
 		tessellator.draw();
 		
-		GlStateManager.enableLighting();
+		// GlStateManager.enableLighting();
 		GlStateManager.popMatrix();
 	}
 	

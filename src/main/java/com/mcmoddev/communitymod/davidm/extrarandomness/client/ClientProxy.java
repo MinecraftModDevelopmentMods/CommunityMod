@@ -12,7 +12,7 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 
 public class ClientProxy implements IProxy {
 
-	public static final ModelResourceLocation OUTPUT_MODEL = new ModelResourceLocation(CommunityGlobals.MOD_ID + "block/output");
+	public static final ModelResourceLocation OUTPUT_MODEL = new ModelResourceLocation(CommunityGlobals.MOD_ID + ":output");
 	
 	public static int sphereOutId;
 	public static int sphereInId;
