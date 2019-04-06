@@ -1,5 +1,6 @@
 package com.mcmoddev.communitymod.davidm.extrarandomness.common.tileentity;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -112,6 +113,12 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 	public void readFromNBT(NBTTagCompound compound) {
 		this.enumCapacitor = EnumCapacitor.values()[compound.getInteger("enumCapacitor")];
 		this.currentPower = compound.getInteger("power");
+		int[] sides = compound.getIntArray("sides");
+		if (sides.length == 6) {
+			for (int i = 0; i < sides.length; i++) {
+				this.sideConfig[i] = EnumSideConfig.values()[sides[i]];
+			}
+		}
 		super.readFromNBT(compound);
 	}
 	
@@ -119,6 +126,11 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		compound.setInteger("enumCapacitor", this.enumCapacitor.ordinal());
 		compound.setInteger("power", this.currentPower);
+		int[] sides = new int[6];
+		for (int i = 0; i < sides.length; i++) {
+			sides[i] = this.sideConfig[i].ordinal();
+		}
+		compound.setIntArray("sides", sides);
 		return super.writeToNBT(compound);
 	}
 
