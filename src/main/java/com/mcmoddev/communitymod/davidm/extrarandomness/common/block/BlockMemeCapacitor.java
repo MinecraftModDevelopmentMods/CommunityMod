@@ -14,11 +14,14 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
@@ -57,6 +60,30 @@ public class BlockMemeCapacitor extends Block {
 		if (tileEntity instanceof TileEntityCapacitor) {
 			((TileEntityCapacitor) tileEntity).setCapacitorData(this.enumCapacitor);
 		}
+	}
+	
+	@Override
+	public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
+		TileEntity tileEntity = world.getTileEntity(pos);
+		if (tileEntity instanceof TileEntityCapacitor) {
+			TileEntityCapacitor capacitor = (TileEntityCapacitor) tileEntity;
+			ItemStack stack = new ItemStack(Item.getItemFromBlock(this));
+			NBTHelper.getOrCreateCompound(stack).setInteger("power", capacitor.getPower());
+			stack.setTagInfo("BlockEntityTag", capacitor.writeToNBT(new NBTTagCompound()));
+			drops.add(stack);
+		}
+	}
+	
+	@Override
+	public boolean removedByPlayer(IBlockState state, World world, BlockPos pos, EntityPlayer player, boolean willHarvest) {
+		if (willHarvest) return true;
+		return super.removedByPlayer(state, world, pos, player, willHarvest);
+	}
+	
+	@Override
+	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te, ItemStack stack) {
+		super.harvestBlock(world, player, pos, state, te, stack);
+		world.setBlockToAir(pos);
 	}
 	
 	@Override
