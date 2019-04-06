@@ -53,8 +53,8 @@ public class PacketUpdateTileEntity implements IMessage {
 					@Override
 					public void run() {
 						TileEntity tileEntity = Minecraft.getMinecraft().world.getTileEntity(message.pos);
-						if (tileEntity instanceof TileEntityAltar) {
-							((TileEntityAltar) tileEntity).readFromNBT(message.compound);
+						if (tileEntity != null) {
+							tileEntity.readFromNBT(message.compound);
 						}
 					}
 				});

@@ -7,6 +7,7 @@ import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
 import com.mcmoddev.communitymod.davidm.extrarandomness.client.render.RenderAltar;
+import com.mcmoddev.communitymod.davidm.extrarandomness.client.render.RenderCapacitor;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.block.BlockAltar;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.block.BlockMemeCapacitor;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.GoldenEgg;
@@ -114,6 +115,7 @@ public class ExtraRandomness implements ISubMod {
 		
 		// I am lazy.
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAltar.class, new RenderAltar());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCapacitor.class, new RenderCapacitor());
 	}
 	
 	@Override

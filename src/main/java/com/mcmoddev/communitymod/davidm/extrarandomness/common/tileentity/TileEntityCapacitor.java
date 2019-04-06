@@ -59,6 +59,10 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 		this.sideConfig[facingIndex] = EnumSideConfig.values()[(this.sideConfig[facingIndex].ordinal() + 1) % 3];
 	}
 	
+	public double getScaledPower() {
+		return (double) this.currentPower / this.enumCapacitor.getPower();
+	}
+	
 	@Override
 	public void update() {
 		if (!this.world.isRemote && this.world.getTotalWorldTime() % 20 == 0) {
