@@ -3,28 +3,20 @@ package com.mcmoddev.communitymod.davidm.extrarandomness.client.render;
 import org.lwjgl.opengl.GL11;
 
 import com.mcmoddev.communitymod.CommunityGlobals;
-import com.mcmoddev.communitymod.davidm.extrarandomness.client.ClientProxy;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.tileentity.TileEntityCapacitor;
+import com.mcmoddev.communitymod.davidm.extrarandomness.core.EnumSideConfig;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.helper.AnimationHelper;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.helper.MathHelper;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.BlockModelRenderer;
-import net.minecraft.client.renderer.BufferBuilder;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.block.model.IBakedModel;
-import net.minecraft.client.renderer.block.model.ModelManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.World;
 
 public class RenderCapacitor extends TileEntitySpecialRenderer<TileEntityCapacitor> {
 
 	private static final ResourceLocation POWER_TEXTURE = new ResourceLocation(CommunityGlobals.MOD_ID, "textures/blocks/meme_power.png");
+	private static final ResourceLocation CONFIG_TEXTURE = new ResourceLocation(CommunityGlobals.MOD_ID, "textures/blocks/config.png");
 	
 	@Override
 	public void render(TileEntityCapacitor te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
@@ -33,33 +25,45 @@ public class RenderCapacitor extends TileEntitySpecialRenderer<TileEntityCapacit
 			GL11.glColor4f(1, 1, 1, (float) MathHelper.oscillate(totalWorldTime * 6, 0.5, 0.85));
 			this.renderPowerTank(te.getScaledPower(), x, y, z);
 		}
-		GL11.glColor4f(1, 1, 1, (float) MathHelper.oscillate(totalWorldTime * 6, 0.5, 0.85));
-		this.renderSideConfig(te, x, y, z);
 		
+		this.renderSideConfig(te, x, y, z);
 		GL11.glColor4f(1, 1, 1, 1);
 	}
 	
 	private void renderSideConfig(TileEntityCapacitor te, double x, double y, double z) {
-		ModelManager modelManager = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getModelManager();
-		BlockModelRenderer renderer = Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelRenderer();
-		Tessellator tessellator = Tessellator.getInstance();
-		BufferBuilder buffer = tessellator.getBuffer();
+		EnumSideConfig[] sideConfigs = te.getSideConfigs();
+		double center_x = x + 0.5;
+		double center_y = y + 0.5;
+		double center_z = z + 0.5;
+		long time = te.getWorld().getTotalWorldTime();
 		
-		IBakedModel outputModel = modelManager.getModel(ClientProxy.OUTPUT_MODEL);
-		
-		World world = te.getWorld();
-		BlockPos pos = te.getPos();
-		
-		GlStateManager.pushMatrix();
-		GlStateManager.translate(0, 0, 0);
-		// GlStateManager.disableLighting();
-		
-		tessellator.getBuffer().begin(GL11.GL_QUADS, DefaultVertexFormats.BLOCK);
-		renderer.renderModel(world, outputModel, world.getBlockState(pos), pos, buffer, true);
-		tessellator.draw();
-		
-		// GlStateManager.enableLighting();
-		GlStateManager.popMatrix();
+		for (int i = 0; i < sideConfigs.length; i++) {
+			if (sideConfigs[i] == EnumSideConfig.NONE) continue;
+			
+			double new_x = center_x;
+			double new_y = center_y;
+			double new_z = center_z;
+			double r = 0.75;
+			EnumFacing facing = EnumFacing.values()[i];
+			
+			if (sideConfigs[i] == EnumSideConfig.INPUT) {
+				GL11.glColor4f(0.05F, 0.47F, 0.82F, (float) MathHelper.oscillate(time * 6, 0.5, 0.85));
+			} else {
+				GL11.glColor4f(0.83F, 0.43F, 0.11F, (float) MathHelper.oscillate(time * 6, 0.5, 0.85));
+			}
+			
+			switch(facing) {
+				case UP: new_y += r; break;
+				case DOWN: new_y -= r; break;
+				case SOUTH: new_z += r; break;
+				case NORTH: new_z -= r; break;
+				case EAST: new_x += r; break;
+				case WEST: new_x -= r; break;
+				default: break;
+			}
+			
+			AnimationHelper.drawDoublePlane(CONFIG_TEXTURE, new_x, new_y, new_z, time, 0.5, facing);
+		}
 	}
 	
 	private void renderPowerTank(double scaledPowerLevel, double x, double y, double z) {

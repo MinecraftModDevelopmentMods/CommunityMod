@@ -16,8 +16,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TileEntityCapacitor extends TileEntity implements ITickable, IMemePowerContainer {
 
@@ -46,7 +49,7 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 		}
 		
 		player.sendMessage(new TextComponentString(String.format("%s/%s", this.currentPower, this.enumCapacitor.getPower())));
-		player.sendMessage(new TextComponentString(String.valueOf(this.sideConfigs[facing.ordinal()].ordinal())));
+		// player.sendMessage(new TextComponentString(String.valueOf(this.sideConfigs[facing.ordinal()].ordinal())));
 	}
 	
 	public void setCapacitorData(EnumCapacitor enumCapacitor) {
@@ -156,12 +159,14 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 
 	@Override
 	public int receivePower(int power) {
+		int overflow_1 = Math.max(power - this.enumCapacitor.getTransferRate(), 0);
+		power -= overflow_1;
 		this.currentPower += power;
-		int overflow = Math.max(this.currentPower - this.enumCapacitor.getPower(), 0);
-		this.currentPower -= overflow;
+		int overflow_2 = Math.max(this.currentPower - this.enumCapacitor.getPower(), 0);
+		this.currentPower -= overflow_2;
 		
 		this.markDirty();
 		NetworkHelper.sendTileEntityToNearby(this, 64);
-		return overflow;
+		return overflow_1 + overflow_2;
 	}
 }

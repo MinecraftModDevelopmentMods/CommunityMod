@@ -6,7 +6,6 @@ import java.util.List;
 import com.mcmoddev.communitymod.CommunityGlobals;
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
-import com.mcmoddev.communitymod.davidm.extrarandomness.client.ClientProxy;
 import com.mcmoddev.communitymod.davidm.extrarandomness.client.render.RenderAltar;
 import com.mcmoddev.communitymod.davidm.extrarandomness.client.render.RenderCapacitor;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.block.BlockAltar;
@@ -26,7 +25,6 @@ import com.mcmoddev.communitymod.shared.ClientUtil;
 import com.mcmoddev.communitymod.shared.RegUtil;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
@@ -118,8 +116,6 @@ public class ExtraRandomness implements ISubMod {
 		// I am lazy.
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAltar.class, new RenderAltar());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCapacitor.class, new RenderCapacitor());
-		
-		ModelBakery.registerItemVariants(itemBlockAltar, ClientProxy.OUTPUT_MODEL);
 	}
 	
 	@Override
