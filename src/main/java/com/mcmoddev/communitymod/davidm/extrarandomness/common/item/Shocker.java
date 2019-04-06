@@ -4,8 +4,8 @@ import java.util.List;
 
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.ExtraRandomness;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketAltarAnimation;
-import com.mcmoddev.communitymod.davidm.extrarandomness.core.AltarItem;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.EnumAltarAnimation;
+import com.mcmoddev.communitymod.davidm.extrarandomness.core.attribute.AltarItem;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.helper.WorldHelper;
 
 import net.minecraft.client.resources.I18n;

@@ -2,8 +2,8 @@ package com.mcmoddev.communitymod.davidm.extrarandomness.common.tileentity;
 
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.ExtraRandomness;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketRequestUpdateTileEntity;
-import com.mcmoddev.communitymod.davidm.extrarandomness.core.AltarItem;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.EnumAltarAnimation;
+import com.mcmoddev.communitymod.davidm.extrarandomness.core.attribute.AltarItem;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.helper.NetworkHelper;
 
 import net.minecraft.entity.item.EntityItem;

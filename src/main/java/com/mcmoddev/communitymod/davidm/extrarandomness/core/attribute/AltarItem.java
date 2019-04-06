@@ -1,4 +1,4 @@
-package com.mcmoddev.communitymod.davidm.extrarandomness.core;
+package com.mcmoddev.communitymod.davidm.extrarandomness.core.attribute;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;

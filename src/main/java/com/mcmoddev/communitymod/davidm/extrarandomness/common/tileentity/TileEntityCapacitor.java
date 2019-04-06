@@ -4,25 +4,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.ExtraRandomness;
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.block.BlockMemeCapacitor;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.MemeWrench;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketRequestUpdateTileEntity;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.EnumCapacitor;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.EnumSideConfig;
+import com.mcmoddev.communitymod.davidm.extrarandomness.core.attribute.IWrenchable;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.helper.NetworkHelper;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.memepower.IMemePowerContainer;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
-import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class TileEntityCapacitor extends TileEntity implements ITickable, IMemePowerContainer {
+public class TileEntityCapacitor extends TileEntity implements ITickable, IMemePowerContainer, IWrenchable {
 
 	private static final int TRANSPORT_RANGE = 8;
 	
@@ -34,7 +37,7 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 	public TileEntityCapacitor() {
 		super();
 		
-		this.enumCapacitor = EnumCapacitor.TIER_0; // Just in case.
+		this.enumCapacitor = EnumCapacitor.TIER_0;
 		this.sideConfigs = new EnumSideConfig[6];
 		for (int i = 0; i < this.sideConfigs.length; i++) {
 			this.sideConfigs[i] = EnumSideConfig.NONE;
@@ -168,5 +171,16 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 		this.markDirty();
 		NetworkHelper.sendTileEntityToNearby(this, 64);
 		return overflow_1 + overflow_2;
+	}
+
+	@Override
+	public void onWrench(EntityPlayer player) {
+		NonNullList<ItemStack> drops = NonNullList.<ItemStack>create();
+		IBlockState state = this.world.getBlockState(this.pos);
+		Block block = state.getBlock();
+		if (block instanceof BlockMemeCapacitor) {
+			block.getDrops(drops, this.world, this.pos, state, 0);
+			block.harvestBlock(this.world, player, pos, state, this, player.inventory.getCurrentItem());
+		}
 	}
 }
