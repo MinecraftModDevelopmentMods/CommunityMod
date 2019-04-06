@@ -8,6 +8,7 @@ import com.mcmoddev.communitymod.davidm.extrarandomness.core.EnumSideConfig;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.helper.AnimationHelper;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.helper.MathHelper;
 
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
@@ -23,7 +24,7 @@ public class RenderCapacitor extends TileEntitySpecialRenderer<TileEntityCapacit
 	public void render(TileEntityCapacitor te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
 		long totalWorldTime = te.getWorld().getTotalWorldTime();
 		if (te.getPower() != 0) {
-			GL11.glColor4f(1, 1, 1, (float) MathHelper.oscillate(totalWorldTime * 6, 0.5, 0.85));
+			GlStateManager.color(1, 1, 1, (float) MathHelper.oscillate(totalWorldTime * 6, 0.5, 0.85));
 			this.renderPowerTank(te.getScaledPower(), x, y, z);
 		}
 		
@@ -48,9 +49,9 @@ public class RenderCapacitor extends TileEntitySpecialRenderer<TileEntityCapacit
 			EnumFacing facing = EnumFacing.values()[i];
 			
 			if (sideConfigs[i] == EnumSideConfig.INPUT) {
-				GL11.glColor4f(0.05F, 0.47F, 0.82F, (float) MathHelper.oscillate(time * 6, 0.5, 0.85));
+				GlStateManager.color(0.05F, 0.47F, 0.82F, (float) MathHelper.oscillate(time * 6, 0.5, 0.85));
 			} else {
-				GL11.glColor4f(0.83F, 0.43F, 0.11F, (float) MathHelper.oscillate(time * 6, 0.5, 0.85));
+				GlStateManager.color(0.83F, 0.43F, 0.11F, (float) MathHelper.oscillate(time * 6, 0.5, 0.85));
 			}
 			
 			switch(facing) {
