@@ -17,6 +17,7 @@ public class RenderCapacitor extends TileEntitySpecialRenderer<TileEntityCapacit
 
 	private static final ResourceLocation POWER_TEXTURE = new ResourceLocation(CommunityGlobals.MOD_ID, "textures/blocks/meme_power.png");
 	private static final ResourceLocation CONFIG_TEXTURE = new ResourceLocation(CommunityGlobals.MOD_ID, "textures/blocks/config.png");
+	private static final ResourceLocation BEAM_TEXTURE = new ResourceLocation("textures/entity/beacon_beam.png");
 	
 	@Override
 	public void render(TileEntityCapacitor te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
@@ -71,7 +72,7 @@ public class RenderCapacitor extends TileEntitySpecialRenderer<TileEntityCapacit
 		
 		double mid_x = x + 0.5;
 		double mid_z = z + 0.5;
-		double minHeight = y + 1 / 16.0;
+		double minHeight = y + 1 / 16.0 + 0.001;
 		double maxHeight = minHeight + 14 * scaledPowerLevel / 16.0;
 		AnimationHelper.drawPlane(
 				POWER_TEXTURE,

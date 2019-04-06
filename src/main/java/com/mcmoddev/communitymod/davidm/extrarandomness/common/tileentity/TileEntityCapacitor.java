@@ -22,6 +22,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 
@@ -49,9 +50,9 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 			this.editSideConfig(facing);
 			this.markDirty();
 			NetworkHelper.sendTileEntityToNearby(this, 64);
+		} else {
+			player.sendMessage(new TextComponentString(String.format("%s/%s", this.currentPower, this.enumCapacitor.getPower())));
 		}
-		
-		player.sendMessage(new TextComponentString(String.format("%s/%s", this.currentPower, this.enumCapacitor.getPower())));
 		// player.sendMessage(new TextComponentString(String.valueOf(this.sideConfigs[facing.ordinal()].ordinal())));
 	}
 	
@@ -108,6 +109,11 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 			this.markDirty();
 			NetworkHelper.sendTileEntityToNearby(this, 64);
 		}
+	}
+	
+	@Override
+	public AxisAlignedBB getRenderBoundingBox() {
+		return INFINITE_EXTENT_AABB;
 	}
 	
 	@Override
