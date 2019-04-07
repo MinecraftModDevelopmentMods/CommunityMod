@@ -12,6 +12,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 
 public class RenderCapacitor extends TileEntitySpecialRenderer<TileEntityCapacitor> {
@@ -36,20 +37,14 @@ public class RenderCapacitor extends TileEntitySpecialRenderer<TileEntityCapacit
 		this.renderSideConfig(te, x, y, z);
 		GlStateManager.color(1, 1, 1, 1);
 		
-		this.renderBeams(te, x, y, z);
-		
 		GlStateManager.enableLighting();
 		GlStateManager.disableBlend();
 		GlStateManager.popMatrix();
 	}
 	
-	private void renderBeams(TileEntityCapacitor te, double x, double y, double z) {
-		long time = te.getWorld().getTotalWorldTime();
-		AnimationHelper.drawBeam(x, y, z, 5, 0.1, time, EnumFacing.DOWN);
-	}
-	
 	private void renderSideConfig(TileEntityCapacitor te, double x, double y, double z) {
 		EnumSideConfig[] sideConfigs = te.getSideConfigs();
+		BlockPos[] beams = te.getBeams();
 		double center_x = x + 0.5;
 		double center_y = y + 0.5;
 		double center_z = z + 0.5;
@@ -81,6 +76,25 @@ public class RenderCapacitor extends TileEntitySpecialRenderer<TileEntityCapacit
 			}
 			
 			AnimationHelper.drawDoublePlane(CONFIG_TEXTURE, new_x, new_y, new_z, time, 0.5, facing);
+			
+			if (!beams[i].equals(te.getPos())) {
+				r = -0.25;
+				switch(facing) {
+					case UP: new_y += r; break;
+					case DOWN: new_y -= r; break;
+					case SOUTH: new_z += r; break;
+					case NORTH: new_z -= r; break;
+					case EAST: new_x += r; break;
+					case WEST: new_x -= r; break;
+					default: break;
+				}
+				
+				double distance = Math.sqrt(beams[i].distanceSq(te.getPos())) - 1;
+				GlStateManager.color(1, 1, 1, 1);
+				AnimationHelper.drawBeam(new_x, new_y, new_z, distance, 0.075, time, facing);
+				GlStateManager.color(1, 1, 1, 0.25F);
+				AnimationHelper.drawBeam(new_x, new_y, new_z, distance, 0.175, time, Math.PI / 4 / 0.085, facing);
+			}
 		}
 	}
 	

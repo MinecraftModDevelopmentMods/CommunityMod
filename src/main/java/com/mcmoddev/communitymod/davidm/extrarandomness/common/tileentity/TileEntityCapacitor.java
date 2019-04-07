@@ -5,7 +5,9 @@ import java.util.List;
 
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.ExtraRandomness;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.block.BlockMemeCapacitor;
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.LexWand;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.MemeWrench;
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketRequestUpdateCapacitorBeam;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketRequestUpdateTileEntity;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketUpdateCapacitorBeam;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.EnumCapacitor;
@@ -57,6 +59,8 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 			this.editSideConfig(facing);
 			this.markDirty();
 			NetworkHelper.sendTileEntityToNearby(this, 64);
+		} else if (player.inventory.getCurrentItem().getItem() instanceof LexWand && player.isCreative()) {
+			this.receivePower(this.enumCapacitor.getPower());
 		} else {
 			player.sendMessage(new TextComponentString(String.format("%s/%s", this.currentPower, this.enumCapacitor.getPower())));
 		}
@@ -92,7 +96,11 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 	public void update() {
 		if (!this.world.isRemote && this.world.getTotalWorldTime() % 20 == 0) {
 			List<IMemePowerContainer> receivers = new ArrayList<IMemePowerContainer>();
-			boolean changed = false;
+			BlockPos[] newBeams = new BlockPos[6];
+			
+			for (int i = 0; i < newBeams.length; i++) {
+				newBeams[i] = new BlockPos(this.pos);
+			}
 			
 			for (int i = 0; i < this.sideConfigs.length; i++) {
 				if (this.sideConfigs[i] == EnumSideConfig.OUTPUT) {
@@ -110,17 +118,26 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 									receivers.add(powerContainer);
 								}
 								
-								if (!tileEntity.getPos().equals(this.beams[i])) {
-									this.beams[i] = tileEntity.getPos();
-									changed = true;
-								}
+								newBeams[i] = new BlockPos(tileEntity.getPos());
 							}
 						}
+						break;
 					}
 				}
 			}
 			
+			boolean changed = false;
+			
+			for (int i = 0; i < newBeams.length; i++) {
+				if (!newBeams[i].equals(this.beams[i])) {
+					changed = true;
+					break;
+				}
+			}
+			
 			if (changed) {
+				this.beams = newBeams;
+				
 				int dimension = this.world.provider.getDimension();
 				ExtraRandomness.network.sendToAllAround(
 						new PacketUpdateCapacitorBeam(this), 
@@ -150,6 +167,7 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 	public void onLoad() {
 		if (world.isRemote) {
 			ExtraRandomness.network.sendToServer(new PacketRequestUpdateTileEntity(this));
+			ExtraRandomness.network.sendToServer(new PacketRequestUpdateCapacitorBeam(this));
 			this.world.tickableTileEntities.remove(this);
 		}
 	}

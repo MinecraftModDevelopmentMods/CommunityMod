@@ -75,6 +75,10 @@ public class AnimationHelper {
 	}
 	
 	public static void drawBeam(double x, double y, double z, double length, double radius, double time, EnumFacing facing) {
+		drawBeam(x, y, z, length, radius, time, time, facing);
+	}
+	
+	public static void drawBeam(double x, double y, double z, double length, double radius, double time, double rotationTime, EnumFacing facing) {
 		GlStateManager.pushMatrix();
 		
 		Vec3d[] points = new Vec3d[4];
@@ -91,7 +95,7 @@ public class AnimationHelper {
 		}
 		
 		for (int i = 0; i < 4; i++) {
-			double rotation = time * 0.085 + i * Math.PI / 2;
+			double rotation = rotationTime * 0.085 + i * Math.PI / 2;
 			double new_x = x + radius * Math.sin(rotation);
 			double new_z = z + radius * Math.cos(rotation);
 			points[i] = new Vec3d(new_x, y, new_z);
