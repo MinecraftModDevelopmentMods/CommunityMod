@@ -2,7 +2,6 @@ package com.mcmoddev.communitymod.davidm.extrarandomness.core.helper;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.EnumFacing;
@@ -63,5 +62,24 @@ public class AnimationHelper {
 		}
 		
 		tessellator.draw();
+	}
+	
+	public static void drawBeam(double x, double y, double z, double length, double radius, double time, EnumFacing facing) {
+		Vec3d[] points = new Vec3d[4];
+		
+		for (int i = 0; i < 4; i++) {
+			double rotation = time + i * Math.PI / 2;
+			double new_x = x + radius * Math.sin(rotation);
+			double new_z = z + radius * Math.cos(rotation);
+			points[i] = new Vec3d(new_x, y, new_z);
+		}
+		
+		for (int i = 0; i < 4; i++) {
+			Vec3d point_1 = points[i];
+			Vec3d point_2 = points[(i + 1) % 4];
+			Vec3d point_3 = point_2.add(0, length, 0);
+			Vec3d point_4 = point_1.add(0, length, 0);
+			drawPlane(BEAM_TEXTURE, point_1, point_2, point_3, point_4);
+		}
 	}
 }
