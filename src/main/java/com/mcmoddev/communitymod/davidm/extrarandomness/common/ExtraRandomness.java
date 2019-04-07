@@ -16,6 +16,7 @@ import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.MemeWrench;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.Shocker;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketAltarAnimation;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketRequestUpdateTileEntity;
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketUpdateCapacitorBeam;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketUpdateTileEntity;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.tileentity.TileEntityAltar;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.tileentity.TileEntityCapacitor;
@@ -65,6 +66,7 @@ public class ExtraRandomness implements ISubMod {
 		network.registerMessage(new PacketUpdateTileEntity.Handler(), PacketUpdateTileEntity.class, 0, Side.CLIENT);
 		network.registerMessage(new PacketRequestUpdateTileEntity.Handler(), PacketRequestUpdateTileEntity.class, 1, Side.SERVER);
 		network.registerMessage(new PacketAltarAnimation.Handler(), PacketAltarAnimation.class, 2, Side.CLIENT);
+		network.registerMessage(new PacketUpdateCapacitorBeam.Handler(), PacketUpdateCapacitorBeam.class, 3, Side.CLIENT);
 	}
 	
 	@Override

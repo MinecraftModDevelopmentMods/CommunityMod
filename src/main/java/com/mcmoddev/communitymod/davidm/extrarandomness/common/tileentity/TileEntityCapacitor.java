@@ -7,6 +7,7 @@ import com.mcmoddev.communitymod.davidm.extrarandomness.common.ExtraRandomness;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.block.BlockMemeCapacitor;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.item.MemeWrench;
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketRequestUpdateTileEntity;
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketUpdateCapacitorBeam;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.EnumCapacitor;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.EnumSideConfig;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.attribute.IWrenchable;
@@ -25,6 +26,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 public class TileEntityCapacitor extends TileEntity implements ITickable, IMemePowerContainer, IWrenchable {
 
@@ -34,6 +36,7 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 	private int currentPower;
 	
 	private EnumSideConfig[] sideConfigs;
+	private BlockPos[] beams;
 	
 	public TileEntityCapacitor() {
 		super();
@@ -42,6 +45,10 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 		this.sideConfigs = new EnumSideConfig[6];
 		for (int i = 0; i < this.sideConfigs.length; i++) {
 			this.sideConfigs[i] = EnumSideConfig.NONE;
+		}
+		this.beams = new BlockPos[6];
+		for (int i = 0; i < this.beams.length; i++) {
+			this.beams[i] = new BlockPos(this.pos);
 		}
 	}
 	
@@ -53,7 +60,6 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 		} else {
 			player.sendMessage(new TextComponentString(String.format("%s/%s", this.currentPower, this.enumCapacitor.getPower())));
 		}
-		// player.sendMessage(new TextComponentString(String.valueOf(this.sideConfigs[facing.ordinal()].ordinal())));
 	}
 	
 	public void setCapacitorData(EnumCapacitor enumCapacitor) {
@@ -70,6 +76,14 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 		return this.sideConfigs;
 	}
 	
+	public BlockPos[] getBeams() {
+		return this.beams;
+	}
+	
+	public void setBeams(BlockPos[] beams) {
+		this.beams = beams;
+	}
+	
 	public double getScaledPower() {
 		return (double) this.currentPower / this.enumCapacitor.getPower();
 	}
@@ -78,10 +92,11 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 	public void update() {
 		if (!this.world.isRemote && this.world.getTotalWorldTime() % 20 == 0) {
 			List<IMemePowerContainer> receivers = new ArrayList<IMemePowerContainer>();
+			boolean changed = false;
 			
 			for (int i = 0; i < this.sideConfigs.length; i++) {
 				if (this.sideConfigs[i] == EnumSideConfig.OUTPUT) {
-					for (int distance = 0; distance < TRANSPORT_RANGE; distance++) {
+					for (int distance = 1; distance < TRANSPORT_RANGE; distance++) {
 						EnumFacing facing = EnumFacing.values()[i];
 						BlockPos receiverPos = this.pos.offset(facing, distance);
 						
@@ -90,12 +105,27 @@ public class TileEntityCapacitor extends TileEntity implements ITickable, IMemeP
 						TileEntity tileEntity = this.world.getTileEntity(receiverPos);
 						if (tileEntity instanceof IMemePowerContainer) {
 							IMemePowerContainer powerContainer = (IMemePowerContainer) tileEntity;
-							if (!powerContainer.isFull() && powerContainer.canReceivePowerFrom(facing.getOpposite())) {
-								receivers.add(powerContainer);
+							if (powerContainer.canReceivePowerFrom(facing.getOpposite())) {
+								if (!powerContainer.isFull()) {
+									receivers.add(powerContainer);
+								}
+								
+								if (!tileEntity.getPos().equals(this.beams[i])) {
+									this.beams[i] = tileEntity.getPos();
+									changed = true;
+								}
 							}
 						}
 					}
 				}
+			}
+			
+			if (changed) {
+				int dimension = this.world.provider.getDimension();
+				ExtraRandomness.network.sendToAllAround(
+						new PacketUpdateCapacitorBeam(this), 
+						new NetworkRegistry.TargetPoint(dimension, pos.getX(), pos.getY(), pos.getZ(), 64)
+				);
 			}
 			
 			if (!receivers.isEmpty()) {
