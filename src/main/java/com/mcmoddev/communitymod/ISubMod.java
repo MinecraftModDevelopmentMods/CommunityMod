@@ -15,37 +15,37 @@ import net.minecraftforge.registries.IForgeRegistry;
  * implement this class to be loaded properly.
  */
 public interface ISubMod {
-    
+
     default void onConstruction (FMLConstructionEvent event) {
-        
+
     }
-    
+
     default void onPreInit (FMLPreInitializationEvent event) {
-        
+
     }
-    
+
     default void onInit (FMLInitializationEvent event) {
-        
+
     }
-    
+
     default void onPostInit (FMLPostInitializationEvent event) {
-        
+
     }
-    
+
     default void onLoadComplete (FMLLoadCompleteEvent event) {
-        
+
     }
-    
+
     default void onServerStarting (FMLServerStartingEvent event) {
-        
+
     }
-    
+
     default void onServerStopped (FMLServerStoppedEvent event) {
-        
+
     }
-    
+
     default void registerBlocks (IForgeRegistry<Block> reg) {
-        
+
     }
 
     default void registerItems (IForgeRegistry<Item> reg) {
@@ -55,18 +55,22 @@ public interface ISubMod {
     default void registerEntities (IForgeRegistry<EntityEntry> reg) {
 
     }
-    
+
     @SideOnly(Side.CLIENT)
     default void registerModels (ModelRegistryEvent event) {
-        
+
     }
 
-	default boolean enabledByDefault() {
-		
-		return true;
-	}
+    default boolean enabledByDefault() {
 
-	default void setupConfiguration(Configuration config, String categoryId) {
-		
-	}
+        return true;
+    }
+
+    default void setupConfiguration(Configuration config, String categoryId) {
+
+    }
+
+    default void onLoadStateChanged(boolean unload)
+    {
+    }
 }

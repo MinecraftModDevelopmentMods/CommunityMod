@@ -1,10 +1,6 @@
 package com.mcmoddev.communitymod;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.mcmoddev.communitymod.quat.dabbbbb.Dabbbbb;
-
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemMonsterPlacer;
@@ -15,6 +11,9 @@ import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CreativeTabCommunity extends CreativeTabs {
 

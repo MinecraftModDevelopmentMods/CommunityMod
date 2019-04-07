@@ -1,8 +1,9 @@
 package com.mcmoddev.communitymod;
 
-import java.io.File;
-
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.config.Property;
+
+import java.io.File;
 
 public class CommunityConfig {
 
@@ -17,8 +18,9 @@ public class CommunityConfig {
 
         config.setCategoryComment("_submods", "Allows submods to be completely disabled");
 
-        for (final SubModContainer container : CommunityMod.INSTANCE.getSubMods()) {
-        	
+        for (final SubModContainer container : SubModLoader.getLoadedSubMods()) {
+
+            config.setCategoryRequiresMcRestart(container.getId(), container.requiresMcRestart());
             container.getSubMod().setupConfiguration(config, container.getId());
         }
 
@@ -26,9 +28,19 @@ public class CommunityConfig {
             config.save();
         }
     }
-    
-    public boolean isSubModEnabled (SubModContainer container) {
 
-        return config.getBoolean(container.getId(), "_submods", container.getSubMod().enabledByDefault(), container.getDescription() + " Author: " + container.getAttribution());
+    public Property getSubModEnabled(SubModContainer container)
+    {
+        return config.get(container.getId(), "_submods", container.getSubMod().enabledByDefault(), container.getDescription() + " Author: " + container.getAttribution());
+    }
+    
+    public boolean isSubModEnabled(SubModContainer container)
+    {
+        return getSubModEnabled(container).getBoolean();
+    }
+
+    public Configuration getConfig()
+    {
+        return config;
     }
 }
