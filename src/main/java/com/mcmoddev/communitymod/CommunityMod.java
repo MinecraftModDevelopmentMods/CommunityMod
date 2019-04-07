@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
 import java.io.File;
 import java.util.*;
 
-@Mod(modid = CommunityGlobals.MOD_ID, name = "Community Mod", version = "@VERSION@", certificateFingerprint = "@FINGERPRINT@")
+@Mod(modid = CommunityGlobals.MOD_ID, name = "Community Mod", version = "@VERSION@", certificateFingerprint = "@FINGERPRINT@", dependencies = "required:forge@[14.23.5.2824,);")
 public class CommunityMod {
     
     public static final Logger LOGGER = LogManager.getLogger("Community Mod");
