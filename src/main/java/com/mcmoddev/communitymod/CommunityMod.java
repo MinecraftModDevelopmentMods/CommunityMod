@@ -21,7 +21,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 
-@Mod(modid = CommunityGlobals.MOD_ID, name = CommunityGlobals.MOD_NAME, version = "@VERSION@", certificateFingerprint = "@FINGERPRINT@", guiFactory = "com.mcmoddev.communitymod.client.gui.CommunityGuiFactory")
+@Mod(modid = CommunityGlobals.MOD_ID, name = CommunityGlobals.MOD_NAME, version = "@VERSION@", certificateFingerprint = "@FINGERPRINT@", guiFactory = "com.mcmoddev.communitymod.client.gui.CommunityGuiFactory", dependencies = "required:forge@[14.23.5.2824,);")
 public class CommunityMod {
     
     public static final Logger LOGGER = LogManager.getLogger(CommunityGlobals.MOD_NAME);
