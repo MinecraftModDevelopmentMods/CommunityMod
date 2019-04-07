@@ -2,17 +2,26 @@ package com.mcmoddev.communitymod.fiskfille.sentientbread;
 
 import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
+import com.mcmoddev.communitymod.SubModLoader;
+import com.mcmoddev.communitymod.client.gui.GuiCommunityConfig;
 import com.mojang.text2speech.Narrator;
 import net.minecraft.client.Minecraft;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import org.lwjgl.input.Keyboard;
 
 import java.util.Random;
 
-@SubMod(name = "Sentient Bread", description = "Bread will plead for its life if you try to eat it.", attribution = "FiskFille", clientSideOnly = true)
+@SubMod(name = "Sentient Bread",
+        description = "Bread will plead for its life if you try to eat it.",
+        attribution = "FiskFille",
+        clientSideOnly = true,
+        requiresMcRestart = false
+)
 public class SentientBread implements ISubMod
 {
     private static final String[] MESSAGES_STOP = {
@@ -42,11 +51,23 @@ public class SentientBread implements ISubMod
     };
 
     private static final Narrator NARRATOR = Narrator.getNarrator();
+    private static boolean isLoaded;
+
+    @Override
+    public void onConstruction(FMLConstructionEvent event)
+    {
+        isLoaded = SubModLoader.isSubModLoaded(this);
+    }
 
     @SubscribeEvent
     public static void onClientTick(TickEvent.ClientTickEvent event)
     {
         Minecraft mc = Minecraft.getMinecraft();
+
+        if (!isLoaded)
+        {
+            return;
+        }
 
         if (event.phase == TickEvent.Phase.END && mc.world != null && !mc.isGamePaused())
         {
@@ -71,5 +92,11 @@ public class SentientBread implements ISubMod
                 }
             }
         }
+    }
+
+    @Override
+    public void onLoadStateChanged(boolean unload)
+    {
+        isLoaded = !unload;
     }
 }
