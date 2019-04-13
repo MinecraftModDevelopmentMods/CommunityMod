@@ -12,25 +12,30 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface SubMod {
-    
+
     /**
      * Define the name of your submod here. This is required for all submods.
      */
     String name();
-    
+
     /**
      * A short description of the submod. This is optional but should be provided.
      */
     String description() default "";
-    
+
     /**
      * Define the attribution and authorship information for your submod here. This is required
      * for all submods.
      */
     String attribution();
-    
+
     /**
      * This can be used to make your module only load on the client.
      */
     boolean clientSideOnly() default false;
+
+    /**
+     *
+     */
+    boolean requiresMcRestart() default true;
 }

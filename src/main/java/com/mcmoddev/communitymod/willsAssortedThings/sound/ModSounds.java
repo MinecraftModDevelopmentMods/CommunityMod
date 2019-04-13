@@ -13,12 +13,16 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class ModSounds {
 
     static ResourceLocation EResourceLocation = new ResourceLocation(CommunityGlobals.MOD_ID, "e_sound");
+    static ResourceLocation BRUH2ResourceLocation = new ResourceLocation(CommunityGlobals.MOD_ID, "bruh_2_sound");
 
     @GameRegistry.ObjectHolder("e_sound")
     public static SoundEvent E_SOUND = new SoundEvent(EResourceLocation).setRegistryName(EResourceLocation);
 
+    @GameRegistry.ObjectHolder("bruh_2_sound")
+    public static SoundEvent BRUH_2_SOUND = new SoundEvent(BRUH2ResourceLocation).setRegistryName(BRUH2ResourceLocation);
+
     @SubscribeEvent
     public static void registerSoundEvents(RegistryEvent.Register<SoundEvent> event) {
-        event.getRegistry().register(E_SOUND);
+        event.getRegistry().registerAll(E_SOUND, BRUH_2_SOUND);
     }
 }

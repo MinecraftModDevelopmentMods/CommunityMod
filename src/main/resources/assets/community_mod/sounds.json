@@ -4,6 +4,11 @@
     "subtitle": "community_mod.subtitle.e_sound",
     "sounds": [ "community_mod:e_sound" ]
   },
+  "bruh_2_sound": {
+    "category": "block",
+    "subtitle": "community_mod.subtitle.bruh_2_sound",
+    "sounds": [ "community_mod:bruh_2_sound" ]
+  },
   "mob.gnome.say": {
     "category": "neutral",
     "sounds": ["community_mod:mob/gnome_say"]

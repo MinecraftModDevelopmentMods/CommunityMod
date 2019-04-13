@@ -1,6 +1,7 @@
 package com.mcmoddev.communitymod.gegy.youcouldmakeareligionoutofthis;
 
 import com.mcmoddev.communitymod.CommunityGlobals;
+import com.mcmoddev.communitymod.ISubMod;
 import com.mcmoddev.communitymod.SubMod;
 import com.mcmoddev.communitymod.shared.RegUtil;
 import net.minecraft.client.Minecraft;
@@ -25,7 +26,7 @@ import java.util.Random;
         attribution = "Bill Wurtz (& gegy1000)"
 )
 @GameRegistry.ObjectHolder(CommunityGlobals.MOD_ID)
-public class YouCouldMakeAReligionOutOfThis {
+public class YouCouldMakeAReligionOutOfThis implements ISubMod {
     private static final long M = 181783497276652981L;
     private static final int CHANCE = 10000;
 
