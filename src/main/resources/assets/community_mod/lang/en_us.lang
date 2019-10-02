@@ -68,7 +68,7 @@ community_mod.subtitle.e_sound=E
 tile.community_mod:bruh_2_block.name=Bruh Sound Effect #2 Block
 community_mod.subtitle.bruh_2_sound=Bruh Sound Effect #2
 item.community_mod:magic_eight_ball.name=Magic 8 Ball
-item.community_mod:chicken_arrow.name=Chicken Arrow
+item.community_mod.chicken_arrow.name=Chicken Arrow
 
 #Commoble
 entity.community_mod.exploding_chicken.name=Exploding Chicken
