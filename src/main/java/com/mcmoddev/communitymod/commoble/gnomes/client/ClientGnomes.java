@@ -9,7 +9,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @SubMod(name = "Gnomes Client", description = "Client side submod for the gnomes", attribution = "Commoble", clientSideOnly = true)
-@Mod.EventBusSubscriber(modid = "community_mod")
 public class ClientGnomes implements ISubMod
 {
 	@Override

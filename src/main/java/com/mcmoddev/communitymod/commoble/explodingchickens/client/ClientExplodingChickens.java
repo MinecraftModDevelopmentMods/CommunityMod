@@ -9,7 +9,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @SubMod(name = "Exploding Chickens Client", description = "Like chickens but louder and on the client", attribution = "Commoble", clientSideOnly = true)
-@Mod.EventBusSubscriber(modid = "community_mod")
 public class ClientExplodingChickens implements ISubMod
 {
 	@Override

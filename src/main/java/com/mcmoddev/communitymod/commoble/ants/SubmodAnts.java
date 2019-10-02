@@ -17,7 +17,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.registries.IForgeRegistry;
 
 @SubMod(name = "Ants", description = "This is how you get ants", attribution = "Commoble")
-@Mod.EventBusSubscriber(modid = "community_mod")
 public class SubmodAnts implements ISubMod
 {
 	public static Set<Block> blocks_with_ants = new HashSet<Block>();
