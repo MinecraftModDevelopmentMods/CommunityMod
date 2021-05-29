@@ -1,18 +1,18 @@
 package com.mcmoddev.communitymod.davidm.extrarandomness.common.tileentity;
 
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.ExtraRandomness;
-import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketRequestUpdateAltar;
-import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketUpdateAltar;
-import com.mcmoddev.communitymod.davidm.extrarandomness.core.AltarItem;
+import com.mcmoddev.communitymod.davidm.extrarandomness.common.network.PacketRequestUpdateTileEntity;
 import com.mcmoddev.communitymod.davidm.extrarandomness.core.EnumAltarAnimation;
+import com.mcmoddev.communitymod.davidm.extrarandomness.core.attribute.AltarItem;
+import com.mcmoddev.communitymod.davidm.extrarandomness.core.helper.NetworkHelper;
 
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.items.ItemStackHandler;
 
 public class TileEntityAltar extends TileEntity implements ITickable {
@@ -22,10 +22,7 @@ public class TileEntityAltar extends TileEntity implements ITickable {
 		@Override
 		protected void onContentsChanged(int slot) {
 			if (!world.isRemote) {
-				ExtraRandomness.network.sendToAllAround(
-						new PacketUpdateAltar(TileEntityAltar.this),
-						new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 64)
-				);
+				NetworkHelper.sendTileEntityToNearby(TileEntityAltar.this, 80);
 			}
 		}
 	};
@@ -68,6 +65,11 @@ public class TileEntityAltar extends TileEntity implements ITickable {
 					this.cooldown = 0;
 					altarItem.onAltarAction(this.world, this.pos);
 				}
+				
+				TileEntity tileEntity = this.world.getTileEntity(this.pos.offset(EnumFacing.DOWN));
+				if (tileEntity instanceof TileEntityCapacitor) {
+					((TileEntityCapacitor) tileEntity).receivePower(10);
+				}
 			}
 		} else {
 			if (this.altarAnimation != null) {
@@ -82,15 +84,8 @@ public class TileEntityAltar extends TileEntity implements ITickable {
 	@Override
 	public void onLoad() {
 		if (world.isRemote) {
-			ExtraRandomness.network.sendToServer(new PacketRequestUpdateAltar(this));
+			ExtraRandomness.network.sendToServer(new PacketRequestUpdateTileEntity(this));
 		}
-	}
-	
-	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-		compound.setTag("inventory", this.inventory.serializeNBT());
-		compound.setInteger("cooldown", this.cooldown);
-		return super.writeToNBT(compound);
 	}
 	
 	@Override
@@ -98,5 +93,12 @@ public class TileEntityAltar extends TileEntity implements ITickable {
 		inventory.deserializeNBT(compound.getCompoundTag("inventory"));
 		this.cooldown = compound.getInteger("cooldown");
 		super.readFromNBT(compound);
+	}
+	
+	@Override
+	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
+		compound.setTag("inventory", this.inventory.serializeNBT());
+		compound.setInteger("cooldown", this.cooldown);
+		return super.writeToNBT(compound);
 	}
 }

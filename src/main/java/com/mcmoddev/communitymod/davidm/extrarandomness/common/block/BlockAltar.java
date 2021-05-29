@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import com.mcmoddev.communitymod.davidm.extrarandomness.common.tileentity.TileEntityAltar;
-import com.mcmoddev.communitymod.davidm.extrarandomness.core.AltarItem;
+import com.mcmoddev.communitymod.davidm.extrarandomness.core.attribute.AltarItem;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -91,7 +91,7 @@ public class BlockAltar extends Block {
 	}
 	
 	@Override
-	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
 		tooltip.add(I18n.format("tooltip.community_mod.meme_altar_1"));
 		tooltip.add(I18n.format("tooltip.community_mod.meme_altar_2"));
 	}
@@ -107,7 +107,7 @@ public class BlockAltar extends Block {
 	}
 	
 	@Override
-	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+	public BlockFaceShape getBlockFaceShape(IBlockAccess world, IBlockState state, BlockPos pos, EnumFacing face) {
 		return BlockFaceShape.UNDEFINED;
 	}
 	

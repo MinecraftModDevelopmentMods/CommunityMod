@@ -80,6 +80,10 @@ tile.antcake.full_of_ants=Heck no, it's full of ants
 tile.community_mod.meme_altar.name=Meme Altar
 tooltip.community_mod.meme_altar_1=Right click to insert item.
 tooltip.community_mod.meme_altar_2=Right click again to extract item.
+tooltip.community_mod.wrench_1=Right click on Meme Capacitor
+tooltip.community_mod.wrench_2=to configure input/output.
+tooltip.community_mod.meme_capacitor_1=Power: %s/%s
+tooltip.community_mod.meme_capacitor_2=Transfer Rate: %s
 tooltip.community_mod.altar_item=Put this on the Meme Altar to:
 tooltip.community_mod.lex_wand=Right click on mob to BANISH it!
 tooltip.community_mod.lex_wand_extra=banish entities near it.
@@ -89,3 +93,12 @@ tooltip.community_mod.shocker_extra=generate shock waves!
 item.community_mod.lex_wand.name=Lex's Wand of Banishing
 item.community_mod.golden_egg.name=Golden Egg
 item.community_mod.shocker.name=Shocker
+item.community_mod.meme_wrench.name=Wrench
+
+tile.community_mod.meme_capacitor_tier_0.name=Meme Power Capacitor (Tier I)
+tile.community_mod.meme_capacitor_tier_1.name=Meme Power Capacitor (Tier II)
+tile.community_mod.meme_capacitor_tier_2.name=Meme Power Capacitor (Tier III)
+tile.community_mod.meme_capacitor_tier_3.name=Meme Power Capacitor (Tier IV)
+tile.community_mod.meme_capacitor_tier_4.name=Meme Power Capacitor (Tier V)
+
+lore.community_mod.wrench=This texture worth an A* in IGCSE art.
