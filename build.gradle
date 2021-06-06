@@ -52,6 +52,7 @@ minecraft {
     replace '@VERSION@', project.version
     replace '@FINGERPRINT@', project.findProperty('signSHA1')
     replaceIn "${mod_class}.java"
+    clientJvmArgs = serverJvmArgs = ["-Dfml.coreMods.load=com.mcmoddev.communitymod.CommunityCoremodLoadingPlugin"]
 }
 
 processResources {
@@ -152,5 +153,11 @@ task signJar(type: SignJar, dependsOn: reobfJar) {
     inputFile = jar.archivePath
     outputFile = jar.archivePath
 }
-
+jar {
+    manifest {
+        attributes([
+                'FMLCorePlugin': "com.mcmoddev.communitymod.CommunityCoremodLoadingPlugin"
+        ])
+    }
+}
 build.dependsOn signJar
