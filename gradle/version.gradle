@@ -1,0 +1,189 @@
+import org.eclipse.jgit.api.Git
+import org.eclipse.jgit.lib.Constants
+import org.eclipse.jgit.lib.ObjectId
+import org.eclipse.jgit.lib.ObjectReader
+import org.eclipse.jgit.lib.PersonIdent
+import org.eclipse.jgit.lib.Ref
+import org.eclipse.jgit.lib.Repository
+import org.eclipse.jgit.revwalk.RevCommit
+import org.eclipse.jgit.storage.file.FileRepositoryBuilder
+
+import java.time.OffsetDateTime
+import java.time.format.DateTimeFormatter
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'org.eclipse.jgit:org.eclipse.jgit:5.13.+'
+    }
+}
+
+class VersionExtension {
+    static DateTimeFormatter formatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME
+
+    Project project
+    boolean stripBranchPrefix = true
+    String customPrefix = null
+    boolean useDirty = false
+    boolean parsedVersion = false
+    String timestamp = '1970-01-01T00:00:00+00:00'
+    String commitId = '0000000000000000000000000000000000000000'
+    String abbrevId = '000000'
+    String rawVersion = '0.0.0'
+    boolean snapshot = true
+    String classifiers = '-UNKNOWN'
+
+    VersionExtension(Project project) {
+        this.project = project
+    }
+
+    void calculateVersion() {
+        if (parsedVersion) return
+        parsedVersion = true
+        try (Repository repository = new FileRepositoryBuilder()
+                .readEnvironment()
+                .findGitDir(project.projectDir)
+                .setMustExist(true).build()) {
+            boolean hasCommitId = false
+            String branchName = null
+
+            Ref head = repository.exactRef(Constants.HEAD)
+            if (head != null && head.isSymbolic()) {
+                branchName = Repository.shortenRefName(head.getTarget().getName())
+            }
+
+            // Find HEAD commit and extract ID and timestamp
+            try (ObjectReader reader = repository.newObjectReader()) {
+                final ObjectId headCommitId = repository.resolve(Constants.HEAD)
+                final RevCommit headCommit = repository.parseCommit(headCommitId) // TODO throws
+
+                final PersonIdent identity = headCommit.committerIdent
+                final OffsetDateTime date = OffsetDateTime.ofInstant(identity.when.toInstant(),
+                        identity.timeZone.toZoneId())
+
+                timestamp = formatter.format(date)
+                commitId = headCommit.name()
+                abbrevId = reader.abbreviate(headCommitId).name()
+                hasCommitId = true
+            }
+
+            final Git git = Git.wrap(repository)
+            final String describe = git.describe().setTags(true).setLong(true).call()
+
+            // By default, the classifier is set to the commit ID if available
+            classifiers = hasCommitId ? "+${abbrevId ?: commitId}" : ''
+
+            if (describe != null) {
+                String descVer, descCount
+
+                final int lastSep = describe.lastIndexOf('-')
+                final String allExceptLast = describe.substring(0, lastSep)
+                final int secondToLastSep = allExceptLast.lastIndexOf('-')
+                descVer = allExceptLast.substring(0, secondToLastSep)
+                descCount = allExceptLast.substring(secondToLastSep + 1)
+
+                if (stripBranchPrefix) {
+                    if (customPrefix != null && descVer.length() > customPrefix.length() + 1) {
+                        String sep = descVer.charAt(customPrefix.length())
+                        if (descVer.startsWith(customPrefix) && (sep == '/' || sep == '-')) {
+                            descVer = descVer.substring(customPrefix.length() + 1)
+                        }
+                    }
+
+                    if (branchName != null && descVer.length() > branchName.length() + 1) {
+                        String sep = descVer.charAt(branchName.length())
+                        if (descVer.startsWith(branchName) && (sep == '/' || sep == '-')) {
+                            descVer = descVer.substring(branchName.length() + 1)
+                        }
+                    }
+                }
+
+                rawVersion = descVer.startsWith('v') ? descVer.substring(1) : descVer
+                final int commitCount = Integer.parseInt(descCount)
+                final boolean dirty = !git.status().call().clean
+
+                if (commitCount == 0) {
+                    snapshot = dirty
+                    classifiers = ''
+                } else if (dirty && useDirty) {
+                    classifiers = '.dirty'
+                }
+            }
+
+            if (snapshot) {
+                classifiers = '-SNAPSHOT' + classifiers
+            }
+        } catch (Exception e) {
+            project.logger.warn("Exception while getting version info from Git: {}", e.toString())
+        }
+    }
+
+    void setStripBranchPrefix(boolean stripBranchPrefix) {
+        this.stripBranchPrefix = stripBranchPrefix
+    }
+
+    boolean getStripBranchPrefix() {
+        return stripBranchPrefix
+    }
+
+    void setCustomPrefix(String customPrefix) {
+        this.customPrefix = customPrefix
+    }
+
+    String getCustomPrefix() {
+        return customPrefix
+    }
+
+    void setUseDirty(boolean useDirty) {
+        this.useDirty = useDirty
+    }
+
+    boolean getUseDirty() {
+        return useDirty
+    }
+
+    String getVersion() {
+        calculateVersion()
+        return this.rawVersion + this.classifiers
+    }
+
+    String getRawVersion() {
+        calculateVersion()
+        return this.rawVersion
+    }
+
+    String getSimpleVersion() {
+        calculateVersion()
+        return this.rawVersion + (this.snapshot ? '-SNAPSHOT' : '')
+    }
+
+    String getCommitTimestamp() {
+        calculateVersion()
+        return this.timestamp
+    }
+
+    String getAbbreviatedCommitId() {
+        calculateVersion()
+        return this.abbrevId
+    }
+
+    String getCommitId() {
+        calculateVersion()
+        return this.commitId
+    }
+
+    String getClassifiers() {
+        calculateVersion()
+        return this.classifiers
+    }
+
+    boolean isSnapshot() {
+        calculateVersion()
+        return this.snapshot
+    }
+}
+
+project.extensions.create("versions", VersionExtension, project)

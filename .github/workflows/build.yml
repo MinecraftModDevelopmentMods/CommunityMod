@@ -1,0 +1,39 @@
+name: CI Build
+on: [ push, pull_request ]
+
+permissions: read-all
+
+jobs:
+
+  validate:
+    name: "Validate gradle wrapper"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: gradle/wrapper-validation-action@v1
+
+  build:
+    name: "Build using Gradle"
+    needs: validate
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          check-latest: true
+      - uses: burrunan/gradle-cache-action@v1
+        with:
+          arguments: build
+          # Read-only cache if not on repo's default branch: https://stackoverflow.com/a/68414395
+          read-only: ${{ format('refs/heads/{0}', github.event.repository.default_branch) != github.ref }}
+          gradle-dependencies-cache-key: |
+            gradle/libs.versions.toml
+          gradle-distribution-sha-256-sum-warning: false
+      - uses: actions/upload-artifact@v2.2.4
+        with:
+          name: Build artifacts
+          path: build/libs/*.jar

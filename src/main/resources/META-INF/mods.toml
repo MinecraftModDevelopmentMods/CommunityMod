@@ -1,0 +1,32 @@
+modLoader="javafml"
+loaderVersion="[39,)"
+license="MIT License"
+
+[[mods]]
+modId="mmdcommunity"
+version="${file.jarVersion}"
+displayName="MMD Community Mod"
+logoFile="mmd.png"
+credits="The whole MMD community for making this possible!"
+authors="The MMD Administrators, and all contributing developers"
+description='''
+The MMD Community Mod is a public project.
+Everybody can contribute their own code to the mod.
+There is no theme, there are no limits (except a few, to keep it fun and legal!)
+
+If you're having issues with this mod, or want to add something to it, come visit us in MMD!
+'''
+
+[[dependencies.mmdcommunity]]
+    modId="forge"
+    mandatory=true
+    versionRange="[39,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.mmdcommunity]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.18.1,1.19)"
+    ordering="NONE"
+    side="BOTH"

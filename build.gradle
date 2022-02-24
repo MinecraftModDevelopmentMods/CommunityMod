@@ -1,0 +1,123 @@
+plugins {
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '5.1.+'
+    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
+    id 'org.spongepowered.mixin' version '0.7.+'
+}
+apply from: 'gradle/version.gradle'
+
+version = versions.getVersion()
+println "Mod version: $version"
+
+sourceSets {
+    data
+    main.resources {
+        srcDirs += data.resources.srcDirs
+        exclude '.cache/'
+    }
+}
+
+print "Java: ${System.getProperty('java.version')}"
+print ", JVM: ${System.getProperty('java.vm.version')} (${System.getProperty('java.vendor')})"
+println ", Arch: ${System.getProperty('os.arch')}"
+
+minecraft {
+    mappings channel: mappings_channel, version: mappings_version
+
+    runs {
+        configureEach {
+            workingDirectory project.file('run/' + it.name) as File
+
+            property 'forge.logging.markers', logging_markers
+            property 'forge.logging.console.level', logging_console
+
+            ideaModule "${project.name}.main"
+            mods.register(modid as String) {
+                source sourceSets.main as SourceSet
+            }
+        }
+
+        client {
+        }
+
+        server {
+        }
+
+        data {
+            args '--mod', modid, '--all'
+            args '--output', sourceSets.data.resources.srcDirs[0].toString()
+            args '--existing', sourceSets.main.resources.srcDirs[0].toString()
+
+            ideaModule "${project.name}.data"
+            mods.named(modid as String) {
+                sources sourceSets.main as SourceSet, sourceSets.data as SourceSet
+            }
+        }
+    }
+}
+
+configurations {
+    dataImplementation.extendsFrom implementation
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
+
+    dataImplementation sourceSets.main.output
+}
+
+java {
+    archivesBaseName = "${project.name}-${mc_version}"
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
+    withSourcesJar()
+}
+
+var manifestAttributes = [
+        'Specification-Title'   : modid,
+        'Specification-Vendor'  : author,
+        'Specification-Version' : versions.getRawVersion(),
+        'Implementation-Title'  : project.name,
+        'Implementation-Version': versions.getVersion(),
+        'Implementation-Vendor' : author,
+        "Git-Commit"            : versions.getCommitId(),
+        "Git-Commit-Timestamp"  : versions.getCommitTimestamp()
+] as LinkedHashMap
+
+tasks.withType(Jar).configureEach {
+    manifest.attributes(manifestAttributes)
+    includeEmptyDirs false
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+
+    // Normalize line endings from CRLF to LF
+    filesMatching('META-INF/mods.toml') {
+        //noinspection UnnecessaryQualifiedReference
+        filter(org.apache.tools.ant.filters.FixCrLfFilter.class,
+                eol: org.apache.tools.ant.filters.FixCrLfFilter.CrLf.newInstance('lf'))
+    }
+}
+
+tasks.named('jar', Jar).configure {
+    finalizedBy 'reobfJar'
+}
+
+// noinspection UnnecessaryQualifiedReference
+tasks.withType(net.minecraftforge.gradle.userdev.tasks.RenameJarInPlace).configureEach {
+    args.add('--stable')
+}
+
+publishing {
+    publications.create('mavenJava', MavenPublication) {
+        from components.java
+
+        it.artifactId = project.name
+        it.version = "$mc_version-${versions.getRawVersion()}${versions.isSnapshot() ? '-SNAPSHOT' : ''}"
+    }
+
+    repositories {
+        maven {
+            name 'projectLocal'
+            url "file://${project.file('repo').absolutePath}"
+        }
+    }
+}
