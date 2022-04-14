@@ -21,4 +21,4 @@ Other than that, all the information you need is in the main MMDCommunity class.
 ### Contributors
 
 A list of members who have contributed to the many features of Community Mod:  
-- ... Nobody, yet.
+- Witixin.
