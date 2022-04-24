@@ -84,7 +84,7 @@ public class ExplodingChicken extends Chicken
 	{
 		if (this.isAlive())
 		{
-
+			this.oldSwell = this.swell;
 			int i = this.getSwellDir();
 			if (i > 0 && this.swell == 0)
 			{
