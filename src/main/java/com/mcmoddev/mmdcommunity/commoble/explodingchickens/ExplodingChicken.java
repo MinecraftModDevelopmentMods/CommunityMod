@@ -11,9 +11,11 @@ import net.minecraft.Util;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.AreaEffectCloud;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.goal.Goal;
@@ -25,14 +27,13 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
 
 public class ExplodingChicken extends Chicken
 {
 	private static final Supplier<Ingredient> FOOD = Util.make(() ->
 	{
-		Supplier<Field> field = Suppliers.memoize(() -> ObfuscationReflectionHelper.findField(Chicken.class, "f_28233_"));
+		Supplier<Field> field = Suppliers.memoize(() -> ObfuscationReflectionHelper.findField(Chicken.class, "f_" + "28233_"));
 		return () -> {
 			try
 			{
@@ -77,6 +78,12 @@ public class ExplodingChicken extends Chicken
 	{
 		super.defineSynchedData();
 		this.entityData.define(DATA_SWELL_DIR, -1);
+	}
+
+	@Override
+	public Chicken getBreedOffspring(ServerLevel level, AgeableMob mob)
+	{
+		return ExplodingChickens.get().explodingChicken.get().create(level);
 	}
 
 	@Override
