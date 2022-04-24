@@ -10,7 +10,6 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.Chicken;
 
 public class ExplodingChickenRenderer extends MobRenderer<ExplodingChicken, ChickenModel<ExplodingChicken>>
 {
@@ -30,7 +29,8 @@ public class ExplodingChickenRenderer extends MobRenderer<ExplodingChicken, Chic
 	/**
 	 * Defines what float the third param in setRotationAngles of ModelBase is
 	 */
-	protected float getBob(Chicken pLivingBase, float pPartialTicks)
+	@Override
+	protected float getBob(ExplodingChicken pLivingBase, float pPartialTicks)
 	{
 		float flag = Mth.lerp(pPartialTicks, pLivingBase.oFlap, pLivingBase.flap);
 		float flapSpeed = Mth.lerp(pPartialTicks, pLivingBase.oFlapSpeed, pLivingBase.flapSpeed);
@@ -51,8 +51,8 @@ public class ExplodingChickenRenderer extends MobRenderer<ExplodingChicken, Chic
 		swell = Mth.clamp(swell, 0.0F, 1.0F);
 		swell *= swell;
 		swell *= swell;
-		float xzScale = (1.0F + swell * 0.4F) * trigSwell;
-		float yScale = (1.0F + swell * 0.1F) / trigSwell;
+		float xzScale = (1.0F + swell * 0.6F) * trigSwell;
+		float yScale = (1.0F + swell * 0.15F) / trigSwell;
 		poses.scale(xzScale, yScale, xzScale);
 	}
 
