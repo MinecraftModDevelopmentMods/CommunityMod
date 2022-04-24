@@ -136,15 +136,13 @@ public class ExplodingChicken extends Chicken
 	{
 		if (!this.level.isClientSide)
 		{
-			this.playSound(SoundEvents.CHICKEN_DEATH, 2F, 1F);
 			for (int i=0; i<30; i++)
 			{
 				ThrownEgg egg = new ThrownEgg(this.level, this);
-				float xVel = this.level.random.nextFloat() - 0.5F;
-				float yVel = this.level.random.nextFloat() * 0.5F;
-				float zVel = this.level.random.nextFloat() - 0.5F;
-				egg.setDeltaMovement(new Vec3(xVel, yVel, zVel));
+				egg.shoot(0, 1, 0, 0.2F, 1000F);
+				this.level.addFreshEntity(egg);
 			}
+			this.playSound(SoundEvents.CHICKEN_DEATH, 2F, 1F);
 			Explosion.BlockInteraction interaction = net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level, this)
 				? Explosion.BlockInteraction.DESTROY
 				: Explosion.BlockInteraction.NONE;
